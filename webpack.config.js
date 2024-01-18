@@ -7,18 +7,20 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    static: './dist',
     hot: true,
   },
   module: {
     rules: [
       {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
