@@ -1,15 +1,93 @@
 // components/Home.js
 import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import { breakpoints } from '../breakpoints';
+
+const HomeMessageContainer = styled.div`
+  font-size: 5em;
+  font-weight: bold;
+  height: 100vh;
+  position: relative;
+  color: #fff;
+`;
+
+const FirstPart = styled.div`
+  top: 40vh;
+  left: 1em;
+  display: inline-block;
+  position: relative;
+  @media (max-width: ${breakpoints.mobile}) {
+    left: 6vw;
+    top: 30vh;
+    font-size: .45em;
+  }
+`;
+
+const SecondPart = styled.div`
+  top: 42vh;
+  left: 3em;
+  display: inline-block;
+  position: relative;
+  @media (max-width: ${breakpoints.mobile}) {
+    left: 6vw;
+    top: 27vh;
+    font-size: .45em;
+  }
+`;
+
+const floatAnimation = keyframes`
+  0% { transform: translate(0,  0px); }
+  50% { transform: translate(0, 15px); }
+  100% { transform: translate(0, -0px); }
+`;
+
+const FloatPart = styled.svg`
+  display: block;
+  width: 200px;
+  height: 200px;
+  animation-name: ${floatAnimation};
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+  overflow: visible;
+  top: 52vh;
+  left: 40%;
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: ${breakpoints.mobile}) {
+    right: auto;
+    top: 27vh;
+  }
+`;
+
+const FloatPath = styled.path`
+  width: 100%;
+  height: 100%;
+  fill: url(#lgrad);
+  display: block;
+`;
 
 const Home = () => {
-  return <div>
-      <h1>Welcome n shit</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at turpis faucibus, pharetra purus vitae, efficitur odio. Duis ornare nec massa vel tempus. Ut venenatis consequat pretium. Fusce sollicitudin, dolor in fringilla tincidunt, leo massa viverra turpis, et lobortis mauris purus quis tortor. Vivamus posuere elementum rutrum. Nam ultrices quis purus sed cursus. Fusce iaculis luctus lacus. Phasellus tristique bibendum urna, et aliquet justo faucibus ut.</p>
-      <p>Vivamus ultricies finibus quam, id ullamcorper turpis facilisis consequat. Vestibulum in pulvinar mauris. Pellentesque id urna turpis. Fusce id purus in ligula pellentesque porta ut vel dui. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed suscipit mauris. Fusce varius quis nisl eget porttitor. Nulla bibendum dignissim velit ut vehicula. Mauris lobortis lacinia libero, eu scelerisque nisl rhoncus nec. Maecenas tempor placerat orci vel auctor.</p>
-      <p>Suspendisse fringilla turpis vitae sem gravida, id aliquet enim aliquet. Vestibulum nec fringilla turpis. Donec sagittis accumsan erat, vel vehicula ante venenatis et. Cras venenatis nisi elementum fermentum cursus. Ut sed mattis ante. Proin vehicula et neque laoreet sodales. Proin felis eros, finibus in sapien maximus, luctus auctor lectus. Duis ultrices luctus enim in sodales. Vivamus molestie euismod purus vitae fermentum. Sed lobortis nunc ac tortor porta ullamcorper.</p>
-      <p>Nullam sit amet ultrices diam. Fusce at suscipit augue. Phasellus malesuada dapibus urna in scelerisque. Mauris et ligula tincidunt, semper lectus eu, tristique lectus. Duis tincidunt egestas leo at rhoncus. Nunc posuere justo sit amet nunc lacinia blandit. Fusce massa ex, commodo sed diam consectetur, consequat consequat nibh. Quisque malesuada efficitur nulla, et convallis dolor gravida tristique. Nulla imperdiet massa lorem. Phasellus sollicitudin tincidunt est non iaculis. Quisque blandit dapibus libero, at lobortis nulla finibus id. Ut eu neque ullamcorper, laoreet enim ut, convallis tellus.</p>
-      <p>Praesent mollis nisi tristique est fermentum, non consectetur neque viverra. Suspendisse ut convallis ligula. Ut vestibulum nisl quam. Curabitur pulvinar aliquam nulla at fermentum. Aenean malesuada turpis vitae dolor egestas sollicitudin. Donec nisi risus, aliquam a mi in, scelerisque ultrices est. Sed hendrerit est mi, fermentum mollis sapien luctus et. In eleifend bibendum tellus vel lacinia.</p>
-    </div>;
+  return <HomeMessageContainer id="home">
+      <FloatPart xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-25 -25 250 250"> 
+        <defs>
+          <linearGradient id="lgrad" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="0%" style={{ stopColor: '#00d5ff', stopOpacity: 1.00 }} />
+            <stop offset="100%" style={{ stopColor: '#f9ddfd', stopOpacity: 1.00 }} />
+          </linearGradient>
+        </defs>
+        <FloatPath d="M128.44897041161016 4.132090444615784 C85.13660461684276 -1.04534516170545 -2.8455514381138283 82.62850314366764 3.3859926346621876 125.80181351786054 C8.63217008365104 162.1483184351224 97.31607573119067 201.40186462166645 133.3416347832333 194.2779687412785 C158.36965868633078 189.32878707500763 197.01367052319466 141.37845228079834 198.7241218960753 115.92318296851683 C200.93729975087982 82.98624057818938 161.22683280852425 8.050261820361387 128.44897041161016 4.132090444615784Z" />
+      </FloatPart>
+      <FirstPart>
+      Pixels dance,
+      </FirstPart>
+      <SecondPart>
+      experiences linger.
+      </SecondPart>
+    </HomeMessageContainer>;
 };
 
 export default Home;
