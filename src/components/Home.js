@@ -12,10 +12,11 @@ const HomeMessageContainer = styled.div`
 `;
 
 const FirstPart = styled.div`
-  top: 40vh;
-  left: 1em;
+  top: 37vh;
+  left: 6vw;
   display: inline-block;
   position: relative;
+  text-rendering: optimizeLegibility;
   @media (max-width: ${breakpoints.mobile}) {
     left: 6vw;
     top: 30vh;
@@ -24,13 +25,13 @@ const FirstPart = styled.div`
 `;
 
 const SecondPart = styled.div`
-  top: 42vh;
+  top: 47vh;
   left: 3em;
   display: inline-block;
   position: relative;
   @media (max-width: ${breakpoints.mobile}) {
     left: 6vw;
-    top: 27vh;
+    top: 30vh;
     font-size: .45em;
   }
 `;
@@ -50,7 +51,7 @@ const FloatPart = styled.svg`
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; 
   overflow: visible;
-  top: 52vh;
+  top: 36vh;
   left: 40%;
   position: absolute;
   transform: translateX(-50%);

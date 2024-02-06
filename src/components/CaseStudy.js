@@ -4,6 +4,9 @@ import { breakpoints } from '../breakpoints';
 
 const CaseStudyContainer = styled.div`
   margin-bottom: 8em;
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-top: 8em;
+  }
 `;
 
 const CaseStudySection = styled.div`

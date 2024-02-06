@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { Link, Events, scrollSpy } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { breakpoints } from '../breakpoints';
 
 const MobileMenuIcon = styled.div`
@@ -24,19 +24,28 @@ const MobileMenu = styled.div`
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: left;
+  align-items: flex-start;
   font-size: 2em;
   z-index: 1;
 `;
 
-const StyledScrollLink = styled(Link)`
+const NavItem = styled(Link)`
   text-decoration: none;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  padding: 1em;
 `;
 
-const MobileMenuItem = styled(StyledScrollLink)`
+const EmailLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 1em;
+`;
+
+const MobileMenuItem = styled(NavItem)`
   text-decoration: none;
   color: #fff;
   margin: 1em;
@@ -49,18 +58,6 @@ const NavList = styled.ul`
   gap: 30px;
 `;
 
-const NavItem = styled.li`
-  color: #fff;
-  font-size: 16px;
-`;
-
-const EmailLink = styled.a`
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
-  margin: 1em;
-`;
-
 const HeaderContainer = styled.div`
   width: 100%;
   background-color: transparent;
@@ -71,14 +68,20 @@ const HeaderContainer = styled.div`
   padding: 0 1em;
   color: #fff;
   position: fixed;
+  transition: top 0.5s ease, background-color 0.5s ease; /* Added background-color transition */
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
   font-family: arial, sans-serif, helvetica;
   &.scrolled {
-    background: radial-gradient(ellipse at 50% 0%, rgba(31, 17, 206, 1) 0%, rgba(229, 43, 43, 0) 100%);
-    transition: background 1s ease;
+    top: -90px;
+    transition: top 0.5s ease, background-color 0.5s ease; /* Added background-color transition */
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  &.show-header {
+    top: 0;
+    transition: top 0.5s ease;
   }
   @media (max-width: ${breakpoints.mobile}) {
     left: 0;
@@ -96,7 +99,7 @@ const HeaderContainer = styled.div`
 const Logo = styled.div`
   font-size: 24px;
   font-weight: bold;
-  margin: 1em;
+  margin: 0 0 0 1em;
 `;
 
 const SubMenu = styled.ul`
@@ -105,81 +108,101 @@ const SubMenu = styled.ul`
   top: 100%;
   left: 0;
   background-color: #fff;
-  padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: ${(props) => (props.isSubMenuVisible ? 'block' : 'none')};
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
 `;
 
 const SubMenuItem = styled.li`
   color: #000;
   font-size: 14px;
   cursor: pointer;
-
+  white-space: nowrap;
+  padding: 1em;
   &:hover {
-    text-decoration: underline;
+    background-color: orange;
+    border-radius: 3px;
   }
 `;
 
 const Header = () => {
+  const [additionalClass, setAdditionalClass] = useState(false);
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
+    setMobileMenuOpen(prevState => !prevState);
   };
 
   const [scrolled, setScrolled] = useState(false);
   const [isSubMenuVisible, setSubMenuVisible] = useState(false);
-
-  const subMenuRef = useRef(null);
-  
-  useEffect(() => {
-    Events.scrollEvent.register('begin', (to, element) => {
-      console.log('begin', to, element);
-    });
-
-    Events.scrollEvent.register('end', (to, element) => {
-      console.log('end', to, element);
-    });
-
-    scrollSpy.update();
-
-    return () => {
-      Events.scrollEvent.remove('begin');
-      Events.scrollEvent.remove('end');
-    };
-  }, []);
-
-  const obfuscateEmail = (email) => {
-    return email
-      .split('')
-      .map((char) => {
-        return `&#${char.charCodeAt(0)};`;
-      })
-      .join('');
+  const toggleSubMenu = () => {
+    setSubMenuVisible(prevState => !prevState);
   };
+  
+  const subMenuRef = useRef(null);
 
   useEffect(() => {
+    let prevScrollY = window.scrollY;
+    let cumulativeScrollUp = 0;
+  
     const handleScroll = () => {
-      const scrollThreshold = 70;
-
-      if (window.scrollY >= scrollThreshold && !scrolled) {
+      const scrollY = window.scrollY;
+      const scrollDelta = scrollY - prevScrollY;
+      prevScrollY = scrollY;
+  
+      if (window.scrollY >= 70 && !scrolled) {
         setScrolled(true);
-      } else if (window.scrollY < scrollThreshold && scrolled) {
+      } else if (window.scrollY < 70 && scrolled) {
         setScrolled(false);
       }
+  
+      if (scrollDelta < 0) {
+        // If scrolled up, add to the cumulative scroll up distance
+        cumulativeScrollUp += Math.abs(scrollDelta);
+        if (cumulativeScrollUp >= 100) {
+          // If scrolled up by at least 100px overall, set the additional class to true
+          setAdditionalClass(true);
+          console.log('TRUE');
+        }
+      } else {
+        // If scrolled down, reset the cumulative scroll up distance
+        cumulativeScrollUp = 0;
+        // Optionally, you may want to set the additional class to false here
+        console.log('FALSE');
+        setAdditionalClass(false);
+      }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
 
-  const obfuscatedEmail = obfuscateEmail('hello.jonscott@me.com');
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
+        // Click occurred outside of the SubMenu, close it
+        setSubMenuVisible(false);
+      }
+    };
+
+    // Add the event listener to the window
+    window.addEventListener('click', handleClickOutside);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <HeaderContainer className={scrolled ? 'scrolled' : ''}>
-      <Logo>Your Logo</Logo>
+    <HeaderContainer className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
+   
+      <Logo>
+        <img id="Logo" src="./img/JonathonScottLogo.svg" alt="Jonathon Scott" />
+      </Logo>
       <MobileMenuIcon onClick={toggleMobileMenu}>&#9776;</MobileMenuIcon>
       {isMobileMenuOpen && (
         <MobileMenu>
@@ -192,32 +215,23 @@ const Header = () => {
         </MobileMenu>
       )}
       <NavList>
-        <NavItem><StyledScrollLink activeClass="active" to="home" smooth={true} duration={500}>Home</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="design-process" smooth={true} duration={500}>Design Process</StyledScrollLink></NavItem>
-        <NavItem>
-          <StyledScrollLink
-            activeClass="active"
-            to="case-studies"
-            smooth={true}
-            duration={500}
-            onClick={() => setSubMenuVisible(!isSubMenuVisible)}
-          >
-            Case Studies
-          </StyledScrollLink>
-          <SubMenu ref={subMenuRef} isSubMenuVisible={isSubMenuVisible}>
-            <SubMenuItem>Case Studies Page</SubMenuItem>
+        <NavItem activeClass="active" to="home" smooth={true} duration={500}>Home</NavItem>
+        <NavItem activeClass="active" to="design-process" smooth={true} duration={500}>Design Process</NavItem>
+        <NavItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleSubMenu}>Case Studies
+        {isSubMenuVisible && (
+          <SubMenu ref={subMenuRef}>
+            <SubMenuItem>Crafting a Course Library for Skillable</SubMenuItem>
             <SubMenuItem>Component Library</SubMenuItem>
-            {/* Add more submenu items as needed */}
           </SubMenu>
+        )}
         </NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="home" smooth={true} duration={500}>Home</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="design-process" smooth={true} duration={500}>Design Process</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="case-studies" smooth={true} duration={500}>Case Studies</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="gallery" smooth={true} duration={500}>Gallery</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</StyledScrollLink></NavItem>
-        <NavItem><StyledScrollLink activeClass="active" to="code" smooth={true} duration={500}>Code</StyledScrollLink></NavItem>
+        <NavItem activeClass="active" to="gallery" smooth={true} duration={500}>Gallery</NavItem>
+        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</NavItem>
+        <NavItem activeClass="active" to="code" smooth={true} duration={500}>Code</NavItem>
       </NavList>
-      <EmailLink to="" href={`mailto:${obfuscatedEmail}`}>Contact</EmailLink>
+      <EmailLink to="" href={`mailto:nothing@nothing.com`}>
+        <img src="./img/mail.png" alt="email me" />
+      </EmailLink>
     </HeaderContainer>
   );
 };

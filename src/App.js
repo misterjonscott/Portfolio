@@ -10,10 +10,10 @@ import styled from 'styled-components';
 import './styles/main.scss'; //Lose this later
 
 const PageContainer = styled.div`
-  width: 100%;
-  padding: 10px;
+  padding: 1em;
   align-items: center;
   margin: 70px auto 0;
+  line-height: 1.5em;
   max-width: 1000px;
 `;
 

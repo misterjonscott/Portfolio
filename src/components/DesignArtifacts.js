@@ -5,11 +5,12 @@ const DesignArtifactsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 10em;
+  // padding-top: 8em;
   @media (max-width: 768px) {
     flex-direction: column;
+    padding-top: 0;
   }
-  // Added stuff
-  margin-bottom: 10em;
 `;
 
 const DesignArtifactsGraphicContainer = styled.div`
@@ -19,7 +20,10 @@ const DesignArtifactsGraphicContainer = styled.div`
 `;
 
 const DesignArtifactsGraphic = styled.img`
-  width: 50%;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 2em;
+  padding: 2em;
 `;
 
 const DesignArtifactsTextContainer = styled.div`
@@ -37,20 +41,22 @@ const DesignArtifactsTextContainer = styled.div`
 `;
 
 const DesignArtifacts = () => {
-  return <div id="design-process">
+  return <div id="design-artifacts">
       <h1>Visual Elements Repository</h1>
       <DesignArtifactsContainer>
         <DesignArtifactsTextContainer>
-          <h2>It's like digital hoarding!</h2>
-          <p>Harnessing the power of reusable components in Figma transforms the UX design process into a dynamic and efficient
-             journey. By crafting a library of reusable components, each element becomes a design asset that can be easily replicated
-             and modified across the user workflow. This not only expedites the design phase but also ensures visual consistency and
-             coherence throughout the entire experience.</p>
-             <p>This also allows designers across teams to share changes seamlessly, streamlining collaboration and reducing the
-              risk of inconsistencies.</p>
+          <h2>Make it once, use it forever.</h2>
+          <p>Making things takes time, and making them to last takes a little longer.</p>
+          <ul>
+            <li>If we're making an icon or reusable component, save it to a shared library.</li>
+            <li>If we need a similar element later, add it as an alternative or update the original.</li>
+            <li>Now we can rapid prototype using resources we've already created!</li>
+            <li>Now that we're using a consistent design, we can develop code to match it.</li>
+            <li>Now we can rapidly develop code using resources we've already created!</li>
+          </ul>
         </DesignArtifactsTextContainer>
         <DesignArtifactsGraphicContainer>
-          <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/DesignArtifacts.png" />
+          <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/buttons.png" />
         </DesignArtifactsGraphicContainer>
       </DesignArtifactsContainer>
     </div>;
