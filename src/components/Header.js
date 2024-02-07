@@ -27,6 +27,40 @@ const MobileMenu = styled.div`
   align-items: flex-start;
   font-size: 2em;
   z-index: 1;
+  justify-content: center;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+const CloseIcon = styled.span`
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
 `;
 
 const NavItem = styled(Link)`
@@ -50,6 +84,18 @@ const MobileMenuItem = styled(NavItem)`
   color: #fff;
   margin: 1em;
   cursor: pointer;
+`;
+
+const MobileMenuEmail = styled.a`
+  text-align: center;
+  width: 100vw;
+  color: #fff;
+  text-decoration: none;
+  font-size: .8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 `;
 
 const NavList = styled.ul`
@@ -158,18 +204,12 @@ const Header = () => {
       }
   
       if (scrollDelta < 0) {
-        // If scrolled up, add to the cumulative scroll up distance
         cumulativeScrollUp += Math.abs(scrollDelta);
         if (cumulativeScrollUp >= 100) {
-          // If scrolled up by at least 100px overall, set the additional class to true
           setAdditionalClass(true);
-          console.log('TRUE');
         }
       } else {
-        // If scrolled down, reset the cumulative scroll up distance
         cumulativeScrollUp = 0;
-        // Optionally, you may want to set the additional class to false here
-        console.log('FALSE');
         setAdditionalClass(false);
       }
     };
@@ -183,15 +223,12 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
-        // Click occurred outside of the SubMenu, close it
         setSubMenuVisible(false);
       }
     };
 
-    // Add the event listener to the window
     window.addEventListener('click', handleClickOutside);
 
-    // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener('click', handleClickOutside);
     };
@@ -199,19 +236,25 @@ const Header = () => {
 
   return (
     <HeaderContainer className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
-   
       <Logo>
         <img id="Logo" src="./img/JonathonScottLogo.svg" alt="Jonathon Scott" />
       </Logo>
       <MobileMenuIcon onClick={toggleMobileMenu}>&#9776;</MobileMenuIcon>
       {isMobileMenuOpen && (
         <MobileMenu>
+          <CloseButton onClick={toggleMobileMenu}>
+            <CloseIcon />
+          </CloseButton>
           <MobileMenuItem activeClass="active" to="home" smooth={true} duration={500} onClick={toggleMobileMenu}>Home</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={500} onClick={toggleMobileMenu}>Design Process</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleMobileMenu}>Case Studies</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={500} onClick={toggleMobileMenu}>Gallery</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={500} onClick={toggleMobileMenu}>Component Library</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="code" smooth={true} duration={500} onClick={toggleMobileMenu}>Code</MobileMenuItem>
+          <MobileMenuEmail target="_blank" href={`mailto:hello.jonscott@me.com`}>
+            <img src="./img/mail.png" alt="email me" />
+            Email me
+          </MobileMenuEmail>
         </MobileMenu>
       )}
       <NavList>
@@ -229,7 +272,7 @@ const Header = () => {
         <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</NavItem>
         <NavItem activeClass="active" to="code" smooth={true} duration={500}>Code</NavItem>
       </NavList>
-      <EmailLink to="" href={`mailto:nothing@nothing.com`}>
+      <EmailLink target="_blank" href={`mailto:hello.jonscott@me.com`}>
         <img src="./img/mail.png" alt="email me" />
       </EmailLink>
     </HeaderContainer>

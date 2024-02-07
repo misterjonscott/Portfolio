@@ -29,14 +29,12 @@ const titles = [
   "knee high to a grasshopper",
   "young as a spring chicken",
   "fresh as a daisy",
-  "ss cute as a button",
+  "as cute as a button",
   "a small fry in a big pond",
   "a little rascal",
   "sweet as candy"
 ];
 
-// Technology-Lifecycle-Management-TLM@edwardjones.com 
-// P230844
 const CodeBlocks = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 4 columns in desktop view */
@@ -88,18 +86,20 @@ const Code = () => {
     setCurrentTitle(newTitle);
   };
 
-  return <div id="design-process">
+  return <div id="code">
     <h1>Code</h1>
     <CodeSection>
       <p>I've always been curious.  When I was <IdiomGen onClick={handleTitleClick}>{currentTitle}</IdiomGen> and very comfortable
         with computers I discovered Q-Basic and gorilla.bas.  I couldn't tell what all those lines of code meant, but if I changed just the
         right values, I could make a single banana crater the entire cityscape.  <LearnMoreAboutMe data-islearnmorevisible={isLearnMoreVisible} onClick={toggleLearnMore}>Want to learn more about me?</LearnMoreAboutMe></p>
       {isLearnMoreVisible && (
-        <p>I grew up with a love for computers and video games, and a continually growing interest in learning how to work with them.  
-          I studied digital art and animation in school, and built websites at home.  I wrote helpful automations using <a href="https://www.autoitscript.com/site/">AutoIt</a>, and used 
-          <a href="https://en.wikipedia.org/wiki/ActionScript">Actionscript</a> to bring my Flash interactions to life.  With the foundations of what programming could do for me, I started my career in 
-          Development.</p>
+        <div>
+          <p>My journey into the world of technology began with a childhood passion for computers and video games, sparking a curiosity that only grew stronger over time. As I delved deeper into digital art and animation in school, I found myself drawn to the art of web development, tinkering on my Pentium desktop at home.</p>
+          <p>From crafting websites with AutoIt scripts to breathing life into Flash interactions with Actionscript, I quickly discovered the power of programming to bring ideas to fruition. Transitioning into the realm of development, I honed my skills in PHP and delved into the world of LAMP development, ultimately finding my niche in WordPress.</p>
+          <p>However, it wasn't until I joined a biotech company focused on simplifying complex software for end-users that my perspective shifted. Here, I embraced the principles of user experience, realizing the importance of designing not just for aesthetics, but for usability and accessibility. It was a pivotal moment that reshaped my career focus from creating visually stunning websites to crafting intuitive and elegant user experiences.</p>
+        </div>
       )}
+      <p>Some of the tools in my arsenal:</p>
       <CodeBlocks>
         <CodeBlock>
           <CodeSpan>React.js</CodeSpan>

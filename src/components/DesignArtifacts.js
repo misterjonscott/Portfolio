@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { breakpoints } from '../breakpoints';
 
 const DesignArtifactsContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ const DesignArtifactsContainer = styled.div`
   align-items: flex-start;
   margin-bottom: 10em;
   // padding-top: 8em;
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
     padding-top: 0;
   }
@@ -37,6 +38,9 @@ const DesignArtifactsTextContainer = styled.div`
   }
   p {
     margin-top: 0;
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    margin : 2em 0 0.5em;
   }
 `;
 
