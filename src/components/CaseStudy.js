@@ -12,7 +12,7 @@ const CaseStudyContainer = styled.div`
 const CaseStudySection = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 2em;
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column-reverse;

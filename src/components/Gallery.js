@@ -12,7 +12,7 @@ const GalleryContainer = styled.div`
 const GallerySection = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 2em;
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column-reverse;
@@ -53,7 +53,7 @@ const GalleryTextContainer = styled.div`
 
 const Gallery = () => {
   return <GalleryContainer id="gallery">
-    <h1>Gallery</h1>
+    <h1>Projects Showcase</h1>
       <GallerySection>
         <GalleryTextContainer>
           <h2>Optimization without changes</h2>

@@ -82,8 +82,9 @@ const EmailLink = styled.a`
 const MobileMenuItem = styled(NavItem)`
   text-decoration: none;
   color: #fff;
-  margin: 1em;
+  margin: 0.25em;
   cursor: pointer;
+  font-size: 0.8em;
 `;
 
 const MobileMenuEmail = styled.a`
@@ -247,10 +248,11 @@ const Header = () => {
           </CloseButton>
           <MobileMenuItem activeClass="active" to="home" smooth={true} duration={500} onClick={toggleMobileMenu}>Home</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={500} onClick={toggleMobileMenu}>Design Process</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleMobileMenu}>Case Studies</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={500} onClick={toggleMobileMenu}>Gallery</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={500} onClick={toggleMobileMenu}>Projects Showcase</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={500} onClick={toggleMobileMenu}>Component Library</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleMobileMenu}>Case Studies</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="code" smooth={true} duration={500} onClick={toggleMobileMenu}>Code</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={500} onClick={toggleMobileMenu}>Recommendations</MobileMenuItem>
           <MobileMenuEmail target="_blank" href={`mailto:hello.jonscott@me.com`}>
             <img src="./img/mail.png" alt="email me" />
             Email me
@@ -260,6 +262,8 @@ const Header = () => {
       <NavList>
         <NavItem activeClass="active" to="home" smooth={true} duration={500}>Home</NavItem>
         <NavItem activeClass="active" to="design-process" smooth={true} duration={500}>Design Process</NavItem>
+        <NavItem activeClass="active" to="gallery" smooth={true} duration={500}>Projects Showcase</NavItem>
+        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</NavItem>
         <NavItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleSubMenu}>Case Studies
         {isSubMenuVisible && (
           <SubMenu ref={subMenuRef}>
@@ -268,9 +272,8 @@ const Header = () => {
           </SubMenu>
         )}
         </NavItem>
-        <NavItem activeClass="active" to="gallery" smooth={true} duration={500}>Gallery</NavItem>
-        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</NavItem>
         <NavItem activeClass="active" to="code" smooth={true} duration={500}>Code</NavItem>
+        <NavItem activeClass="active" to="recommendations" smooth={true} duration={500}>Recommendations</NavItem>
       </NavList>
       <EmailLink target="_blank" href={`mailto:hello.jonscott@me.com`}>
         <img src="./img/mail.png" alt="email me" />

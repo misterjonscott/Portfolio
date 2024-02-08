@@ -6,6 +6,7 @@ const CodeSection = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 2em;
+  margin-bottom: 8em;
 `;
 
 const IdiomGen = styled.span`

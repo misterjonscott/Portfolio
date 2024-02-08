@@ -31,7 +31,7 @@ const SecondPart = styled.div`
   position: relative;
   @media (max-width: ${breakpoints.mobile}) {
     left: 6vw;
-    top: 30vh;
+    top: 35vh;
     font-size: .45em;
   }
 `;

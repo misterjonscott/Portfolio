@@ -6,6 +6,7 @@ import CaseStudy from './components/CaseStudy';
 import DesignArtifacts from './components/DesignArtifacts';
 import Gallery from './components/Gallery';
 import Code from './components/Code';
+import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
 import styled from 'styled-components';
 import './styles/main.scss'; //Lose this later
@@ -25,10 +26,11 @@ const App = () => {
       <PageContainer>
         <Home />
         <DesignProcess />
-        <CaseStudy />
         <DesignArtifacts />
         <Gallery />
+        <CaseStudy />
         <Code />
+        <Recommendations />
         <Footer />
       </PageContainer>
     </div>

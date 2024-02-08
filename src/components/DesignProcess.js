@@ -67,7 +67,7 @@ const DesignProcess = () => {
         </DesignProcessGraphicContainer>
         
         <DesignProcessTextContainer>
-          <h1>Design Process</h1>
+          <h1>My Design Process</h1>
           <h2>Empathize</h2>
           <p>The first step in creating an experience for the user is understanding the users' needs and expectations.
             We need to perform a competitive analysis to see how it's done in the market, and then reach out to our own users to <strong>learn what they're feeling.</strong></p>
