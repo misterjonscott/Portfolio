@@ -51,9 +51,69 @@ const GalleryTextContainer = styled.div`
   }
 `;
 
+const MyRole = styled.p`
+span {
+  border-radius: 4px;
+  background-color: teal;
+  color: #fff;
+  padding: .25em;
+  margin-right: .5em;
+}
+`;
+
 const Gallery = () => {
   return <GalleryContainer id="gallery">
     <h1>Projects Showcase</h1>
+      <GallerySection>
+        <GalleryTextContainer>
+          <h2>Skillable Studio's Dashboard</h2>
+          <p>The redesigned dashboard offers Lab Developers a fresh and spacious interface, setting the stage for future enhancements. While retaining the functionality of the original dashboard, the redesign introduces new features, including a consolidated view for Currently Active/Saved labs and quick access to favorite labs. The inclusion of a widget summarizing Lab Advisor recommendations empowers users to optimize their labs efficiently, providing actionable insights directly within the dashboard interface.</p>
+          <MyRole>
+            <span>UX Designer</span>
+          </MyRole>
+        </GalleryTextContainer>
+        <GalleryGraphicContainer>
+          <GalleryGraphic alt="" src="./img/gallery/SkillableStudioUserDashboard.png" />
+        </GalleryGraphicContainer>
+      </GallerySection>
+      <GallerySection>
+        <GalleryGraphicContainer>
+          <GalleryGraphic alt="" src="./img/gallery/SkillableStudentDashboard.png" />
+        </GalleryGraphicContainer>
+        <GalleryTextContainer>
+          <h2>Student's Dashboard</h2>
+          <p>The dashboard offers users convenient at-a-glance views, presenting weekly and monthly overviews of classes and assignments. Users can navigate to specific days for detailed information and access classes or assignments with a single click. The tool's automatic refresh feature ensures users stay updated without manual intervention, enhancing user experience.</p>
+          <p>The dashboard streamlines access to active course assignments and labs, prioritizing the most relevant information for users. The inclusion of a rewards section adds a gamified element, allowing users to celebrate achievements and customize their experience, contributing to an engaging and user-friendly navigation experience.</p>
+          <MyRole>
+            <span>UX Designer</span>
+          </MyRole>
+        </GalleryTextContainer>
+      </GallerySection>
+      <GallerySection>
+        <GalleryTextContainer>
+          <h2>Skillable Studio's Lab Advisor</h2>
+          <p>Skillable Studio's Lab Advisor, introduced in beta, offers a comprehensive analysis of virtual labs, pinpointing areas for enhancement and offering actionable insights on best practices, potential configuration issues, and vital statistics. This tool assesses various aspects including cost efficiency, lab experience, operational excellence, performance, reliability, and security, providing users with valuable recommendations for optimization and improvement.</p>
+          <MyRole>
+            <span>UX Designer</span>
+          </MyRole>
+        </GalleryTextContainer>
+        <GalleryGraphicContainer>
+          <GalleryGraphic alt="" src="./img/gallery/SkillableLabAdvisor.png" />
+        </GalleryGraphicContainer>
+      </GallerySection>
+      <GallerySection>
+        <GalleryGraphicContainer>
+          <GalleryGraphic alt="" src="./img/gallery/SkillableInstructorDashboard.png" />
+        </GalleryGraphicContainer>
+        <GalleryTextContainer>
+          <h2>Instructor Dashboard</h2>
+          <p>The Instructor Dashboard in Skillable TMS was heavily based on feedback and usage patterns. This design choice enhances efficiency by providing instructors with quick access to essential class-related information, freeing them to concentrate on their students rather than administrative tasks. Notably, the dashboard features an auto-refresh function, updating class assignments and metrics regularly without requiring manual browser refreshes, further streamlining the instructor experience.</p>
+          <p>The Quick Links section offers convenient navigation to the most frequently accessed pages in Skillable TMS, catering to the needs of instructors. The graphical representation of daily class commitments and blockout days, coupled with interactive features such as revealing class names and specific timeslots, contributes to a user-friendly interface.</p>
+          <MyRole>
+            <span>UX Designer</span>
+          </MyRole>
+        </GalleryTextContainer>
+      </GallerySection>
       <GallerySection>
         <GalleryTextContainer>
           <h2>Optimization without changes</h2>
@@ -63,6 +123,9 @@ const Gallery = () => {
             I streamlined the codebase, eliminated redundancies, and ensured seamless compatibility between desktop and mobile views. As a 
             result, the revamped product page now loads 50% faster, enhancing user satisfaction and driving improved performance metrics for 
             the company.</p>
+            <MyRole>
+              <span>UI Developer</span>
+            </MyRole>
         </GalleryTextContainer>
         <GalleryGraphicContainer>
           <GalleryGraphic alt="" src="./img/gallery/finishline-rebuild.png" />
@@ -81,6 +144,9 @@ const Gallery = () => {
           <p>The successful deployment of this feature not only addressed an urgent customer need but also positioned Finish Line as a 
             forward-thinking and customer-centric brand during a challenging period. Our efforts culminated in tangible benefits, including 
             increased customer satisfaction, heightened brand loyalty, and enhanced operational efficiency for the company.</p>
+            <MyRole>
+              <span>UI Developer</span>
+            </MyRole>
         </GalleryTextContainer>
       </GallerySection>
       <GallerySection>
@@ -92,6 +158,9 @@ const Gallery = () => {
           <p>This innovative tool empowered users to create personalized alerts tailored to their specific needs and preferences. By offering 
             customizable parameters and immediate actionability, the alert wizard streamlined the process of monitoring and responding to 
             relevant social media content, ultimately amplifying the platform's effectiveness and utility for users.</p>
+          <MyRole>
+            <span>UI Developer</span><span>UX Designer</span>
+          </MyRole>
         </GalleryTextContainer>
         <GalleryGraphicContainer>
           <GalleryGraphic alt="" src="./img/gallery/geofeedia-alerts.png" />
@@ -107,6 +176,9 @@ const Gallery = () => {
           <p>Our "Manage Accounts" introduced a streamlined interface aimed at simplifying the process of overseeing user accounts within 
             an organization. The design emphasized user-centric features such as searchable results, distinct categorization of active and 
             disabled listings, intuitive sorting functionalities, and convenient access to additional options through kebab menus.</p>
+          <MyRole>
+            <span>UI Developer</span><span>UX Designer</span>
+          </MyRole>
         </GalleryTextContainer>
       </GallerySection>
       <GallerySection>
@@ -115,6 +187,9 @@ const Gallery = () => {
           <p>During my involvement with an engaging UI project for LCMS software, I was entrusted with the responsibility of conceptualizing 
             and designing new print materials. Among these were two distinct fliers crafted to be distributed during conventions, serving as 
             promotional tools to showcase the exceptional features and benefits of our product.</p>
+          <MyRole>
+            <span>Graphic Designer</span><span>UX Designer</span>
+          </MyRole>
         </GalleryTextContainer>
         <GalleryGraphicContainer>
           <GalleryGraphic alt="" src="./img/gallery/indigo-rebrand.png" />
@@ -128,6 +203,9 @@ const Gallery = () => {
           <h2>Team Shops with Authenticity</h2>
           <p>During my tenure at Lids, our operations included managing a series of team-specific online shops. Despite offering the same merchandise as the main website, these specialized sites garnered significant attention from fans seeking tailored experiences.</p>
           <p>The designs were meticulously crafted to integrate seamlessly within a component-based framework, while simultaneously reflecting the distinct visual identity of each affiliated organization.</p>
+          <MyRole>
+            <span>UI Developer</span><span>UX Designer</span>
+          </MyRole>
         </GalleryTextContainer>
       </GallerySection>
     </GalleryContainer>;

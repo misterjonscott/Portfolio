@@ -182,10 +182,6 @@ const Header = () => {
   };
 
   const [scrolled, setScrolled] = useState(false);
-  const [isSubMenuVisible, setSubMenuVisible] = useState(false);
-  const toggleSubMenu = () => {
-    setSubMenuVisible(prevState => !prevState);
-  };
   
   const subMenuRef = useRef(null);
 
@@ -221,20 +217,6 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
-        setSubMenuVisible(false);
-      }
-    };
-
-    window.addEventListener('click', handleClickOutside);
-
-    return () => {
-      window.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
   return (
     <HeaderContainer className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
       <Logo>
@@ -249,8 +231,8 @@ const Header = () => {
           <MobileMenuItem activeClass="active" to="home" smooth={true} duration={500} onClick={toggleMobileMenu}>Home</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={500} onClick={toggleMobileMenu}>Design Process</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={500} onClick={toggleMobileMenu}>Projects Showcase</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={500} onClick={toggleMobileMenu}>Component Library</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleMobileMenu}>Case Studies</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={500} onClick={toggleMobileMenu}>Component Library</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="code" smooth={true} duration={500} onClick={toggleMobileMenu}>Code</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={500} onClick={toggleMobileMenu}>Recommendations</MobileMenuItem>
           <MobileMenuEmail target="_blank" href={`mailto:hello.jonscott@me.com`}>
@@ -263,15 +245,8 @@ const Header = () => {
         <NavItem activeClass="active" to="home" smooth={true} duration={500}>Home</NavItem>
         <NavItem activeClass="active" to="design-process" smooth={true} duration={500}>Design Process</NavItem>
         <NavItem activeClass="active" to="gallery" smooth={true} duration={500}>Projects Showcase</NavItem>
+        <NavItem activeClass="active" to="case-studies" smooth={true} duration={500}>Case Studies</NavItem>
         <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={500}>Component Library</NavItem>
-        <NavItem activeClass="active" to="case-studies" smooth={true} duration={500} onClick={toggleSubMenu}>Case Studies
-        {isSubMenuVisible && (
-          <SubMenu ref={subMenuRef}>
-            <SubMenuItem>Crafting a Course Library for Skillable</SubMenuItem>
-            <SubMenuItem>Component Library</SubMenuItem>
-          </SubMenu>
-        )}
-        </NavItem>
         <NavItem activeClass="active" to="code" smooth={true} duration={500}>Code</NavItem>
         <NavItem activeClass="active" to="recommendations" smooth={true} duration={500}>Recommendations</NavItem>
       </NavList>

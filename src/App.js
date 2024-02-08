@@ -26,13 +26,13 @@ const App = () => {
       <PageContainer>
         <Home />
         <DesignProcess />
-        <DesignArtifacts />
         <Gallery />
         <CaseStudy />
+        <DesignArtifacts />
         <Code />
         <Recommendations />
-        <Footer />
       </PageContainer>
+      <Footer />
     </div>
   );
 };

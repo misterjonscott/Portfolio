@@ -119,7 +119,7 @@ const DesignArtifacts = () => {
           </AccordionContainer>
         </DesignArtifactsTextContainer>
         <DesignArtifactsGraphicContainer>
-            <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/buttons.png" />
+            {/* <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/buttons.png" /> */}
             <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/components.png" />
             <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/icons.png" />
         </DesignArtifactsGraphicContainer>
