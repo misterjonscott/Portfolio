@@ -6,6 +6,9 @@ const DesignArtifactsContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 8em;
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+  }
 `;
 
 const AccordionContainer = styled.div`
@@ -52,6 +55,9 @@ const DesignArtifactsTextContainer = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 2em;
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-bottom: 1em;
+  }
   h1, h2, h3 {
     color: #333;
     margin: 0 0 .25em;

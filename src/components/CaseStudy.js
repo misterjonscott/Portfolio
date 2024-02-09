@@ -15,11 +15,8 @@ const CaseStudySection = styled.div`
   align-items: center;
   margin-bottom: 2em;
   @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-bottom: 1em;
-    &:nth-child(2n) {
-      flex-direction: column;
-    }
   }
 `;
 
@@ -64,14 +61,14 @@ const CaseStudy = () => {
         </CaseStudyGraphicContainer>
       </CaseStudySection>
       <CaseStudySection>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis02.png" />
-        </CaseStudyGraphicContainer>
         <CaseStudyTextContainer>
           <h2>Initial Wireframes</h2>
           <p>Armed with insights, the next phase involves translating this wealth of information into tangible design elements through the creation of initial wireframes. These low-fidelity representations serve as the skeletal framework, allowing us to visualize the layout and structure of the user interface.</p>
           <p>By swiftly iterating through various design iterations, we test different layouts and validate our assumptions, ensuring that the proposed solution aligns seamlessly with user expectations. The value of these initial wireframes lies in their ability to bridge the gap between conceptualization and implementation</p>
         </CaseStudyTextContainer>
+        <CaseStudyGraphicContainer>
+          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis02.png" />
+        </CaseStudyGraphicContainer>
       </CaseStudySection>
       <CaseStudySection>
         <CaseStudyTextContainer>
@@ -84,14 +81,14 @@ const CaseStudy = () => {
         </CaseStudyGraphicContainer>
       </CaseStudySection>
       <CaseStudySection>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis05.png" />
-        </CaseStudyGraphicContainer>
         <CaseStudyTextContainer>
           <h2>Completing the Flow</h2>
           <p>Finally, the focus shifts towards refining the user journey to its culmination: an immersive course detail page that encapsulates all pertinent course details. The clickable prototypes, meticulously designed and iteratively tested, serve as a dynamic preview of the user experience. The page encapsulates not only essential details about the course but also incorporates feedback obtained from prototype testing, ensuring a refined and holistic user journey.</p>
           <p>This holistic approach ensures that the user journey reaches its zenith, leaving users with a comprehensive understanding and a memorable experience as they navigate the course detail page.</p>
         </CaseStudyTextContainer>
+        <CaseStudyGraphicContainer>
+          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis05.png" />
+        </CaseStudyGraphicContainer>
       </CaseStudySection>
     </CaseStudyContainer>;
 };
