@@ -70,6 +70,27 @@ const CodeBlockIcon = styled.img`
   right: -10px;
 `;
 
+const GithubReview = styled.a`
+  border: 1px solid #666;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 auto;
+  text-decoration: none;
+  padding: .5em;
+  border-radius: 4px;
+  &:hover {
+    background-color: rgba(95, 158, 160, 0.4);
+  }
+  img {
+    width: 30px;
+    margin-right: 1em;
+  }
+  span {
+    color: #333;
+    flex: 1;
+  }
+`;
+
 const Code = () => {
   const [currentTitle, setCurrentTitle] = useState(getRandomTitle());
   const [isLearnMoreVisible, setLearnMoreVisible] = useState(false);
@@ -135,6 +156,13 @@ const Code = () => {
           <CodeBlockIcon src="./img/debug.svg" />
         </CodeBlock>
       </CodeBlocks>
+      <p>I built this portfolio from scratch using React and some other handy tools. Wanna see its guts?</p>
+      <div style={{textAlign: 'center'}}>
+        <GithubReview href="https://github.com/misterjonscott/Portfolio/">
+            <img src="img/github.svg" alt="Github Octocat" />
+            <span>Click here to review my code</span>
+        </GithubReview>
+      </div>
     </CodeSection>
     </div>;
 };
