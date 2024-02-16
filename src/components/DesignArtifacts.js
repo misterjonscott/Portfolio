@@ -17,14 +17,29 @@ const AccordionContainer = styled.div`
     margin: 0;
     padding: 0;
     li {
-      // background-color: rgba(77, 98, 151, 0.5);
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(to bottom right, rgb(225, 239, 95), rgb(192, 226, 78), rgb(158, 214, 59), rgb(122, 200, 39), rgb(82, 187, 11));
       padding: .5em;
       margin: .5em 0;
       cursor: pointer;
       border-radius: 5px;
       color: #333;
+      font-weight: 400;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 1em;
+        right: 10px; /* Adjust as needed */
+        transform: translateY(-50%) rotate(45deg);
+        width: 10px;
+        height: 10px;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        border-color: #333;
+      }
+      &.open::after {
+        transform: translateY(-50%) rotate(-135deg);
+      }
       p {
         border-top: 1px solid #333;
         padding-top: 1em;
@@ -113,7 +128,7 @@ const DesignArtifacts = () => {
               <p>Click to why design libraries are a really really big deal:</p>
               <ul>
                 {accordionItems.map((item, index) => (
-                  <li key={index} onClick={() => toggleItem(index)}>
+                  <li key={index} onClick={() => toggleItem(index)} className={openIndex === index ? 'open' : ''}>
                     <AccTitle>
                       {item.title}
                     </AccTitle>
