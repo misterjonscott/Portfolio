@@ -90,8 +90,8 @@ const Recommendations = () => {
     <h1>Recommendations</h1>
     <RecommendationContainer>
       {recommendations.map((recommendation, index) => (
-        <RecommendationBoxContainer>
-          <RecommendationBox key={index}>
+        <RecommendationBoxContainer key={index}>
+          <RecommendationBox>
             <RecommendationBy>{recommendation.name}</RecommendationBy>
             <RecommendationTitle>{recommendation.title}</RecommendationTitle>
             <RecommendationQuote>{recommendation.quote}</RecommendationQuote>

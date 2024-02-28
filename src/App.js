@@ -10,7 +10,6 @@ import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
-import './styles/main.scss'; //Lose this later
 
 const PageContainer = styled.div`
   padding: 1em;
