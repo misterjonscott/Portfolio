@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
 import { breakpoints } from '../breakpoints';
+import ReactGA from 'react-ga';
 
 const MobileMenuIcon = styled.div`
   cursor: pointer;
@@ -149,30 +150,6 @@ const Logo = styled.div`
   margin: 0 0 0 1em;
 `;
 
-const SubMenu = styled.ul`
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 0;
-  padding: 0;
-  border-radius: 3px;
-`;
-
-const SubMenuItem = styled.li`
-  color: #000;
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap;
-  padding: 1em;
-  &:hover {
-    background-color: orange;
-    border-radius: 3px;
-  }
-`;
-
 const Header = () => {
   const [additionalClass, setAdditionalClass] = useState(false);
 
@@ -182,8 +159,6 @@ const Header = () => {
   };
 
   const [scrolled, setScrolled] = useState(false);
-  
-  const subMenuRef = useRef(null);
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -228,29 +203,148 @@ const Header = () => {
           <CloseButton onClick={toggleMobileMenu}>
             <CloseIcon />
           </CloseButton>
-          <MobileMenuItem activeClass="active" to="home" smooth={true} duration={1000} onClick={toggleMobileMenu}>Home</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={1000} onClick={toggleMobileMenu}>Design Process</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={1000} onClick={toggleMobileMenu}>Projects Showcase</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={1000} onClick={toggleMobileMenu}>Case Studies</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500} onClick={toggleMobileMenu}>Component Library</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="code" smooth={true} duration={1500} onClick={toggleMobileMenu}>Code</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={2000} onClick={toggleMobileMenu}>Recommendations</MobileMenuItem>
-          <MobileMenuEmail target="_blank" href={`mailto:jon@workwithjonscott.com`}>
+          <MobileMenuItem activeClass="active" to="home" smooth={true} duration={1000}onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Home'
+            });
+          }}>Home</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={1000} 
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Design Process'
+            });
+          }}>Design Process</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={1000}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Projects Showcase'
+            });
+          }}>Projects Showcase</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={1000}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Case Studies'
+            });
+          }}>Case Studies</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Component Library'
+            });
+          }}>Component Library</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="code" smooth={true} duration={1500}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Code'
+            });
+          }}>Code</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={2000}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Recommendations'
+            });
+          }}>Recommendations</MobileMenuItem>
+          <MobileMenuEmail target="_blank" href={`mailto:jon@workwithjonscott.com`}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Click',
+              label: 'Email'
+            });
+          }}>
             <img src="./img/mail.png" alt="email me" />
             Email me
           </MobileMenuEmail>
         </MobileMenu>
       )}
       <NavList>
-        <NavItem activeClass="active" to="home" smooth={true} duration={1000}>Home</NavItem>
-        <NavItem activeClass="active" to="design-process" smooth={true} duration={1000}>Design Process</NavItem>
-        <NavItem activeClass="active" to="gallery" smooth={true} duration={1000}>Projects Showcase</NavItem>
-        <NavItem activeClass="active" to="case-studies" smooth={true} duration={1000}>Case Studies</NavItem>
-        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}>Component Library</NavItem>
-        <NavItem activeClass="active" to="code" smooth={true} duration={1500}>Code</NavItem>
-        <NavItem activeClass="active" to="recommendations" smooth={true} duration={2000}>Recommendations</NavItem>
+        <NavItem activeClass="active" to="home" smooth={true} duration={1000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Home'
+          });
+        }}>Home</NavItem>
+        <NavItem activeClass="active" to="design-process" smooth={true} duration={1000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Design Process'
+          });
+        }}>Design Process</NavItem>
+        <NavItem activeClass="active" to="gallery" smooth={true} duration={1000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Projects Showcase'
+          });
+        }}>Projects Showcase</NavItem>
+        <NavItem activeClass="active" to="case-studies" smooth={true} duration={1000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Case Studies'
+          });
+        }}>Case Studies</NavItem>
+        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Component Library'
+          });
+        }}>Component Library</NavItem>
+        <NavItem activeClass="active" to="code" smooth={true} duration={1500}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Code'
+          });
+        }}>Code</NavItem>
+        <NavItem activeClass="active" to="recommendations" smooth={true} duration={2000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Click',
+            label: 'Recommendations'
+          });
+        }}>Recommendations</NavItem>
       </NavList>
-      <EmailLink target="_blank" href={`mailto:jon@workwithjonscott.com`}>
+      <EmailLink target="_blank" href={`mailto:jon@workwithjonscott.com`}
+      onClick={() => {
+        ReactGA.event({
+          category: 'Desktop Navigation',
+          action: 'Click',
+          label: 'Email'
+        });
+      }}>
         <img src="./img/mail.png" alt="email me" />
       </EmailLink>
     </HeaderContainer>
