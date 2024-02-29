@@ -35,7 +35,7 @@ const CaseStudyTextContainer = styled.div`
   flex: 1;
   background-color: #fff;
   padding: 20px;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   h1, h2, h3 {
     color: #333;
     margin: 0 0 .25em;

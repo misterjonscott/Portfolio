@@ -19,7 +19,8 @@ const DesignProcessGraphicContainer = styled.div`
   color: #fff;
   text-align: center;
   position: relative;
-  min-height: 100px; /* Adjust as needed */
+  min-height: 100px;
+  margin-top: 0;
 `;
 
 const DesignProcessGraphic = styled.img`
@@ -46,15 +47,38 @@ const DesignProcessGraphic = styled.img`
 
 const DesignProcessTextContainer = styled.div`
   flex: 1;
-  background-color: #fff;
+  // background-color: #fff;
+  color: #fff;
   padding: 20px;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   h1, h2, h3 {
-    color: #333;
-    margin: 0 0 .25em;
+    color: #fff;
+    margin: 0;
   }
   p {
     margin-top: 0;
+  }
+  blockquote {
+    margin: 2.5em 1em;
+  }
+  strong {
+    font-size: 1.5em;
+    line-height: 1em;
+    &.red {
+      color: red;
+    }
+    &.orange {
+      color: orange;
+    }
+    &.yellow {
+      color: yellow;
+    }
+    &.green {
+      color: green;
+    }
+    &.blue {
+      color: blue;
+    }
   }
 `;
 
@@ -67,24 +91,22 @@ const DesignProcess = () => {
         </DesignProcessGraphicContainer>
         
         <DesignProcessTextContainer>
-          <h1>My Design Process</h1>
           <h2>Empathize</h2>
-          <p>The first step in creating an experience for the user is understanding the users' needs and expectations.
-            We need to perform a competitive analysis to see how it's done in the market, and then reach out to our own users to <strong>learn what they're feeling.</strong></p>
-          <h2>Define</h2>
-          <p>With a better understanding, we can <strong>define the problem</strong> and write user personas which will help ensure we meet the needs of all of our users.
-            Next, we can create a customer journey map to help spot pain points and areas for improvement.
-            Now we're able to generate a problem statement: the main intent of our project.</p>
+          <p>Understand the needs and expectations of our users.
+            We may also perform a competitive analysis to see how others are solving similar problems, and then reach out to our own users to <strong className='red'>learn what they're feeling.</strong></p>
+          <blockquote>
+            <h2>Define</h2>
+            <p>Understanding our users helps us to write user personas and create a user journey map to help spot pain points and areas for improvement. This is where we <strong className='orange'>determine what we'll need</strong> for the MVP phase.</p>
+          </blockquote>
           <h2>Conceptualize</h2>
-          <p>This is where research turns into visual design.  We'll create a low-fidelity wireframe to test layout and usability.
-            We'll <strong>work through many iterations very quickly</strong>, testing different layouts to find the best approach. As the design starts to come together, 
-            we'll start building a library of assets to be used and reused.</p>
-          <h2>Prototype</h2>
-          <p>With an informed design direction, user personas and a deep understanding of the problem we're working to solve, we can <strong>create functional prototypes</strong>.
-          As we iterate through prototypes, we'll create new versions.  This will ensure stakeholders can present versions of this prototype while the next iteration is actively being designed. </p>
+          <p>Research leads the way into visual design in this phase, where we'll create a low-fidelity wireframe to test layout and usability.
+            We'll work through <strong className='yellow'>many layout iterations</strong> very quickly, testing different layouts. During this phase we'll start building a library of assets to be used and reused.</p>
+          <blockquote>
+            <h2>Prototype</h2>
+            <p>With an informed design direction, user personas and a deep understanding of the problem we're working to solve, we can create a progression of <strong className='green'>functional high-fidelity prototypes</strong>.  Stakeholders may present versions of this prototype while the next iteration is actively being designed.</p>
+          </blockquote>
           <h2>Test</h2>
-          <p>While there may still be changes to individual components, overall <strong>functionality and design should be solid</strong>.
-          Findings from this point forward will affect future projects, but we're now able to use metrics to compare the success of our changes.</p>
+          <p>Findings from this point forward will affect future projects, but we're now able to <strong className='blue'>use metrics</strong> to measure the success of our project.</p>
         </DesignProcessTextContainer>
       </DesignProcessContainer>
     </div>;

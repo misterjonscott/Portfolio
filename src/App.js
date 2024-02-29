@@ -8,8 +8,9 @@ import Gallery from './components/Gallery';
 import Code from './components/Code';
 import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import ReactGA from 'react-ga';
+import { theme } from './theme';
 
 const PageContainer = styled.div`
   padding: 1em;
@@ -23,7 +24,7 @@ const App = () => {
   ReactGA.initialize('G-X7T0C9H914');
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Header />
       <PageContainer>
         <Home />
@@ -35,7 +36,7 @@ const App = () => {
         <Recommendations />
       </PageContainer>
       <Footer />
-    </div>
+    </ThemeProvider>
   );
 };
 

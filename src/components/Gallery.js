@@ -38,7 +38,7 @@ const GalleryTextContainer = styled.div`
   flex: 1;
   background-color: #fff;
   padding: 20px;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   h1, h2, h3 {
     color: #333;
     margin: 0 0 .25em;
@@ -53,7 +53,7 @@ const GalleryTextContainer = styled.div`
 
 const MyRole = styled.p`
 span {
-  border-radius: 4px;
+  border-radius: ${props => props.theme.smallBorderRadius};
   background-color: teal;
   color: #fff;
   padding: .25em;

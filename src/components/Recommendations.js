@@ -20,7 +20,7 @@ const RecommendationBoxContainer = styled.div`
 const RecommendationBox = styled.div`
   background-color: #fff;
   padding: .25em .5em;
-  border-radius: 4px;
+  border-radius: ${props => props.theme.smallBorderRadius};
   margin: 0.5em 0.5em 0.5em 0;
   position: relative;
   /* Triangle */

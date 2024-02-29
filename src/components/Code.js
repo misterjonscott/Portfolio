@@ -5,25 +5,16 @@ import { breakpoints } from '../breakpoints';
 const CodeSection = styled.div`
   background-color: #fff;
   padding: 20px;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   margin-bottom: 8em;
 `;
 
 const IdiomGen = styled.span`
   background-color: rgba(95, 158, 160, 0.5);
   padding: .25em .5em;
-  border-radius: 3px;
+  border-radius: ${props => props.theme.smallBorderRadius};
   margin: .125em;
   cursor: pointer;
-`;
-
-const LearnMoreAboutMe = styled.span`
-  background-color: rgba(95, 158, 160, 0.5);
-  padding: .25em .5em;
-  border-radius: 3px;
-  margin: .125em;
-  cursor: pointer;
-  display: ${(props) => (props['data-islearnmorevisible'] ? 'none' : 'inline-block')};
 `;
 
 const titles = [
@@ -50,7 +41,7 @@ const CodeBlock = styled.div`
   padding: .5em;
   text-align: left;
   position: relative;
-  border-radius: 4px;
+  border-radius: ${props => props.theme.smallBorderRadius};
   @media (max-width: ${breakpoints.mobile}) {
     margin-bottom: 1em;
   }
@@ -77,7 +68,7 @@ const GithubReview = styled.a`
   margin: 0 auto;
   text-decoration: none;
   padding: .5em;
-  border-radius: 4px;
+  border-radius: ${props => props.theme.smallBorderRadius};
   &:hover {
     background-color: rgba(95, 158, 160, 0.4);
   }
@@ -93,10 +84,6 @@ const GithubReview = styled.a`
 
 const Code = () => {
   const [currentTitle, setCurrentTitle] = useState(getRandomTitle());
-  const [isLearnMoreVisible, setLearnMoreVisible] = useState(false);
-  const toggleLearnMore = () => {
-    setLearnMoreVisible(prevState => !prevState);
-  };
 
   function getRandomTitle() {
     const randomIndex = Math.floor(Math.random() * titles.length);
@@ -113,14 +100,7 @@ const Code = () => {
     <CodeSection>
       <p>I've always been curious.  When I was <IdiomGen onClick={handleTitleClick}>{currentTitle}</IdiomGen> and very comfortable
         with computers I discovered Q-Basic and gorilla.bas.  I couldn't tell what all those lines of code meant, but if I changed just the
-        right values, I could make a single banana crater the entire cityscape.  <LearnMoreAboutMe data-islearnmorevisible={isLearnMoreVisible} onClick={toggleLearnMore}>Want to learn more about me?</LearnMoreAboutMe></p>
-      {isLearnMoreVisible && (
-        <div>
-          <p>My journey into the world of technology began with a childhood passion for computers and video games, sparking a curiosity that only grew stronger over time. As I delved deeper into digital art and animation in school, I found myself drawn to the art of web development, tinkering on my Pentium desktop at home.</p>
-          <p>From crafting websites with AutoIt scripts to breathing life into Flash interactions with Actionscript, I quickly discovered the power of programming to bring ideas to fruition. Transitioning into the realm of development, I honed my skills in PHP and delved into the world of LAMP development, ultimately finding my niche in WordPress.</p>
-          <p>However, it wasn't until I joined a biotech company focused on simplifying complex software for end-users that my perspective shifted. Here, I embraced the principles of user experience, realizing the importance of designing not just for aesthetics, but for usability and accessibility. It was a pivotal moment that reshaped my career focus from creating visually stunning websites to crafting intuitive and elegant user experiences.</p>
-        </div>
-      )}
+        right values, I could make a single banana crater the entire cityscape. </p>
       <p>Some of the tools in my arsenal:</p>
       <CodeBlocks>
         <CodeBlock>
@@ -156,7 +136,7 @@ const Code = () => {
           <CodeBlockIcon src="./img/debug.svg" />
         </CodeBlock>
       </CodeBlocks>
-      <p>I built this portfolio from scratch using React and some other handy tools. Wanna see its guts?</p>
+      <p>I built this portfolio from scratch using React and some other handy tools.</p>
       <div style={{textAlign: 'center'}}>
         <GithubReview href="https://github.com/misterjonscott/Portfolio/">
             <img src="img/github.svg" alt="Github Octocat" />

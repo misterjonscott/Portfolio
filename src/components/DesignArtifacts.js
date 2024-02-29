@@ -21,7 +21,7 @@ const AccordionContainer = styled.div`
       padding: .5em;
       margin: .5em 0;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: ${props => props.theme.smallBorderRadius};
       color: #333;
       font-weight: 400;
       position: relative;
@@ -64,7 +64,7 @@ const DesignArtifactsGraphicContainer = styled.div`
 const DesignArtifactsGraphic = styled.img`
   width: 70%;
   background-color: #fff;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   padding: 2em;
 `;
 
@@ -72,7 +72,7 @@ const DesignArtifactsTextContainer = styled.div`
   flex: 1;
   background-color: #fff;
   padding: 20px;
-  border-radius: 2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   @media (max-width: ${breakpoints.mobile}) {
     margin-bottom: 1em;
   }
