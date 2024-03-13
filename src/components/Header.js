@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 import ReactGA from "react-ga4";
 
@@ -203,7 +203,7 @@ const Header = () => {
           <CloseButton onClick={toggleMobileMenu}>
             <CloseIcon />
           </CloseButton>
-          <MobileMenuItem activeClass="active" to="home" smooth={true} duration={1000} 
+          <MobileMenuItem activeClass="active" to="/" smooth={true} duration={1000} 
           onClick={() => {
             toggleMobileMenu();
             ReactGA.event({
@@ -212,6 +212,15 @@ const Header = () => {
               label: 'Home'
             });
           }}>Home</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="about-me" smooth={true} duration={1000} 
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Mobile Click AboutMe',
+              label: 'About Me'
+            });
+          }}>About Me</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={1000} 
           onClick={() => {
             toggleMobileMenu();
@@ -230,24 +239,24 @@ const Header = () => {
               label: 'Projects Showcase'
             });
           }}>Projects Showcase</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="case-studies" smooth={true} duration={1000}
+          <MobileMenuItem activeClass="active" to="case-study" smooth={true} duration={1000}
           onClick={() => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
               action: 'Mobile Click Cases',
-              label: 'Case Studies'
+              label: 'Case Study'
             });
-          }}>Case Studies</MobileMenuItem>
+          }}>Case Study</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
           onClick={() => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
               action: 'Mobile Click Library',
-              label: 'Component Library'
+              label: 'Design Systems'
             });
-          }}>Component Library</MobileMenuItem>
+          }}>Design Systems</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="code" smooth={true} duration={1500}
           onClick={() => {
             toggleMobileMenu();
@@ -281,7 +290,7 @@ const Header = () => {
         </MobileMenu>
       )}
       <NavList>
-        <NavItem activeClass="active" to="home" smooth={true} duration={1000}
+        <NavItem activeClass="active" to="/" smooth={true} duration={1000}
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -289,6 +298,14 @@ const Header = () => {
             label: 'Home'
           });
         }}>Home</NavItem>
+        <NavItem activeClass="active" to="about-me" smooth={true} duration={1000}
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Desktop Click About',
+            label: 'About Me'
+          });
+        }}>About Me</NavItem>
         <NavItem activeClass="active" to="design-process" smooth={true} duration={1000}
         onClick={() => {
           ReactGA.event({
@@ -305,22 +322,22 @@ const Header = () => {
             label: 'Projects Showcase'
           });
         }}>Projects Showcase</NavItem>
-        <NavItem activeClass="active" to="case-studies" smooth={true} duration={1000}
+        <NavItem activeClass="active" to="case-study" smooth={true} duration={1000}
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
             action: 'Desktop Click Cases',
-            label: 'Case Studies'
+            label: 'Case Study'
           });
-        }}>Case Studies</NavItem>
+        }}>Case Study</NavItem>
         <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
             action: 'Desktop Click Library',
-            label: 'Component Library'
+            label: 'Design Systems'
           });
-        }}>Component Library</NavItem>
+        }}>Design Systems</NavItem>
         <NavItem activeClass="active" to="code" smooth={true} duration={1500}
         onClick={() => {
           ReactGA.event({

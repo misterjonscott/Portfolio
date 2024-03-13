@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
+import AboutMe from './components/AboutMe';
 import DesignProcess from './components/DesignProcess';
 import CaseStudy from './components/CaseStudy';
 import DesignArtifacts from './components/DesignArtifacts';
@@ -10,7 +11,7 @@ import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
 import ReactGA from "react-ga4";
-// import createScrollSnap from 'scroll-snap';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './theme';
 
 const PageContainer = styled.div`
@@ -25,19 +26,24 @@ const App = () => {
   ReactGA.initialize('G-X7T0C9H914');
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <PageContainer>
-        <Home />
-        <DesignProcess />
-        <Gallery />
-        <CaseStudy />
-        <DesignArtifacts />
-        <Code />
-        <Recommendations />
-      </PageContainer>
-      <Footer />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <PageContainer>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/design-process" element={<DesignProcess />} />
+            <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/case-study" element={<CaseStudy />} />
+            <Route path="/design-artifacts" element={<DesignArtifacts />} />
+            <Route path="/code" element={<Code />} />
+            <Route path="/recommendations" element={<Recommendations />} />
+          </Routes>
+        </PageContainer>
+        <Footer />
+      </ThemeProvider>
+    </Router>
   );
 };
 
