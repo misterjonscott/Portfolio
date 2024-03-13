@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { breakpoints } from '../breakpoints';
-import { TdButton } from './Elements';
-import ReactGA from "react-ga4";
 
 const HomeMessageContainer = styled.div`
   font-size: 5em;
@@ -82,28 +80,8 @@ const FloatPath = styled.path`
 
 const getRandomIndex = () => Math.floor(Math.random() * paths.length);
 
-const Greeting = () => {
-  // Get current hour
-  const currentHour = new Date().getHours();
-  // Define greeting based on time of day
-  let greeting;
-  if (currentHour >= 5 && currentHour < 12) {
-    greeting = 'good morning';
-  } else if (currentHour >= 12 && currentHour < 18) {
-    greeting = 'good afternoon';
-  } else if (currentHour >= 18 || currentHour < 5) {
-    greeting = 'good evening';
-  } else {
-    greeting = 'good night';
-  }
-  return greeting;
-};
 
 const Home = () => {
-  const [isLearnMoreVisible, setLearnMoreVisible] = useState(false);
-  const toggleLearnMore = () => {
-    setLearnMoreVisible(prevState => !prevState);
-  };
 
   const [randomIndex, setRandomIndex] = useState(getRandomIndex());
 
