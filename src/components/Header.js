@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
 import { breakpoints } from '../breakpoints';
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
 
 const MobileMenuIcon = styled.div`
   cursor: pointer;
@@ -203,11 +203,12 @@ const Header = () => {
           <CloseButton onClick={toggleMobileMenu}>
             <CloseIcon />
           </CloseButton>
-          <MobileMenuItem activeClass="active" to="home" smooth={true} duration={1000}onClick={() => {
+          <MobileMenuItem activeClass="active" to="home" smooth={true} duration={1000} 
+          onClick={() => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Home',
               label: 'Home'
             });
           }}>Home</MobileMenuItem>
@@ -216,7 +217,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Process',
               label: 'Design Process'
             });
           }}>Design Process</MobileMenuItem>
@@ -225,7 +226,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Showcase',
               label: 'Projects Showcase'
             });
           }}>Projects Showcase</MobileMenuItem>
@@ -234,7 +235,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Cases',
               label: 'Case Studies'
             });
           }}>Case Studies</MobileMenuItem>
@@ -243,7 +244,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Library',
               label: 'Component Library'
             });
           }}>Component Library</MobileMenuItem>
@@ -252,7 +253,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Code',
               label: 'Code'
             });
           }}>Code</MobileMenuItem>
@@ -261,7 +262,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Recommendations',
               label: 'Recommendations'
             });
           }}>Recommendations</MobileMenuItem>
@@ -270,7 +271,7 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Click',
+              action: 'Mobile Click Email',
               label: 'Email'
             });
           }}>
@@ -284,7 +285,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Home',
             label: 'Home'
           });
         }}>Home</NavItem>
@@ -292,7 +293,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Process',
             label: 'Design Process'
           });
         }}>Design Process</NavItem>
@@ -300,7 +301,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Showcase',
             label: 'Projects Showcase'
           });
         }}>Projects Showcase</NavItem>
@@ -308,7 +309,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Cases',
             label: 'Case Studies'
           });
         }}>Case Studies</NavItem>
@@ -316,7 +317,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Library',
             label: 'Component Library'
           });
         }}>Component Library</NavItem>
@@ -324,7 +325,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Code',
             label: 'Code'
           });
         }}>Code</NavItem>
@@ -332,7 +333,7 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Click',
+            action: 'Desktop Click Recommendations',
             label: 'Recommendations'
           });
         }}>Recommendations</NavItem>
@@ -341,7 +342,7 @@ const Header = () => {
       onClick={() => {
         ReactGA.event({
           category: 'Desktop Navigation',
-          action: 'Click',
+          action: 'Desktop Click Email',
           label: 'Email'
         });
       }}>

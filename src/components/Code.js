@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
+import ReactGA from "react-ga4";
 
 const CodeSection = styled.div`
   background-color: #fff;
@@ -10,7 +11,7 @@ const CodeSection = styled.div`
 `;
 
 const IdiomGen = styled.span`
-  background-color: rgba(95, 158, 160, 0.5);
+  background-color: rgba(242,239,234, 1);
   padding: .25em .5em;
   border-radius: ${props => props.theme.smallBorderRadius};
   margin: .125em;
@@ -37,7 +38,7 @@ const CodeBlocks = styled.div`
 `;
 
 const CodeBlock = styled.div`
-  background-color: #f0f0f0;
+  background-color: rgba(242,239,234, 1);
   padding: .5em;
   text-align: left;
   position: relative;
@@ -98,7 +99,14 @@ const Code = () => {
   return <div id="code">
     <h1>Code</h1>
     <CodeSection>
-      <p>I've always been curious.  When I was <IdiomGen onClick={handleTitleClick}>{currentTitle}</IdiomGen> and very comfortable
+      <p>I've always been curious.  When I was <IdiomGen onClick={() => {
+            handleTitleClick();
+            ReactGA.event({
+              category: 'Code',
+              action: 'Idiomgen',
+              label: 'Idiomgen'
+            });
+          }}>{currentTitle}</IdiomGen> and very comfortable
         with computers I discovered Q-Basic and gorilla.bas.  I couldn't tell what all those lines of code meant, but if I changed just the
         right values, I could make a single banana crater the entire cityscape. </p>
       <p>Some of the tools in my arsenal:</p>
@@ -138,7 +146,13 @@ const Code = () => {
       </CodeBlocks>
       <p>I built this portfolio from scratch using React and some other handy tools.</p>
       <div style={{textAlign: 'center'}}>
-        <GithubReview href="https://github.com/misterjonscott/Portfolio/">
+        <GithubReview href="https://github.com/misterjonscott/Portfolio/" onClick={() => {
+            ReactGA.event({
+              category: 'Code',
+              action: 'Github Link',
+              label: 'Github Link'
+            });
+          }}>
             <img src="img/github.svg" alt="Github Octocat" />
             <span>Click here to review my code</span>
         </GithubReview>

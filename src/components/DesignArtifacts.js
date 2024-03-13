@@ -17,7 +17,7 @@ const AccordionContainer = styled.div`
     margin: 0;
     padding: 0;
     li {
-      background-color: rgba(95, 158, 160, 0.5);
+      background-color: rgba(242,239,234, 1);
       padding: .5em;
       margin: .5em 0;
       cursor: pointer;
@@ -26,7 +26,7 @@ const AccordionContainer = styled.div`
       font-weight: 400;
       position: relative;
       &:hover {
-        background-color: rgba(95, 158, 160, 0.4);
+        background-color: rgba(242,239,234, 0.75);
       }
       &::after {
         content: "";

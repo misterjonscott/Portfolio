@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { breakpoints } from '../breakpoints';
 import { TdButton } from './Elements';
+import ReactGA from "react-ga4";
 
 const HomeMessageContainer = styled.div`
   font-size: 5em;
@@ -288,7 +289,14 @@ const Home = () => {
           <p>This allows me to seamlessly bridge the gap between conceptualizing user experiences, implementing them in functional prototypes, and handing these finished designs off with full documentation to aid in the development process.</p>
           <p>Whether it's wireframing intuitive concepts or prototyping innovative fully clickable interfaces, I thrive on turning ideas into engaging digital experiences.</p>
           <p style={{ textAlign: 'center' }}>
-          <LearnMoreAboutMe data-islearnmorevisible={isLearnMoreVisible} onClick={toggleLearnMore}>Want to learn more about me?</LearnMoreAboutMe>
+          <LearnMoreAboutMe data-islearnmorevisible={isLearnMoreVisible} onClick={() => {
+            toggleLearnMore();
+            ReactGA.event({
+              category: 'Home',
+              action: 'About Me',
+              label: 'About Me Click'
+            });
+          }}>Want to learn more about me?</LearnMoreAboutMe>
           </p>
           {isLearnMoreVisible && (
             <AboutMeText>
@@ -301,7 +309,7 @@ const Home = () => {
         </Text>
       </TextBubble>
       <Picture>
-        <img src="./img/JonScott.png" alt="A photograph of my face" />
+        <img src="./img/JonScott-2.png" alt="A photograph of my face" />
       </Picture>
     </AboutMeContainer>
   </div>

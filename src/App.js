@@ -9,7 +9,8 @@ import Code from './components/Code';
 import Recommendations from './components/Recommendations';
 import Footer from './components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
+// import createScrollSnap from 'scroll-snap';
 import { theme } from './theme';
 
 const PageContainer = styled.div`
