@@ -212,15 +212,6 @@ const Header = () => {
               label: 'Home'
             });
           }}>Home</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="about-me" smooth={true} duration={1000} 
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click AboutMe',
-              label: 'About Me'
-            });
-          }}>About Me</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={1000} 
           onClick={() => {
             toggleMobileMenu();
@@ -298,14 +289,6 @@ const Header = () => {
             label: 'Home'
           });
         }}>Home</NavItem>
-        <NavItem activeClass="active" to="about-me" smooth={true} duration={1000}
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click About',
-            label: 'About Me'
-          });
-        }}>About Me</NavItem>
         <NavItem activeClass="active" to="design-process" smooth={true} duration={1000}
         onClick={() => {
           ReactGA.event({
