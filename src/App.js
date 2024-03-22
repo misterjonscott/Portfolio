@@ -8,6 +8,13 @@ import DesignArtifacts from './components/DesignArtifacts';
 import Gallery from './components/Gallery';
 import Code from './components/Code';
 import Recommendations from './components/Recommendations';
+import CaseStudySkillable from './components/CaseStudySkillable';
+import CaseStudySharpen from './components/CaseStudySharpen';
+import CaseStudyIndigo from './components/CaseStudyIndigo';
+import CaseStudyGeofeedia from './components/CaseStudyGeofeedia';
+import CaseStudyLids from './components/CaseStudyLids';
+import CaseStudyLevelUp from './components/CaseStudyLevelUp';
+
 import Footer from './components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
 import ReactGA from "react-ga4";
@@ -39,6 +46,12 @@ const App = () => {
             <Route path="/design-artifacts" element={<DesignArtifacts />} />
             <Route path="/code" element={<Code />} />
             <Route path="/recommendations" element={<Recommendations />} />
+            <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
+            <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
+            <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />
+            <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
+            <Route path="/lids-case-study" element={<CaseStudyLids />} />
+            <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
           </Routes>
         </PageContainer>
         <Footer />

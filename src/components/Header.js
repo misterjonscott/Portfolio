@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 import ReactGA from "react-ga4";
 
@@ -71,6 +71,10 @@ const NavItem = styled(Link)`
   font-size: 16px;
   position: relative;
   padding: 1em;
+  &.active {
+    background-color: ${props => props.theme.primaryPurple};
+    border-radius: ${props => props.theme.bigBorderRadius};
+  }
 `;
 
 const EmailLink = styled.a`
@@ -83,7 +87,6 @@ const EmailLink = styled.a`
 const MobileMenuItem = styled(NavItem)`
   text-decoration: none;
   color: #fff;
-  margin: 0.25em;
   cursor: pointer;
   font-size: 0.8em;
 `;
@@ -192,6 +195,8 @@ const Header = () => {
     };
   }, [scrolled]);
 
+  const location = useLocation();
+
   return (
     <HeaderContainer className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
       <Logo>
@@ -281,7 +286,7 @@ const Header = () => {
         </MobileMenu>
       )}
       <NavList>
-        <NavItem activeClass="active" to="/" smooth={true} duration={1000}
+        <NavItem className={location.pathname === '/' ? 'active' : ''} to='/'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -289,7 +294,7 @@ const Header = () => {
             label: 'Home'
           });
         }}>Home</NavItem>
-        <NavItem activeClass="active" to="design-process" smooth={true} duration={1000}
+        <NavItem className={location.pathname === '/design-process' ? 'active' : ''} to='design-process'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -297,7 +302,7 @@ const Header = () => {
             label: 'Design Process'
           });
         }}>Design Process</NavItem>
-        <NavItem activeClass="active" to="gallery" smooth={true} duration={1000}
+        <NavItem className={location.pathname === '/gallery' ? 'active' : ''} to='gallery'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -305,7 +310,7 @@ const Header = () => {
             label: 'Projects Showcase'
           });
         }}>Projects Showcase</NavItem>
-        <NavItem activeClass="active" to="case-study" smooth={true} duration={1000}
+        <NavItem className={location.pathname === '/case-study' ? 'active' : ''} to='case-study'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -313,7 +318,7 @@ const Header = () => {
             label: 'Case Study'
           });
         }}>Case Study</NavItem>
-        <NavItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
+        <NavItem className={location.pathname === '/design-artifacts' ? 'active' : ''} to='design-artifacts'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -321,7 +326,7 @@ const Header = () => {
             label: 'Design Systems'
           });
         }}>Design Systems</NavItem>
-        <NavItem activeClass="active" to="code" smooth={true} duration={1500}
+        <NavItem className={location.pathname === '/code' ? 'active' : ''} to='code'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
@@ -329,7 +334,7 @@ const Header = () => {
             label: 'Code'
           });
         }}>Code</NavItem>
-        <NavItem activeClass="active" to="recommendations" smooth={true} duration={2000}
+        <NavItem className={location.pathname === '/recommendations' ? 'active' : ''} to='recommendations'
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',

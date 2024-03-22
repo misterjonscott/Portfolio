@@ -1,96 +1,81 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 
 const CaseStudyContainer = styled.div`
-  margin-bottom: 8em;
-  @media (max-width: ${breakpoints.mobile}) {
-    padding-top: 8em;
-  }
-`;
-
-const CaseStudySection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2em;
+  padding: 5em 0;
   @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-    margin-bottom: 1em;
+    justify-content: center;
   }
 `;
 
-const CaseStudyGraphicContainer = styled.div`
-  flex: 1;
-  color: #fff;
-  text-align: center;
-  padding: 0 1em;
+const Image = styled.img`
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: opacity 0.5s ease;
 `;
 
-const CaseStudyGraphic = styled.img`
-  width: 100%;
+const HoverImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Initially hidden */
 `;
 
-const CaseStudyTextContainer = styled.div`
-  flex: 1;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: ${props => props.theme.smallBorderRadius};
-  h1, h2, h3 {
-    color: #333;
-    margin: 0 0 .25em;
-  }
-  p {
-    margin-top: 0;
-  }
-  @media (max-width: ${breakpoints.mobile}) {
-    margin: 2em 0 .5em;
+const Block = styled(Link)`
+  width: 315px;
+  height: 120px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  &:hover {
+    ${Image} {
+      opacity: 0; /* Hide original Image */
+    }
+
+    ${HoverImage} {
+      opacity: 1; /* Show HoverImage */
+    }
   }
 `;
+
+
 
 const CaseStudy = () => {
   return <CaseStudyContainer id="case-studies">
-    <h1>Case Study: Skillable Course Library and Detail</h1>
-      <CaseStudySection>
-        <CaseStudyTextContainer>
-          <h2>Competitive Analysis</h2>
-          <p>We'll begin by researching what similar pages look like on competing platforms.  I talked to customers about their perceptions and referenced existing personas.  This stage helped me identify standard features, and similarities in layout.</p>
-        </CaseStudyTextContainer>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis01.png" />
-        </CaseStudyGraphicContainer>
-      </CaseStudySection>
-      <CaseStudySection>
-        <CaseStudyTextContainer>
-          <h2>Initial Wireframes</h2>
-          <p>Armed with insights, the next phase involves translating this wealth of information into tangible design elements through the creation of initial wireframes. These low-fidelity representations serve as the skeletal framework, allowing us to visualize the layout and structure of the user interface.</p>
-          <p>By swiftly iterating through various design iterations, we test different layouts and validate our assumptions, ensuring that the proposed solution aligns seamlessly with user expectations. The value of these initial wireframes lies in their ability to bridge the gap between conceptualization and implementation</p>
-        </CaseStudyTextContainer>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis02.png" />
-        </CaseStudyGraphicContainer>
-      </CaseStudySection>
-      <CaseStudySection>
-        <CaseStudyTextContainer>
-          <h2>Refine the Visual Design</h2>
-          <p>Transitioning from wireframes to high-fidelity renderings involves refining the visual design, and incorporating established design patterns.  The high-fidelity rendering serves as a canvas where typography, color schemes, and interactive elements harmoniously converge, bringing the initial wireframes to life.</p>
-          <p>This iterative approach ensures that the final design not only meets aesthetic expectations but also adheres to established design principles, fostering a polished and user-friendly interface.</p>
-        </CaseStudyTextContainer>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis03.png" />
-        </CaseStudyGraphicContainer>
-      </CaseStudySection>
-      <CaseStudySection>
-        <CaseStudyTextContainer>
-          <h2>Completing the Flow</h2>
-          <p>Finally, the focus shifts towards refining the user journey to its culmination: an immersive course detail page that encapsulates all pertinent course details. The clickable prototypes, meticulously designed and iteratively tested, serve as a dynamic preview of the user experience. The page encapsulates not only essential details about the course but also incorporates feedback obtained from prototype testing, ensuring a refined and holistic user journey.</p>
-          <p>This holistic approach ensures that the user journey reaches its zenith, leaving users with a comprehensive understanding and a memorable experience as they navigate the course detail page.</p>
-        </CaseStudyTextContainer>
-        <CaseStudyGraphicContainer>
-          <CaseStudyGraphic alt="" src="./img/ComparitiveAnalysis05.png" />
-        </CaseStudyGraphicContainer>
-      </CaseStudySection>
-    </CaseStudyContainer>;
+    <Block to="/skillable-case-study">
+      <Image src="./img/casestudies/CaseStudySkillable.png" alt="Skillable Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudySkillableActive.png" alt="Skillable Case Study Active" />
+    </Block>
+    <Block to="/sharpen-case-study">
+      <Image src="./img/casestudies/CaseStudySharpen.png" alt="Sharpen Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudySharpenActive.png" alt="Sharpen Case Study Active" />
+    </Block>
+    <Block to="/indigo-case-study">
+      <Image src="./img/casestudies/CaseStudyIndigo.png" alt="Indigo Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" />
+    </Block>
+    <Block to="/geofeedia-case-study">
+      <Image src="./img/casestudies/CaseStudyGeofeedia.png" alt="Geofeedia Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudyGeofeediaActive.png" alt="Geofeedia Case Study Active" />
+    </Block>
+    <Block to="/lids-case-study">
+      <Image src="./img/casestudies/CaseStudyLids.png" alt="Lids Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudyLidsActive.png" alt="Lids Case Study Active" />
+    </Block>
+    <Block to="/levelup-case-study">
+      <Image src="./img/casestudies/CaseStudyLevelUp.png" alt="LevelUp Case Study" />
+      <HoverImage src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study Active" />
+    </Block>
+    
+    </CaseStudyContainer>
 };
 
 export default CaseStudy;
