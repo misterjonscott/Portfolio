@@ -24,7 +24,7 @@ import { theme } from './theme';
 const PageContainer = styled.div`
   padding: 1em;
   align-items: center;
-  margin: 70px auto 0;
+  margin: 70px auto 50px;
   line-height: 1.5em;
   max-width: 1000px;
 `;

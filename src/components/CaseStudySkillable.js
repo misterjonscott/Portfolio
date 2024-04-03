@@ -65,7 +65,9 @@ const CaseStudyContainer = styled.div`
     margin-bottom: 3em;
   }
   img {
-    width: 100%;
+    @media (max-width: ${breakpoints.mobile}) {
+      width: 100%;
+    }
   }
 `;
 
@@ -87,7 +89,9 @@ const TwoColumn = styled.div`
     text-align: center;
   }
   img {
-    width: 100%;
+    @media (max-width: ${breakpoints.mobile}) {
+      width: 100%;
+    }
   }
 `;
 

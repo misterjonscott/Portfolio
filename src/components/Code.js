@@ -62,11 +62,19 @@ const CodeBlockIcon = styled.img`
   right: -10px;
 `;
 
+const GitHubSection = styled.div`
+  text-align: center;
+  h2 {
+    color: #333;
+    text-align: left;
+  }
+`;
+
 const GithubReview = styled.a`
   border: 1px solid #666;
   display: inline-flex;
   align-items: center;
-  margin: 0 auto;
+  margin: 2em auto;
   text-decoration: none;
   padding: .5em;
   border-radius: ${props => props.theme.smallBorderRadius};
@@ -80,6 +88,12 @@ const GithubReview = styled.a`
   span {
     color: #333;
     flex: 1;
+  }
+`;
+
+const GitFlowProcess = styled.div`
+  img {
+    width: 100%;
   }
 `;
 
@@ -97,7 +111,7 @@ const Code = () => {
   };
 
   return <div id="code">
-    <h1>Code</h1>
+    <h1>UI Development</h1>
     <CodeSection>
       <p>I've always been curious.  When I was <IdiomGen onClick={() => {
             handleTitleClick();
@@ -144,8 +158,7 @@ const Code = () => {
           <CodeBlockIcon src="./img/debug.svg" />
         </CodeBlock>
       </CodeBlocks>
-      <p>I built this portfolio from scratch using React and some other handy tools.</p>
-      <div style={{textAlign: 'center'}}>
+      <GitHubSection>
         <GithubReview href="https://github.com/misterjonscott/Portfolio/" onClick={() => {
             ReactGA.event({
               category: 'Code',
@@ -154,9 +167,13 @@ const Code = () => {
             });
           }}>
             <img src="img/github.svg" alt="Github Octocat" />
-            <span>Click here to review my code</span>
+            <span>Wanna see the source of this site?</span>
         </GithubReview>
-      </div>
+        <GitFlowProcess>
+          <h2>My Ideal Git Workflow</h2>
+          <img src='./img/GitBranching.png' alt='git flow or something' />
+        </GitFlowProcess>
+      </GitHubSection>
     </CodeSection>
     </div>;
 };

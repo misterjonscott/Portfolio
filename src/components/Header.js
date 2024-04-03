@@ -241,9 +241,9 @@ const Header = () => {
             ReactGA.event({
               category: 'Mobile Navigation',
               action: 'Mobile Click Cases',
-              label: 'Case Study'
+              label: 'Case Studies'
             });
-          }}>Case Study</MobileMenuItem>
+          }}>Case Studies</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
           onClick={() => {
             toggleMobileMenu();
@@ -261,7 +261,7 @@ const Header = () => {
               action: 'Mobile Click Code',
               label: 'Code'
             });
-          }}>Code</MobileMenuItem>
+          }}>UI Development</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={2000}
           onClick={() => {
             toggleMobileMenu();
@@ -315,9 +315,9 @@ const Header = () => {
           ReactGA.event({
             category: 'Desktop Navigation',
             action: 'Desktop Click Cases',
-            label: 'Case Study'
+            label: 'Case Studies'
           });
-        }}>Case Study</NavItem>
+        }}>Case Studies</NavItem>
         <NavItem className={location.pathname === '/design-artifacts' ? 'active' : ''} to='design-artifacts'
         onClick={() => {
           ReactGA.event({
@@ -333,7 +333,7 @@ const Header = () => {
             action: 'Desktop Click Code',
             label: 'Code'
           });
-        }}>Code</NavItem>
+        }}>UI Development</NavItem>
         <NavItem className={location.pathname === '/recommendations' ? 'active' : ''} to='recommendations'
         onClick={() => {
           ReactGA.event({
