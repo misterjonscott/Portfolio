@@ -79,8 +79,7 @@ const CaseStudy = () => {
           });
         }}>
       <Image src="./img/casestudies/CaseStudyIndigo.png" alt="Indigo Case Study" />
-      <HoverImage src="./img/casestudies/CaseStudyIndigoWIP.png" alt="Indigo Case Study" />
-      {/* <HoverImage src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" /> */}
+      <HoverImage src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" />
     </Block>
     <Block to="/geofeedia-case-study" onClick={() => {
           ReactGA.event({
