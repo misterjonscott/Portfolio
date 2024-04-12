@@ -89,8 +89,7 @@ const CaseStudy = () => {
           });
         }}>
       <Image src="./img/casestudies/CaseStudyGeofeedia.png" alt="Geofeedia Case Study" />
-      <HoverImage src="./img/casestudies/CaseStudyGeofeediaWIP.png" alt="Geofeedia Case Study" />
-      {/* <HoverImage src="./img/casestudies/CaseStudyGeofeediaActive.png" alt="Geofeedia Case Study Active" /> */}
+      <HoverImage src="./img/casestudies/CaseStudyGeofeediaActive.png" alt="Geofeedia Case Study Active" />
     </Block>
     <Block to="/lids-case-study" onClick={() => {
           ReactGA.event({
@@ -100,8 +99,7 @@ const CaseStudy = () => {
           });
         }}>
       <Image src="./img/casestudies/CaseStudyLids.png" alt="Lids Case Study" />
-      <HoverImage src="./img/casestudies/CaseStudyLidsWIP.png" alt="Lids Case Study" />
-      {/* <HoverImage src="./img/casestudies/CaseStudyLidsActive.png" alt="Lids Case Study Active" /> */}
+      <HoverImage src="./img/casestudies/CaseStudyLidsActive.png" alt="Lids Case Study Active" />
     </Block>
     <Block to="/levelup-case-study" onClick={() => {
           ReactGA.event({
@@ -111,8 +109,7 @@ const CaseStudy = () => {
           });
         }}>
       <Image src="./img/casestudies/CaseStudyLevelUp.png" alt="LevelUp Case Study" />
-      <HoverImage src="./img/casestudies/CaseStudyLevelUpWIP.png" alt="LevelUp Case Study" />
-      {/* <HoverImage src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study Active" /> */}
+      <HoverImage src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study Active" />
     </Block>
     
     </CaseStudyContainer>

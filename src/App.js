@@ -14,6 +14,7 @@ import CaseStudyIndigo from './components/CaseStudyIndigo';
 import CaseStudyGeofeedia from './components/CaseStudyGeofeedia';
 import CaseStudyLids from './components/CaseStudyLids';
 import CaseStudyLevelUp from './components/CaseStudyLevelUp';
+import NotFound from './components/NotFound';
 
 import Footer from './components/Footer';
 import styled, { ThemeProvider } from 'styled-components';
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
             <Route path="/lids-case-study" element={<CaseStudyLids />} />
             <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
+            <Route component={NotFound} />
           </Routes>
         </PageContainer>
         <Footer />

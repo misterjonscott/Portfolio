@@ -3,18 +3,23 @@ import styled from 'styled-components';
 // import { breakpoints } from '../breakpoints';
 
 const FooterContainer = styled.div`
-  position: fixed; 
+  position: absolute; 
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
   padding-top: 4em;
   height: 100px;
+  opacity: 70%;
   background-image: url("./img/layered-waves.svg");
   background-size: cover;
   background-position: left;
   p {
-    color: #666;
+    color: #000;
+    font-size: 0.8em;
+    position: absolute;
+    bottom: 0;
+    right: 2em;
   }
 `;
 
