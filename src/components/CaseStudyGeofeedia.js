@@ -101,41 +101,6 @@ const TwoColumn = styled.div`
   }
 `;
 
-const ThreeColumnBlocks = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  @media (max-width: ${breakpoints.mobile}) {
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: unset;
-  }
-  .block {
-    border: 2px solid ${props => props.theme.primaryPurple};
-    border-radius: ${props => props.theme.smallBorderRadius};
-    margin-right: 1em;
-    padding: 0.5em;
-    @media (max-width: ${breakpoints.mobile}) {
-      width: calc(100% - 20px);
-      margin-bottom: 20px;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-    .title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1em;
-      h4, svg {
-        display: inline;
-        font-size: 1.1em;
-      }
-      h4 {
-        margin: 0 0 0 0.5em;
-      }
-    }
-  }
-`;
-
 const CaseStudyGeofeedia = () => {
   return <div>
     <CaseStudyHeader>

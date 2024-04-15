@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import ReactGA from "react-ga4";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { breakpoints } from '../breakpoints';
+import { v4 as uuidv4 } from 'uuid';
 
 const CaseStudyContainer = styled.div`
   display: flex;
@@ -63,130 +65,101 @@ const CaseStudyCard = styled.div`
     }
   }
 `;
+const caseStudies = [
+  {
+    title: 'Skillable Case Study',
+    link: '/skillable-case-study',
+    image: './img/casestudies/CaseStudySkillable.png',
+    hoverImage: './img/casestudies/CaseStudySkillableActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Responsive Design' },
+      { id: uuidv4(), text: 'Reusable Components' },
+      { id: uuidv4(), text: 'Improved Course Discovery' },
+    ],
+  },
+  {
+    title: 'Sharpen Case Study',
+    link: '/sharpen-case-study',
+    image: './img/casestudies/CaseStudySharpen.png',
+    hoverImage: './img/casestudies/CaseStudySharpenActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Effortless Reporting' },
+      { id: uuidv4(), text: 'Intuitive Filtering' },
+      { id: uuidv4(), text: 'Data-Driven Call Quality' },
+    ],
+  },
+  {
+    title: 'Indigo Case Study',
+    link: '/indigo-case-study',
+    image: './img/casestudies/CaseStudyIndigo.png',
+    hoverImage: './img/casestudies/CaseStudyIndigoActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Prioritized Batch View' },
+      { id: uuidv4(), text: 'Consolidated User Management' },
+      { id: uuidv4(), text: 'Reduced Error Rates' },
+    ],
+  },
+  {
+    title: 'Geofeedia Case Study',
+    link: '/geofeedia-case-study',
+    image: './img/casestudies/CaseStudyGeofeedia.png',
+    hoverImage: './img/casestudies/CaseStudyGeofeediaActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Streamlined Data Management' },
+      { id: uuidv4(), text: 'Contextual Action Menus' },
+      { id: uuidv4(), text: 'Collaborative Location Sharing' },
+    ],
+  },
+  {
+    title: 'Lids Case Study',
+    link: '/lids-case-study',
+    image: './img/casestudies/CaseStudyLids.png',
+    hoverImage: './img/casestudies/CaseStudyLidsActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Frictionless Checkout' },
+      { id: uuidv4(), text: 'Smart Shopping Cart' },
+      { id: uuidv4(), text: 'Data-Driven Optimization' },
+    ],
+  },
+  {
+    title: 'LevelUp Case Study',
+    link: '/levelup-case-study',
+    image: './img/casestudies/CaseStudyLevelUp.png',
+    hoverImage: './img/casestudies/CaseStudyLevelUpActive.png',
+    listItems: [
+      { id: uuidv4(), text: 'Intuitive Swipe-based Navigation' },
+      { id: uuidv4(), text: 'Microlearning with Mastery Checks' },
+      { id: uuidv4(), text: 'Engaging Visual Content' },
+    ],
+  },
+];
 
 const CaseStudy = () => {
-  return <CaseStudyContainer id="case-studies">
-    <CaseStudyCard>
-      <Block to="/skillable-case-study" onClick={() => {
+  return (
+    <CaseStudyContainer id="case-studies">
+      {caseStudies.map((caseStudy, caseStudyIndex) => (
+        <CaseStudyCard key={caseStudy.title}>
+          <Block to={caseStudy.link} onClick={() => {
             ReactGA.event({
               category: 'Case Studies',
-              action: 'Case Studies Skillable',
-              label: 'Case Studies Skillable'
+              action: `Case Studies ${caseStudy.title}`,
+              label: `Case Studies ${caseStudy.title}`,
             });
           }}>
-        <Image src="./img/casestudies/CaseStudySkillable.png" alt="Skillable Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudySkillableActive.png" alt="Skillable Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          {/* <li>Advanced Filtering System</li> */}
-          <li>Responsive Design</li>
-          <li>Reusable Components</li>
-          <li>Improved Course Discovery</li>
-        </ul>
-      </div>
-    </CaseStudyCard>
-    <CaseStudyCard>
-      <Block to="/sharpen-case-study" onClick={() => {
-        ReactGA.event({
-              category: 'Case Studies',
-              action: 'Case Studies Sharpen',
-              label: 'Case Studies Sharpen'
-            });
-          }}>
-        <Image src="./img/casestudies/CaseStudySharpen.png" alt="Sharpen Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudySharpenActive.png" alt="Sharpen Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          <li>Effortless Reporting</li>
-          {/* <li>Waveform-Driven Quality Analysis</li> */}
-          <li>Intuitive Filtering</li>
-          <li>Data-Driven Call Quality</li>
-        </ul>
-      </div> 
-    </CaseStudyCard>
-    <CaseStudyCard>
-      <Block to="/indigo-case-study" onClick={() => {
-            ReactGA.event({
-              category: 'Case Studies',
-              action: 'Case Studies Indigo',
-              label: 'Case Studies Indigo'
-            });
-          }}>
-        <Image src="./img/casestudies/CaseStudyIndigo.png" alt="Indigo Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          {/* <li>No-Code Test Configuration</li> */}
-          <li>Prioritized Batch View</li>
-          <li>Consolidated User Management</li>
-          <li>Reduced Error Rates</li>
-        </ul>
-      </div> 
-    </CaseStudyCard>
-    <CaseStudyCard>
-      <Block to="/geofeedia-case-study" onClick={() => {
-            ReactGA.event({
-              category: 'Case Studies',
-              action: 'Case Studies Geofeedia',
-              label: 'Case Studies Geofeedia'
-            });
-          }}>
-        <Image src="./img/casestudies/CaseStudyGeofeedia.png" alt="Geofeedia Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudyGeofeediaActive.png" alt="Geofeedia Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          <li>Streamlined Data Management</li>
-          {/* <li>Clear User Hierarchy</li> */}
-          <li>Contextual Action Menus</li>
-          <li>Collaborative Location Sharing</li>
-        </ul>
-      </div> 
-    </CaseStudyCard>
-    <CaseStudyCard>
-      <Block to="/lids-case-study" onClick={() => {
-            ReactGA.event({
-              category: 'Case Studies',
-              action: 'Case Studies Lids',
-              label: 'Case Studies Lids'
-            });
-          }}>
-        <Image src="./img/casestudies/CaseStudyLids.png" alt="Lids Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudyLidsActive.png" alt="Lids Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          <li>Frictionless Checkout</li>
-          <li>Smart Shopping Cart</li>
-          {/* <li>Fandom-centric Experience</li> */}
-          <li>Data-Driven Optimization</li>
-        </ul>
-      </div> 
-    </CaseStudyCard>
-    <CaseStudyCard>
-      <Block to="/levelup-case-study" onClick={() => {
-            ReactGA.event({
-              category: 'Case Studies',
-              action: 'Case Studies LevelUp',
-              label: 'Case Studies LevelUp'
-            });
-          }}>
-        <Image src="./img/casestudies/CaseStudyLevelUp.png" alt="LevelUp Case Study" />
-        <HoverImage src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study Active" />
-      </Block>
-      <div className="text">
-        <ul>
-          {/* <li>Gamified Education</li> */}
-          <li>Intuitive Swipe-based Navigation</li>
-          <li>Microlearning with Mastery Checks</li>
-          <li>Engaging Visual Content</li>
-        </ul>
-      </div> 
-    </CaseStudyCard>
-  </CaseStudyContainer>
+            <Image src={caseStudy.image} alt={caseStudy.alt} />
+            <HoverImage src={caseStudy.hoverImage} alt={caseStudy.hoverAlt} />
+          </Block>
+          <div className="text">
+            <ul>
+            {caseStudy.listItems.map((item) => (
+              <li key={item.id} id={item.id}>{item.text}</li>
+            ))}
+            </ul>
+          </div>
+        </CaseStudyCard>
+      ))}
+    </CaseStudyContainer>
+  );
 };
 
 export default CaseStudy;
