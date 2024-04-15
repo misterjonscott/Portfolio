@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactGA from "react-ga4";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -177,7 +177,7 @@ const CaseStudy = () => {
                   key={item.id} 
                   id={item.id}
                   initial={{ opacity: 0 }}
-                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "#ebd234" } : { opacity: 1, fontWeight: "normal", color: "#ffffff" }}
+                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "rgb(0, 213, 255)", className: "highlighted" } : { opacity: 1, fontWeight: "normal", color: "#ffffff", className: "" }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   {item.text}

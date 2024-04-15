@@ -226,15 +226,6 @@ const Header = () => {
               label: 'Design Process'
             });
           }}>Design Process</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={1000}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Showcase',
-              label: 'Projects Showcase'
-            });
-          }}>Projects Showcase</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="case-study" smooth={true} duration={1000}
           onClick={() => {
             toggleMobileMenu();
@@ -244,6 +235,15 @@ const Header = () => {
               label: 'Case Studies'
             });
           }}>Case Studies</MobileMenuItem>
+          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={1000}
+          onClick={() => {
+            toggleMobileMenu();
+            ReactGA.event({
+              category: 'Mobile Navigation',
+              action: 'Mobile Click Showcase',
+              label: 'Projects Showcase'
+            });
+          }}>Projects Showcase</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
           onClick={() => {
             toggleMobileMenu();
@@ -302,14 +302,6 @@ const Header = () => {
             label: 'Design Process'
           });
         }}>Design Process</NavItem>
-        <NavItem className={location.pathname === '/gallery' ? 'active' : ''} to='gallery'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Showcase',
-            label: 'Projects Showcase'
-          });
-        }}>Projects Showcase</NavItem>
         <NavItem className={location.pathname === '/case-study' ? 'active' : ''} to='case-study'
         onClick={() => {
           ReactGA.event({
@@ -318,6 +310,14 @@ const Header = () => {
             label: 'Case Studies'
           });
         }}>Case Studies</NavItem>
+        <NavItem className={location.pathname === '/gallery' ? 'active' : ''} to='gallery'
+        onClick={() => {
+          ReactGA.event({
+            category: 'Desktop Navigation',
+            action: 'Desktop Click Showcase',
+            label: 'Projects Showcase'
+          });
+        }}>Projects Showcase</NavItem>
         <NavItem className={location.pathname === '/design-artifacts' ? 'active' : ''} to='design-artifacts'
         onClick={() => {
           ReactGA.event({
