@@ -21,7 +21,7 @@ const GallerySection = styled.div`
   border-radius: ${props => props.theme.smallBorderRadius};
   h2 {
     color: #333;
-    font-size: 1.2em;
+    font-size: 2em;
     align-self: flex-start;
   }
   @media (max-width: ${breakpoints.mobile}) {

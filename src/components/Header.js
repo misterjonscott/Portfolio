@@ -240,10 +240,10 @@ const Header = () => {
             toggleMobileMenu();
             ReactGA.event({
               category: 'Mobile Navigation',
-              action: 'Mobile Click Showcase',
-              label: 'Projects Showcase'
+              action: 'Mobile Click Project Highlights',
+              label: 'Project Highlights'
             });
-          }}>Projects Showcase</MobileMenuItem>
+          }}>Project Highlights</MobileMenuItem>
           <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
           onClick={() => {
             toggleMobileMenu();
@@ -314,10 +314,10 @@ const Header = () => {
         onClick={() => {
           ReactGA.event({
             category: 'Desktop Navigation',
-            action: 'Desktop Click Showcase',
-            label: 'Projects Showcase'
+            action: 'Desktop Click Project Highlights',
+            label: 'Project Highlights'
           });
-        }}>Projects Showcase</NavItem>
+        }}>Project Highlights</NavItem>
         <NavItem className={location.pathname === '/design-artifacts' ? 'active' : ''} to='design-artifacts'
         onClick={() => {
           ReactGA.event({

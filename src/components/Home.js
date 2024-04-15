@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
 import { TdButton } from './Elements';
@@ -157,6 +157,16 @@ img {
   }
 `;
 
+const TimeDisplay = styled.div`
+  color: #fff;
+  background-color: ${props => props.theme.primaryColor};
+  border-radius: ${props => props.theme.smallBorderRadius};
+  display: inline-block;
+  padding: 0.25em;
+  float: right;
+  margin-top: 0.5em;
+`;
+
 const LearnMoreAboutMe = styled(TdButton)`
   display: ${(props) => (props['data-islearnmorevisible'] ? 'none' : 'inline-block')};
   margin-bottom: 2em;
@@ -179,6 +189,28 @@ const Greeting = () => {
   return greeting;
 };
 
+const timeOptions = {
+  hour: 'numeric',
+  minute: 'numeric',
+  hour12: true, // Use 12-hour format
+};
+
+const CurrentTime = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000); // Update every minute
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+      <TimeDisplay>{currentTime.toLocaleTimeString([], timeOptions)}</TimeDisplay>
+  );
+};
+
 const Home = () => {
   const [isLearnMoreVisible, setLearnMoreVisible] = useState(false);
   const toggleLearnMore = () => {
@@ -189,7 +221,7 @@ const Home = () => {
     <AboutMeContainer>
       <TextBubble>
         <Text>
-          <h1>Hello and <Greeting />,</h1>
+        <CurrentTime /><h1>Hello and <Greeting />,</h1>
           <p>I'm <strong>Jon Scott</strong>, a versatile UX designer with a background in both <span className='design-container'>
             <span className="square top-left"></span>
             <span className="square top-right"></span>
