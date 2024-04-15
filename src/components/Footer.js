@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // import { breakpoints } from '../breakpoints';
 
 const FooterContainer = styled.div`
-  position: absolute; 
+  position: relative; 
   left: 0;
   bottom: 0;
   width: 100%;

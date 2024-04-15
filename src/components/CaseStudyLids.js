@@ -173,7 +173,7 @@ const CaseStudyLids = () => {
     <CaseStudyContainer>
       <section>
         <h2>Introduction</h2>
-        <p>Lids, a leading retailer for hats and headwear, caters to a diverse audience passionate about expressing themselves through style.  In 2010 (or the year you worked on the project), we embarked on a project to enhance the online shopping experience for Lids customers.  This case study dives into the design process and solutions implemented to streamline the checkout process, improve the shopping cart functionality, and create engaging homepages across various teams and organizations within Lids.</p>
+        <p>Lids, a leading retailer for hats and headwear, caters to a diverse audience passionate about expressing themselves through style.  In 2009, we embarked on a project to enhance the online shopping experience for Lids customers.  This case study dives into the design process and solutions implemented to streamline the checkout process, improve the shopping cart functionality, and create engaging homepages across various teams and organizations within Lids.</p>
       </section>
       <section>
         <h2>Project Overview</h2>
