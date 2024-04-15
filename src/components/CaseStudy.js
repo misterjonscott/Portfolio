@@ -134,7 +134,28 @@ const caseStudies = [
   },
 ];
 
+
 const CaseStudy = () => {
+  const [highlightedId, setHighlightedId] = useState(null);
+  
+  useEffect(() => {
+    const listItemIds = new Set(
+      caseStudies.flatMap((caseStudy) => caseStudy.listItems.map((item) => item.id))
+    );
+    
+    const intervalId = setInterval(() => {
+      if (listItemIds.size > 0) {
+        const randomIndex = Math.floor(Math.random() * listItemIds.size);
+        const randomId = Array.from(listItemIds)[randomIndex];
+        setHighlightedId(randomId);
+      } else {
+        console.log('No items to highlight');
+      }
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <CaseStudyContainer id="case-studies">
       {caseStudies.map((caseStudy, caseStudyIndex) => (
@@ -151,9 +172,17 @@ const CaseStudy = () => {
           </Block>
           <div className="text">
             <ul>
-            {caseStudy.listItems.map((item) => (
-              <li key={item.id} id={item.id}>{item.text}</li>
-            ))}
+              {caseStudy.listItems.map((item) => (
+                <motion.li 
+                  key={item.id} 
+                  id={item.id}
+                  initial={{ opacity: 0 }}
+                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "#ebd234" } : { opacity: 1, fontWeight: "normal", color: "#ffffff" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  {item.text}
+                </motion.li>
+              ))}
             </ul>
           </div>
         </CaseStudyCard>
