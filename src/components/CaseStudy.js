@@ -30,13 +30,36 @@ const HoverImage = styled(Image)`
   opacity: 0; /* Initially hidden */
 `;
 
-const Block = styled(Link)`
+const Block = styled.div`
   width: 315px;
   height: 120px;
   position: relative;
   overflow: hidden;
   display: block;
   text-decoration: none;
+`;
+
+const CaseStudyCard = styled(Link)`
+  width: 315px;
+  display: flex;
+  flex-direction: column;
+  background-color: #4A5E6D;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  text-decoration: none;
+  /* Text styles */
+  .text {
+    padding: 0.5em;
+    color: #FFFFFF;
+    ul {
+      margin: 0;
+      padding-left: 0.5em;
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+  /* Image styles */
   &:hover {
     ${Image} {
       opacity: 0; /* Hide original Image */
@@ -44,24 +67,6 @@ const Block = styled(Link)`
 
     ${HoverImage} {
       opacity: 1; /* Show HoverImage */
-    }
-  }
-`;
-
-const CaseStudyCard = styled.div`
-  width: 315px;
-  display: flex;
-  flex-direction: column;
-  background-color: #4A5E6D;
-  border-radius: 8px;
-  margin-bottom: 1em;
-  /* Text styles */
-  .text {
-    padding: 0.5em;
-    color: #FFFFFF;
-    ul {
-      margin: 0;
-      padding-left: 2em;
     }
   }
 `;
@@ -159,14 +164,14 @@ const CaseStudy = () => {
   return (
     <CaseStudyContainer id="case-studies">
       {caseStudies.map((caseStudy, caseStudyIndex) => (
-        <CaseStudyCard key={caseStudy.title}>
-          <Block to={caseStudy.link} onClick={() => {
-            ReactGA.event({
-              category: 'Case Studies',
-              action: `Case Studies ${caseStudy.title}`,
-              label: `Case Studies ${caseStudy.title}`,
-            });
-          }}>
+        <CaseStudyCard key={caseStudy.title}  to={caseStudy.link} onClick={() => {
+          ReactGA.event({
+            category: 'Case Studies',
+            action: `Case Studies ${caseStudy.title}`,
+            label: `Case Studies ${caseStudy.title}`,
+          });
+        }}>
+          <Block>
             <Image src={caseStudy.image} alt={caseStudy.alt} />
             <HoverImage src={caseStudy.hoverImage} alt={caseStudy.hoverAlt} />
           </Block>

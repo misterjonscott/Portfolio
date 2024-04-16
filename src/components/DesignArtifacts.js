@@ -90,26 +90,27 @@ const DesignArtifacts = () => {
 
   const accordionItems = [
     {
-      title: 'Consolidate Your Assets',
-      content: 'Instead of reinventing the wheel every time you need a common element like an icon or a reusable component, why not centralize them in a shared library? By doing so, you not only save time but also maintain a cohesive visual identity across your work.',
+      title: 'Streamline Workflows with a Centralized Design Library',
+      content: 'Imagine never having to recreate common UI elements like icons or components. A design library centralizes these assets, saving you and your team significant time. But it goes beyond efficiency - a library ensures consistent visual identity across all projects, strengthening your brand and user experience.',
     },
     {
-      title: 'Foster Collaboration and Iteration',
-      content: 'A design library isn\'t just a static repository - it\'s a dynamic resource that encourages collaboration and iteration. Need a variation of an existing element or an entirely new addition? Simply update the library, and everyone on your team has access to the latest assets.',
+      title: 'Boost Collaboration and Facilitate Iteration',
+      content: 'A design library is more than a storage locker; it\'s a dynamic hub for collaboration. Need a variation on an existing element, or a brand new addition? Update the library, and your entire team has instant access to the latest assets. This fosters a collaborative environment that streamlines iteration and keeps everyone on the same page.',
     },
     {
-      title: 'Accelerate Prototyping and Development',
-      content: 'With a robust design library at your disposal, prototyping becomes a breeze. Rapidly assemble screens and interfaces using pre-built components, allowing you to focus on refining the user experience rather than starting from scratch.',
+      title: 'Accelerate Prototyping for a Flawless User Experience',
+      content: 'With a well-stocked design library at your disposal, prototyping becomes a breeze. Drag and drop pre-built components to rapidly assemble screens and interfaces. This lets you focus on refining the user experience itself, rather than wasting time building elements from scratch. Faster prototyping translates to quicker validation and iteration cycles, ultimately leading to a more polished user experience.',
     },
     {
-      title: 'Ensure Design-Code Harmony',
-      content: 'Consistency between design and code is crucial for a seamless user journey. By adhering to a shared design language stored in your library, developers can translate designs into code more efficiently, resulting in faster development cycles and fewer discrepancies.',
+      title: 'Bridge the Gap Between Design and Development',
+      content: 'A seamless user journey relies on consistency between design and code. A design library acts as a single source of truth for your design language. Developers can efficiently translate these assets into code, minimizing discrepancies and ensuring a smooth development process. This translates to faster development cycles and a more cohesive user experience.',
     },
     {
-      title: 'Conclusion',
-      content: 'Investing time upfront to establish a comprehensive design library pays off exponentially in the long run. It\'s not just about creating assets - it\'s about empowering your team to work smarter, collaborate effectively, and deliver exceptional results with ease.',
+      title: 'Conclusion: Invest in Efficiency, Reap Long-Term Rewards',
+      content: 'The time invested in building a comprehensive design library pays off significantly in the long run. It\'s not just about creating assets - it\'s about empowering your team to work smarter. The library fosters collaboration, streamlines workflows, and ultimately allows your team to deliver exceptional results with greater ease.',
     },
   ];
+  
 
   const toggleItem = (index) => {
     if (openIndex === index) {
@@ -121,14 +122,12 @@ const DesignArtifacts = () => {
 
   return (
     <div id="design-artifacts">
-      <h1>Harness the Power of Design Libraries</h1>
+      <h1>Boosting Efficiency and Design Consistency<br />The Power of UX Design Libraries</h1>
       <DesignArtifactsContainer>
         <DesignArtifactsTextContainer>
           <AccordionContainer>
             <>
-              <p>In the fast-paced world of design and development, efficiency is key. That's where design libraries come in - 
-                they're a game-changer for streamlining your workflow and ensuring consistency across projects.</p>
-              <p>Click to why design libraries are a really really big deal:</p>
+              <p>In today's competitive design landscape, maximizing efficiency and maintaining brand consistency are crucial. That's where UX design libraries come in - powerful tools that empower designers to streamline workflows, ensure visual and interactional coherence across projects, and elevate the overall user experience.</p>
               <ul>
                 {accordionItems.map((item, index) => (
                   <li key={index} onClick={() => toggleItem(index)} className={openIndex === index ? 'open' : ''}>

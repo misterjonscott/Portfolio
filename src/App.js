@@ -31,6 +31,10 @@ const PageContainer = styled.div`
   display: flex; /* Enable flexbox on the main container */
   min-height: 100vh; /* Set minimum height to viewport height */
   flex-direction: column; /* Stack elements vertically */
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased; /* For Chrome, Safari, and newer versions of Edge */
+  -moz-osx-font-smoothing: grayscale; /* For older versions of Firefox on macOS */
+  font-smoothing: antialiased; /* For other browsers */
 `;
 
 const App = () => {
