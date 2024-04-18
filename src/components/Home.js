@@ -222,7 +222,7 @@ const Home = () => {
       <TextBubble>
         <Text>
         <CurrentTime /><h1>Hello and <Greeting />,</h1>
-          <p>I'm <strong>Jon Scott</strong>, a versatile UX designer with a background in both <span className='design-container'>
+          <p>I'm <strong>Jon Scott</strong>, a versatile UX Engineer with a background in <span className='design-container'>
             <span className="square top-left"></span>
             <span className="square top-right"></span>
             <span className="square bottom-left"></span>
