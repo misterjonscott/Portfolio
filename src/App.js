@@ -1,24 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
-import AboutMe from './components/AboutMe';
-import DesignProcess from './components/DesignProcess';
-import PageWithCaseStudy from './components/CaseStudyPage';
-import DesignArtifacts from './components/DesignArtifacts';
-import Gallery from './components/Gallery';
-import Code from './components/Code';
-import Recommendations from './components/Recommendations';
-import CaseStudySkillable from './components/CaseStudySkillable';
-import CaseStudySharpen from './components/CaseStudySharpen';
-import CaseStudyIndigo from './components/CaseStudyIndigo';
-import CaseStudyGeofeedia from './components/CaseStudyGeofeedia';
-import CaseStudyLids from './components/CaseStudyLids';
-import CaseStudyLevelUp from './components/CaseStudyLevelUp';
 import NotFound from './components/NotFound';
-import Resume from './components/Resume';
 import Footer from './components/Footer';
 import styled, { ThemeProvider, css, createGlobalStyle } from 'styled-components';
-
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './theme';
@@ -84,6 +69,23 @@ const PageContainer = styled.div`
     `}
 `;
 
+// Lazy-loaded components
+const AboutMe = React.lazy(() => import('./components/AboutMe'));
+const DesignProcess = React.lazy(() => import('./components/DesignProcess'));
+const Gallery = React.lazy(() => import('./components/Gallery'));
+const PageWithCaseStudy = React.lazy(() => import('./components/CaseStudyPage'));
+const DesignArtifacts = React.lazy(() => import('./components/DesignArtifacts'));
+const Code = React.lazy(() => import('./components/Code'));
+const Recommendations = React.lazy(() => import('./components/Recommendations'));
+const CaseStudySkillable = React.lazy(() => import('./components/CaseStudySkillable'));
+const CaseStudySharpen = React.lazy(() => import('./components/CaseStudySharpen'));
+const CaseStudyIndigo = React.lazy(() => import('./components/CaseStudyIndigo'));
+const CaseStudyGeofeedia = React.lazy(() => import('./components/CaseStudyGeofeedia'));
+const CaseStudyLids = React.lazy(() => import('./components/CaseStudyLids'));
+const CaseStudyLevelUp = React.lazy(() => import('./components/CaseStudyLevelUp'));
+const Resume = React.lazy(() => import('./components/Resume'));
+
+
 const App = () => {
   ReactGA.initialize('G-X7T0C9H914');
 
@@ -99,24 +101,26 @@ const App = () => {
         <GlobalStyle $isresumepage={isresumepage.toString()} />
         {!isresumepage && <Header />}
         <PageContainer $isresumepage={isresumepage.toString()}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about-me" element={<AboutMe />} />
-            <Route path="/design-process" element={<DesignProcess />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/case-study" element={<PageWithCaseStudy />} />
-            <Route path="/design-artifacts" element={<DesignArtifacts />} />
-            <Route path="/code" element={<Code />} />
-            <Route path="/recommendations" element={<Recommendations />} />
-            <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
-            <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
-            <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />
-            <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
-            <Route path="/lids-case-study" element={<CaseStudyLids />} />
-            <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about-me" element={<AboutMe />} />
+              <Route path="/design-process" element={<DesignProcess />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/case-study" element={<PageWithCaseStudy />} />
+              <Route path="/design-artifacts" element={<DesignArtifacts />} />
+              <Route path="/code" element={<Code />} />
+              <Route path="/recommendations" element={<Recommendations />} />
+              <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
+              <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
+              <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />
+              <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
+              <Route path="/lids-case-study" element={<CaseStudyLids />} />
+              <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </PageContainer>
         {!isresumepage && <Footer />}
       </ThemeProvider>
