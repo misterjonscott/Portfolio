@@ -182,8 +182,9 @@ const CaseStudy = () => {
                   key={item.id} 
                   id={item.id}
                   initial={{ opacity: 0 }}
-                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "rgb(0, 213, 255)", className: "highlighted" } : { opacity: 1, fontWeight: "normal", color: "#ffffff", className: "" }}
+                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "rgb(0, 213, 255)" } : { opacity: 1, fontWeight: "normal", color: "#ffffff" }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
+                  style={{ fontWeight: highlightedId === item.id ? "bold" : "normal", color: highlightedId === item.id ? "rgb(0, 213, 255)" : "#ffffff" }}
                 >
                   {item.text}
                 </motion.li>
