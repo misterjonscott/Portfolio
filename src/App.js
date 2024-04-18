@@ -15,12 +15,53 @@ import CaseStudyGeofeedia from './components/CaseStudyGeofeedia';
 import CaseStudyLids from './components/CaseStudyLids';
 import CaseStudyLevelUp from './components/CaseStudyLevelUp';
 import NotFound from './components/NotFound';
-
+import Resume from './components/Resume';
 import Footer from './components/Footer';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, css, createGlobalStyle } from 'styled-components';
+
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './theme';
+
+// Define global styles
+const GlobalStyle = createGlobalStyle`
+  :root {
+    --gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,9,121,1) 35%, rgba(0,0,0,1) 100%);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-image: var(--gradient);
+    background-size: 400%;
+    animation: bg-animation 20s infinite alternate;
+    font-family: arial, sans serif, helvetica;
+    color: #333;
+    ${props =>
+      props.isresumepage &&
+      css`
+        background-color: #fff;
+        background-image: unset;
+    `}
+  }
+
+  h1, h2, h3 {
+    color: #fff;
+    ${props =>
+      props.$isresumepage &&
+      css`
+        color: #333;
+    `}
+    line-height: 1.5em;
+  }
+
+  @keyframes bg-animation {
+    0% {background-position: left;}
+    100% {background-position: right;}
+  }
+`;
 
 const PageContainer = styled.div`
   padding: 1em;
@@ -35,16 +76,29 @@ const PageContainer = styled.div`
   -webkit-font-smoothing: antialiased; /* For Chrome, Safari, and newer versions of Edge */
   -moz-osx-font-smoothing: grayscale; /* For older versions of Firefox on macOS */
   font-smoothing: antialiased; /* For other browsers */
+  
+  ${props =>
+    props.$isresumepage &&
+    css`
+      margin: 0 auto 0;
+    `}
 `;
 
 const App = () => {
   ReactGA.initialize('G-X7T0C9H914');
 
+  // Get the current URL path
+  const currentPath = window.location.pathname;
+
+  // Check if the current pathname is "/resume"
+  const isresumepage = currentPath === '/resume';
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Header />
-        <PageContainer>
+        <GlobalStyle $isresumepage={isresumepage.toString()} />
+        {!isresumepage && <Header />}
+        <PageContainer $isresumepage={isresumepage.toString()}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-me" element={<AboutMe />} />
@@ -60,10 +114,11 @@ const App = () => {
             <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
             <Route path="/lids-case-study" element={<CaseStudyLids />} />
             <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
+            <Route path="/resume" element={<Resume />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </PageContainer>
-        <Footer />
+        {!isresumepage && <Footer />}
       </ThemeProvider>
     </Router>
   );
