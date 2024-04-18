@@ -7,6 +7,7 @@ import styled, { ThemeProvider, css, createGlobalStyle } from 'styled-components
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './theme';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Define global styles
 const GlobalStyle = createGlobalStyle`
@@ -97,33 +98,35 @@ const App = () => {
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle $isresumepage={isresumepage.toString()} />
-        {!isresumepage && <Header />}
-        <PageContainer $isresumepage={isresumepage.toString()}>
-          <Suspense>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about-me" element={<AboutMe />} />
-              <Route path="/design-process" element={<DesignProcess />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/case-study" element={<PageWithCaseStudy />} />
-              <Route path="/design-artifacts" element={<DesignArtifacts />} />
-              <Route path="/code" element={<Code />} />
-              <Route path="/recommendations" element={<Recommendations />} />
-              <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
-              <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
-              <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />
-              <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
-              <Route path="/lids-case-study" element={<CaseStudyLids />} />
-              <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
-              <Route path="/resume" element={<Resume />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </PageContainer>
-        {!isresumepage && <Footer />}
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle $isresumepage={isresumepage.toString()} />
+          {!isresumepage && <Header />}
+          <PageContainer $isresumepage={isresumepage.toString()}>
+            <Suspense>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about-me" element={<AboutMe />} />
+                <Route path="/design-process" element={<DesignProcess />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/case-study" element={<PageWithCaseStudy />} />
+                <Route path="/design-artifacts" element={<DesignArtifacts />} />
+                <Route path="/code" element={<Code />} />
+                <Route path="/recommendations" element={<Recommendations />} />
+                <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
+                <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
+                <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />
+                <Route path="/geofeedia-case-study" element={<CaseStudyGeofeedia />} />
+                <Route path="/lids-case-study" element={<CaseStudyLids />} />
+                <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
+                <Route path="/resume" element={<Resume />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </PageContainer>
+          {!isresumepage && <Footer />}
+        </ThemeProvider>
+      </ErrorBoundary>
     </Router>
   );
 };
