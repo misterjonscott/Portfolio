@@ -26,10 +26,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: arial, sans serif, helvetica;
     color: #333;
     ${props =>
-      props.isresumepage &&
+      props.$isresumepage &&
       css`
         background-color: #fff;
-        background-image: unset;
+        background-image: none;
     `}
   }
 
@@ -98,11 +98,11 @@ const App = () => {
 
   return (
     <Router>
-      <ErrorBoundary>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle $isresumepage={isresumepage.toString()} />
+      <ThemeProvider theme={theme}>
+        <ErrorBoundary>
+          <GlobalStyle $isresumepage={isresumepage} />
           {!isresumepage && <Header />}
-          <PageContainer $isresumepage={isresumepage.toString()}>
+          <PageContainer $isresumepage={isresumepage}>
             <Suspense>
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -125,8 +125,8 @@ const App = () => {
             </Suspense>
           </PageContainer>
           {!isresumepage && <Footer />}
-        </ThemeProvider>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </ThemeProvider>
     </Router>
   );
 };
