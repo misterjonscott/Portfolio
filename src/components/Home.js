@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
 import { TdButton } from './Elements';
+import CaseStudy from './CaseStudy';
 import ReactGA from "react-ga4";
 
 const AboutMeContainer = styled.div`
@@ -260,6 +261,7 @@ const Home = () => {
         <img src="./img/JonScott-2.png" alt="A photograph of my face" />
       </Picture>
     </AboutMeContainer>
+    <CaseStudy numToShow="3" />
   </div>
 };
 
