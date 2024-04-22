@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 import ReactGA from "react-ga4";
@@ -66,7 +66,7 @@ const CloseIcon = styled.span`
 
 const NavItem = styled(Link)`
   text-decoration: none;
-  color: #fff;
+  color: ${props => props.theme.text};
   cursor: pointer;
   font-size: 16px;
   position: relative;
@@ -77,30 +77,11 @@ const NavItem = styled(Link)`
   }
 `;
 
-const EmailLink = styled.a`
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
-  margin: 1em;
-`;
-
 const MobileMenuItem = styled(NavItem)`
   text-decoration: none;
   color: #fff;
   cursor: pointer;
   font-size: 0.8em;
-`;
-
-const MobileMenuEmail = styled.a`
-  text-align: center;
-  width: 100vw;
-  color: #fff;
-  text-decoration: none;
-  font-size: .8em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 `;
 
 const NavList = styled.ul`
@@ -141,9 +122,6 @@ const HeaderContainer = styled.div`
     ${NavList} {
       display: none;
     }
-    ${EmailLink} {
-      display: none;
-    }
   }
 `;
 
@@ -153,7 +131,31 @@ const Logo = styled.div`
   margin: 0 0 0 1em;
 `;
 
-const Header = () => {
+const ThemeButton = styled.button`
+  background-color: ${props => props.theme.body};
+  color: ${props => props.theme.text};
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+`;
+
+const Header = ({ toggleTheme }) => {
+
+  const navigationItems = [
+    { label: 'Home', path: '/', eventLabel: 'Home' },
+    { label: 'Design Process', path: '/design-process', eventLabel: 'Design Process' },
+    { label: 'Case Studies', path: '/case-study', eventLabel: 'Case Studies' },
+    { label: 'Project Highlights', path: '/gallery', eventLabel: 'Project Highlights' },
+    { label: 'Design Systems', path: '/design-artifacts', eventLabel: 'Design Systems' },
+    { label: 'UI Development', path: '/code', eventLabel: 'UI Development' },
+    { label: 'Recommendations', path: '/recommendations', eventLabel: 'Recommendations' },
+    { label: 'Contact', path: 'mailto:jon@workwithjonscott.com', eventLabel: 'Email' },
+  ];
+  
+
   const [additionalClass, setAdditionalClass] = useState(false);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -208,151 +210,48 @@ const Header = () => {
           <CloseButton onClick={toggleMobileMenu}>
             <CloseIcon />
           </CloseButton>
-          <MobileMenuItem activeClass="active" to="/" smooth={true} duration={1000} 
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Home',
-              label: 'Home'
-            });
-          }}>Home</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="design-process" smooth={true} duration={1000} 
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Process',
-              label: 'Design Process'
-            });
-          }}>Design Process</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="case-study" smooth={true} duration={1000}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Cases',
-              label: 'Case Studies'
-            });
-          }}>Case Studies</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="gallery" smooth={true} duration={1000}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Project Highlights',
-              label: 'Project Highlights'
-            });
-          }}>Project Highlights</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="design-artifacts" smooth={true} duration={1500}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Library',
-              label: 'Design Systems'
-            });
-          }}>Design Systems</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="code" smooth={true} duration={1500}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Code',
-              label: 'Code'
-            });
-          }}>UI Development</MobileMenuItem>
-          <MobileMenuItem activeClass="active" to="recommendations" smooth={true} duration={2000}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Recommendations',
-              label: 'Recommendations'
-            });
-          }}>Recommendations</MobileMenuItem>
-          <MobileMenuEmail target="_blank" href={`mailto:jon@workwithjonscott.com`}
-          onClick={() => {
-            toggleMobileMenu();
-            ReactGA.event({
-              category: 'Mobile Navigation',
-              action: 'Mobile Click Email',
-              label: 'Email'
-            });
-          }}>
-            <img src="./img/mail.png" alt="email me" />
-            Email me
-          </MobileMenuEmail>
+          {navigationItems.map(item => (
+            <MobileMenuItem
+              key={item.label}
+              to={item.path}
+              onClick={() => {
+                toggleMobileMenu();
+                ReactGA.event({
+                  category: 'Mobile Navigation',
+                  action: `Mobile Click ${item.eventLabel}`,
+                  label: item.eventLabel,
+                });
+              }}
+            >
+              {item.label}
+            </MobileMenuItem>
+          ))}
+          <ThemeButton onClick={toggleTheme}>
+            Toggle Dark Mode
+          </ThemeButton>
         </MobileMenu>
       )}
       <NavList>
-        <NavItem className={location.pathname === '/' ? 'active' : ''} to='/'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Home',
-            label: 'Home'
-          });
-        }}>Home</NavItem>
-        <NavItem className={location.pathname === '/design-process' ? 'active' : ''} to='design-process'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Process',
-            label: 'Design Process'
-          });
-        }}>Design Process</NavItem>
-        <NavItem className={location.pathname === '/case-study' ? 'active' : ''} to='case-study'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Cases',
-            label: 'Case Studies'
-          });
-        }}>Case Studies</NavItem>
-        <NavItem className={location.pathname === '/gallery' ? 'active' : ''} to='gallery'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Project Highlights',
-            label: 'Project Highlights'
-          });
-        }}>Project Highlights</NavItem>
-        <NavItem className={location.pathname === '/design-artifacts' ? 'active' : ''} to='design-artifacts'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Library',
-            label: 'Design Systems'
-          });
-        }}>Design Systems</NavItem>
-        <NavItem className={location.pathname === '/code' ? 'active' : ''} to='code'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Code',
-            label: 'Code'
-          });
-        }}>UI Development</NavItem>
-        <NavItem className={location.pathname === '/recommendations' ? 'active' : ''} to='recommendations'
-        onClick={() => {
-          ReactGA.event({
-            category: 'Desktop Navigation',
-            action: 'Desktop Click Recommendations',
-            label: 'Recommendations'
-          });
-        }}>Recommendations</NavItem>
+        {navigationItems.map(item => (
+          <NavItem
+            key={item.label}
+            to={item.path}
+            className={location.pathname === item.path ? 'active' : ''}
+            onClick={() => {
+              ReactGA.event({
+                category: 'Desktop Navigation',
+                action: `Desktop ${item.eventLabel}`,
+                label: item.eventLabel,
+              });
+            }}
+          >
+            {item.label}
+          </NavItem>
+        ))}
+        <ThemeButton onClick={toggleTheme}>
+          Toggle Dark Mode
+        </ThemeButton>
       </NavList>
-      <EmailLink target="_blank" href={`mailto:jon@workwithjonscott.com`}
-      onClick={() => {
-        ReactGA.event({
-          category: 'Desktop Navigation',
-          action: 'Desktop Click Email',
-          label: 'Email'
-        });
-      }}>
-        <img src="./img/mail.png" alt="email me" />
-      </EmailLink>
     </HeaderContainer>
   );
 };
