@@ -38,7 +38,7 @@ const NotFound = () => {
         <ErrorMessage>404</ErrorMessage>
       </ContentContainer>
       <p>Don't worry, we've got you covered. Check out our latest projects below!</p>
-      <CaseStudy />
+      <CaseStudy numToShow="6" />
     </ErrorContainer>
   );
 };

@@ -140,7 +140,7 @@ const caseStudies = [
 ];
 
 
-const CaseStudy = () => {
+const CaseStudy = ({ numToShow }) => {
   const [highlightedId, setHighlightedId] = useState(null);
   
   useEffect(() => {
@@ -163,7 +163,7 @@ const CaseStudy = () => {
 
   return (
     <CaseStudyContainer id="case-studies">
-      {caseStudies.map((caseStudy, caseStudyIndex) => (
+      {caseStudies.slice(0, numToShow).map((caseStudy, caseStudyIndex) => (
         <CaseStudyCard key={caseStudy.title}  to={caseStudy.link} onClick={() => {
           ReactGA.event({
             category: 'Case Studies',

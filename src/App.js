@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
@@ -6,8 +6,31 @@ import Footer from './components/Footer';
 import styled, { ThemeProvider, css, createGlobalStyle } from 'styled-components';
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { theme } from './theme';
 import ErrorBoundary from './components/ErrorBoundary';
+
+const lightTheme = {
+  body: '#ffffff',
+  text: '#333333',
+  background: {
+    color: '#fff',
+    image: 'none',
+    size: '0',
+    attachment: 'initial',
+    animation: 'unset'
+  },
+};
+
+const darkTheme = {
+  body: '#333333',
+  text: '#ffffff',
+  background: {
+    color: 'unset',
+    image: 'var(--gradient)',
+    size: '400%',
+    attachment: 'fixed',
+    animation: 'bg-animation 20s infinite alternate'
+  },
+};
 
 // Define global styles
 const GlobalStyle = createGlobalStyle`
@@ -18,11 +41,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-image: var(--gradient);
-    background-size: 400%;
-    animation: bg-animation 20s infinite alternate;
+    background-color: ${props => props.theme.background.color};
+    background-image: ${props => props.theme.background.image};
+    background-size: ${props => props.theme.background.size};
+    background-attachment: ${props => props.theme.background.attachment};
+    animation: ${props => props.theme.background.animation};
     font-family: arial, sans serif, helvetica;
     color: #333;
     ${props =>
@@ -92,16 +115,20 @@ const App = () => {
 
   // Get the current URL path
   const currentPath = window.location.pathname;
-
-  // Check if the current pathname is "/resume"
   const isresumepage = currentPath === '/resume';
+
+  const [theme, setTheme] = useState('dark');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <ErrorBoundary>
-          <GlobalStyle $isresumepage={isresumepage} />
-          {!isresumepage && <Header />}
+          <GlobalStyle theme={theme === 'dark' ? darkTheme : lightTheme} $isresumepage={isresumepage} />
+          {!isresumepage && <Header toggleTheme={toggleTheme} />}
           <PageContainer $isresumepage={isresumepage}>
             <Suspense>
               <Routes>
