@@ -99,7 +99,7 @@ const Gallery = () => {
 
   return (
     <GalleryContainer id="gallery">
-      <h1>Projects Showcase</h1>
+      <h1>Project Showcase</h1>
       <GalleryGrid>
         <ArrowIcon onClick={prevSlide}>
           {arrowPath}

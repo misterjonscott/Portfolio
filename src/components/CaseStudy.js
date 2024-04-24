@@ -9,10 +9,12 @@ import { v4 as uuidv4 } from 'uuid';
 const CaseStudyContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 5em 0;
+  gap: 1em;
+  max-width: ${breakpoints.desktop};
+  justify-content: center;
   @media (max-width: ${breakpoints.mobile}) {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -43,14 +45,17 @@ const CaseStudyCard = styled(Link)`
   width: 315px;
   display: flex;
   flex-direction: column;
-  background-color: #4A5E6D;
+  background-color: ${props => props.theme.tile.color};
   border-radius: 8px;
   margin-bottom: 1em;
   text-decoration: none;
+  padding: 0.25em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
   /* Text styles */
   .text {
     padding: 0.5em;
-    color: #FFFFFF;
+    color: ${props => props.theme.text};
     ul {
       margin: 0;
       padding-left: 0.5em;
@@ -70,6 +75,18 @@ const CaseStudyCard = styled(Link)`
     }
   }
 `;
+
+const CaseStudyTitle = styled.span`
+  font-size: 1.1em;
+  font-weight: 600;
+`;
+
+const HighlightedWords = styled(motion.li)`
+  font-size: 0.9em;
+  // font-weight: ${({ highlighted }) => (highlighted ? 'bold' : 'normal')};
+  // color: ${({ highlighted }) => (highlighted ? 'rgb(0, 213, 255)' : '#ffffff')};
+`;
+
 const caseStudies = [
   {
     title: 'Skillable Case Study',
@@ -162,38 +179,44 @@ const CaseStudy = ({ numToShow }) => {
   }, []);
 
   return (
-    <CaseStudyContainer id="case-studies">
-      {caseStudies.slice(0, numToShow).map((caseStudy, caseStudyIndex) => (
-        <CaseStudyCard key={caseStudy.title}  to={caseStudy.link} onClick={() => {
-          ReactGA.event({
-            category: 'Case Studies',
-            action: `Case Studies ${caseStudy.title}`,
-            label: `Case Studies ${caseStudy.title}`,
-          });
-        }}>
-          <Block>
-            <Image src={caseStudy.image} alt={caseStudy.alt} />
-            <HoverImage src={caseStudy.hoverImage} alt={caseStudy.hoverAlt} />
-          </Block>
-          <div className="text">
-            <ul>
-              {caseStudy.listItems.map((item) => (
-                <motion.li 
-                  key={item.id} 
-                  id={item.id}
-                  initial={{ opacity: 0 }}
-                  animate={highlightedId === item.id ? { opacity: 1, fontWeight: "bold", color: "rgb(0, 213, 255)" } : { opacity: 1, fontWeight: "normal", color: "#ffffff" }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  style={{ fontWeight: highlightedId === item.id ? "bold" : "normal", color: highlightedId === item.id ? "rgb(0, 213, 255)" : "#ffffff" }}
-                >
-                  {item.text}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </CaseStudyCard>
-      ))}
-    </CaseStudyContainer>
+    <div>
+      <CaseStudyContainer id="CaseStudyContainer">
+        {caseStudies.slice(0, numToShow).map((caseStudy, caseStudyIndex) => (
+          <CaseStudyCard className='CaseStudyCard' key={caseStudy.title}  to={caseStudy.link} onClick={() => {
+            ReactGA.event({
+              category: 'Case Studies',
+              action: `Case Studies ${caseStudy.title}`,
+              label: `Case Studies ${caseStudy.title}`,
+            });
+          }}>
+            <Block className='Block'>
+              <Image src={caseStudy.image} alt={caseStudy.alt} />
+              <HoverImage src={caseStudy.hoverImage} alt={caseStudy.hoverAlt} />
+            </Block>
+            <div className="text">
+              <ul>
+                <CaseStudyTitle>{caseStudy.title}</CaseStudyTitle>
+                {caseStudy.listItems.map((item) => (
+                  <HighlightedWords
+                    key={item.id}
+                    id={item.id}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      fontWeight: highlightedId === item.id ? 'bold' : 'normal',
+                      color: highlightedId === item.id ? 'rgb(0, 213, 255)' : '#ffffff',
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    {item.text}
+                  </HighlightedWords>
+                ))}
+              </ul>
+            </div>
+          </CaseStudyCard>
+        ))}
+      </CaseStudyContainer>
+    </div>
   );
 };
 

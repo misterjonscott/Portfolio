@@ -1,74 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
-import { Link } from 'react-router-dom';
-
-const CaseStudyHeader = styled.div`
-  display: flex;
-  margin-bottom: 2em;
-  @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-  }
-  #brand {
-    width: 315px;
-    @media (max-width: ${breakpoints.mobile}) {
-      margin: 0 auto;
-    }
-  }
-  #title {
-    flex-grow: 1;
-    padding-left: 1em;
-    @media (max-width: ${breakpoints.mobile}) {
-      padding-left: 0;
-    }
-    h1 {
-      font-size: 2em;
-      margin: 0;
-    }
-  }
-`;
-
-const BackLink = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-  svg {
-    padding-right: 0.25em;
-  }
-`;
-
-const Tags = styled.div`
-  margin-top: 0.5em;
-`;
-
-
-const Tag = styled.span`
-  background-color: ${props => props.theme.primaryPurple};
-  color: #fff;
-  border-radius: ${props => props.theme.smallBorderRadius};
-  padding: 0.5em;
-  margin-right: 0.25em;
-`;
-
-const CaseStudyContainer = styled.div`
-  background-color: #fff;
-  padding: 20px;
-  border-radius: ${props => props.theme.bigBorderRadius};
-  h2, h3, p {
-    color: #333;
-    margin: 0 0 0.5em;
-  }
-  section {
-    margin-bottom: 3em;
-  }
-  img {
-    @media (max-width: ${breakpoints.mobile}) {
-      width: 100%;
-    }
-  }
-  div.center {
-    text-align: center;
-  }
-`;
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import * as CaseStudyStyle from './CaseStudyStyles';
 
 const TwoColumn = styled.div`
   display: flex;
@@ -137,46 +72,61 @@ const ThreeColumnBlocks = styled.div`
 `;
 
 const CaseStudyLevelUp = () => {
+  const [refAnatomy, AnatomyisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.0,
+  });
+
   return <div>
-    <CaseStudyHeader>
-      <div id="brand">
-        <img src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study" />
-      </div>
+    <CaseStudyStyle.CaseStudyHeader>
       <div id="title">
-        <h1>Mobile Financial Education Case Study</h1>
-        <BackLink to='/case-study'>
-          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" fill="white"/>
+        <h1>Pocket Finance</h1>
+        <CaseStudyStyle.BackLink to='/case-study'>
+          <svg width="6" height="10" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" />
           </svg>
           Back to Case Studies
-        </BackLink>
-        <Tags>
-          <Tag>UX Designer</Tag>
-        </Tags>
+        </CaseStudyStyle.BackLink>
+        <CaseStudyStyle.Tags>
+          <CaseStudyStyle.Tag>UX Designer</CaseStudyStyle.Tag>
+        </CaseStudyStyle.Tags>
       </div>
-    </CaseStudyHeader>
-    <CaseStudyContainer>
+      <motion.div
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        id='brand'
+      >
+        <img src="./img/casestudies/CaseStudyLevelUpActive.png" alt="LevelUp Case Study" />
+      </motion.div>
+    </CaseStudyStyle.CaseStudyHeader>
+    <CaseStudyStyle.CaseStudyContainer>
       <section>
         <h2>Introduction</h2>
-        <p>In the dynamic landscape of financial education apps, our mobile application distinguishes itself through a steadfast commitment to innovation and a relentless focus on user-centric design principles. Engineered with the core mission of enhancing financial literacy, our app adopts a swipe-gesture-based interaction model that empowers users to cultivate sound money management habits. Grounded in extensive user research and feedback, our app sets a new benchmark for financial learning platforms by providing an immersive and intuitive learning experience tailored to the diverse needs of modern users.</p>
+        <p>Our mobile app simplifies financial education through intuitive swipe gestures and interactive modules. Users build sound money management skills in budgeting, saving, and investing, guided by personalized recommendations. Extensive user research ensures an engaging and effective learning experience.</p>
       </section>
       <section>
         <h2>Project Overview</h2>
         <TwoColumn>
           <div>
             <h3>The Challenge</h3>
-            <p>Amidst the burgeoning demand for financial literacy resources, our challenge was to craft an intuitive and engaging platform that educates users on effective money management practices through an intuitive swipe-gesture-based interaction paradigm. This endeavor necessitated the development of an app that simplifies complex financial concepts and fosters learning through interactive and user-friendly features.</p>
+            <p>Create an intuitive platform for financial literacy education.</p>
           </div>
           <div>
             <h3>The Solution</h3>
-            <p>Our solution revolves around the creation of a mobile app with a user-centric interface designed to guide users through a comprehensive range of financial topics using intuitive swipe gestures. Through interactive modules and tools, our app empowers users to master essential financial skills such as budgeting, saving, and investing, while also providing personalized recommendations and feedback to facilitate informed decision-making.</p>
+            <p>Mobile app with swipe gestures, interactive modules, and personalized recommendations.</p>
           </div>
         </TwoColumn>
       </section>
       <section>
         <h2>My Process</h2>
         <ThreeColumnBlocks>
-          <div className='block'>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            className='block'
+          >
             <div className='title'>
               <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.9853 10.1542C11.8589 10.0699 11.7114 10.091 11.6061 10.1753C10.5529 10.9546 9.26804 11.3969 7.85677 11.3969C6.4455 11.3969 5.16061 10.9335 4.10743 10.1753C4.00211 10.091 3.8336 10.091 3.72828 10.1542C1.24276 11.755 0 14.8935 0 18.4954C0 20.9809 15.7135 20.9809 15.7135 18.4954C15.7135 14.8935 14.4708 11.755 11.9853 10.1542Z" fill="black"/>
@@ -185,20 +135,30 @@ const CaseStudyLevelUp = () => {
               <h4>User-Centric Approach</h4>
             </div>
             <p>Understanding our users' needs is key. We empathize with their financial challenges and design features that resonate with their unique goals.  The app's core focuses on essential features for effective learning.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
+                <path d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
+                <path d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
+                <path d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
+                <path d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
               </svg>
               <h4>Information Architecture</h4>
             </div>
             <p>We prioritized a user-centric design. The app's navigation is structured for seamless access to educational resources, ensuring a smooth learning experience.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.4 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.4531 12.1602L5.48508 13.1922C5.69569 13.4028 5.69569 13.7609 5.48508 13.9715C5.37978 14.0768 5.25341 14.1189 5.10599 14.1189C4.95856 14.1189 4.81114 14.0768 4.72689 13.9715L3.69491 12.9395L2.41019 14.2242L3.44218 15.2562C3.65279 15.4668 3.65279 15.8248 3.44218 16.0354C3.33687 16.1408 3.21051 16.1829 3.06308 16.1829C2.91566 16.1829 2.78929 16.1197 2.68399 16.0354L1.63094 14.9824L0.598958 16.0144C0.240923 16.3724 0.240923 16.9621 0.620019 17.3202L3.37899 20.0791C3.56854 20.2476 3.80021 20.3529 4.03188 20.3529C4.26355 20.3529 4.49522 20.2687 4.68477 20.0791L10.0132 14.7507L5.92736 10.686L4.4531 12.1602Z" fill="black"/>
@@ -210,7 +170,7 @@ const CaseStudyLevelUp = () => {
               <h4>Visual Design</h4>
             </div>
             <p>The app's design is visually engaging and fosters comprehension. We use clear icons, readable fonts, and captivating visuals to create an interface that complements user interaction and enhances learning.</p>
-          </div>
+          </motion.div>
         </ThreeColumnBlocks>
       </section>
       <section>
@@ -222,9 +182,15 @@ const CaseStudyLevelUp = () => {
       </section>
       <section>
         <TwoColumn>
-          <div>
+          <motion.div
+              ref={refAnatomy}
+              initial={{ x: '-100%', opacity: 0 }}
+              animate={AnatomyisInView ? { x: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              className='center'
+          >
             <img src="./img/casestudies/levelup/componentNotation.png" alt="Component notation" />
-          </div>
+          </motion.div>
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <h2>Anatomy of a Course</h2>
             <p>Each callout type (quiz, Did you know?, recap, and task/activity) has a unique icon and color-coded border for easy recognition. We designed them to be minimal and helpful, guiding your learning without being overwhelming.</p>
@@ -285,10 +251,9 @@ const CaseStudyLevelUp = () => {
       </section>
       <section>
         <h2>Conclusion</h2>
-        <p>This case study showcased a glimpse into a meticulously designed mobile app, intended to empower users through interactive journeys towards financial well-being.  We explored four key user journeys: "Determining Your Monthly Income", "Explore Budget Tracking Options", "Classifying Needs vs Wants", and "Listing Your Goals".  Each journey utilized a blend of clear introductions, interactive exercises, and engaging visuals to guide users on their path to financial literacy.</p>
-        <p>In addition to the user journeys, we also presented a comprehensive user story that outlined the overall app experience, and a component breakdown that detailed the individual elements used to construct the course lesson pages.  While the app itself wasn't brought to life, this case study demonstrates the power of user-centered design in crafting intuitive and engaging educational experiences.  The design principles and interactive elements explored here can be valuable tools for any project aiming to empower users through knowledge and understanding.</p>
+        <p>I UX-engineered a mobile app prototype to gamify financial literacy. Users embark on interactive journeys like "Budget Tracking Bootcamp" and "Needs vs. Wants Showdown." Clear intros, engaging visuals, and fun exercises guide them towards financial well-being.  This case study highlights the power of UX design in crafting educational experiences that are both informative and delightful!</p>
       </section>
-    </CaseStudyContainer>
+    </CaseStudyStyle.CaseStudyContainer>
   </div>
 };
 

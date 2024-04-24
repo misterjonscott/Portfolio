@@ -4,40 +4,13 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import styled, { ThemeProvider, css, createGlobalStyle } from 'styled-components';
+import { lightTheme, darkTheme } from './theme';
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 
-const lightTheme = {
-  body: '#ffffff',
-  text: '#333333',
-  background: {
-    color: '#fff',
-    image: 'none',
-    size: '0',
-    attachment: 'initial',
-    animation: 'unset'
-  },
-};
-
-const darkTheme = {
-  body: '#333333',
-  text: '#ffffff',
-  background: {
-    color: 'unset',
-    image: 'var(--gradient)',
-    size: '400%',
-    attachment: 'fixed',
-    animation: 'bg-animation 20s infinite alternate'
-  },
-};
-
 // Define global styles
 const GlobalStyle = createGlobalStyle`
-  :root {
-    --gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,9,121,1) 35%, rgba(0,0,0,1) 100%);
-  }
-
   body {
     margin: 0;
     padding: 0;
@@ -65,22 +38,15 @@ const GlobalStyle = createGlobalStyle`
     `}
     line-height: 1.5em;
   }
-
-  @keyframes bg-animation {
-    0% {background-position: left;}
-    100% {background-position: right;}
-  }
 `;
 
 const PageContainer = styled.div`
-  padding: 1em;
   align-items: center;
-  margin: 70px auto 0;
+  margin: 6em auto 0;
   line-height: 1.5em;
-  max-width: 1000px;
-  display: flex; /* Enable flexbox on the main container */
-  min-height: 100vh; /* Set minimum height to viewport height */
-  flex-direction: column; /* Stack elements vertically */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased; /* For Chrome, Safari, and newer versions of Edge */
   -moz-osx-font-smoothing: grayscale; /* For older versions of Firefox on macOS */
@@ -95,12 +61,10 @@ const PageContainer = styled.div`
 
 // Lazy-loaded components
 const AboutMe = React.lazy(() => import('./components/AboutMe'));
-const DesignProcess = React.lazy(() => import('./components/DesignProcess'));
+const Design = React.lazy(() => import('./components/Design'));
 const Gallery = React.lazy(() => import('./components/Gallery'));
 const PageWithCaseStudy = React.lazy(() => import('./components/CaseStudyPage'));
-const DesignArtifacts = React.lazy(() => import('./components/DesignArtifacts'));
 const Code = React.lazy(() => import('./components/Code'));
-const Recommendations = React.lazy(() => import('./components/Recommendations'));
 const CaseStudySkillable = React.lazy(() => import('./components/CaseStudySkillable'));
 const CaseStudySharpen = React.lazy(() => import('./components/CaseStudySharpen'));
 const CaseStudyIndigo = React.lazy(() => import('./components/CaseStudyIndigo'));
@@ -128,18 +92,16 @@ const App = () => {
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <ErrorBoundary>
           <GlobalStyle theme={theme === 'dark' ? darkTheme : lightTheme} $isresumepage={isresumepage} />
-          {!isresumepage && <Header toggleTheme={toggleTheme} />}
+          {!isresumepage && <Header toggleTheme={toggleTheme} theme={theme} />}
           <PageContainer $isresumepage={isresumepage}>
             <Suspense>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about-me" element={<AboutMe />} />
-                <Route path="/design-process" element={<DesignProcess />} />
+                <Route path="/design" element={<Design />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/case-study" element={<PageWithCaseStudy />} />
-                <Route path="/design-artifacts" element={<DesignArtifacts />} />
                 <Route path="/code" element={<Code />} />
-                <Route path="/recommendations" element={<Recommendations />} />
                 <Route path="/skillable-case-study" element={<CaseStudySkillable />} />
                 <Route path="/sharpen-case-study" element={<CaseStudySharpen />} />
                 <Route path="/indigo-case-study" element={<CaseStudyIndigo />} />

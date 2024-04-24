@@ -3,9 +3,18 @@ import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
 
 const DesignArtifactsContainer = styled.div`
+  max-width: ${props => props.theme.pageWidth};
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    color: ${props => props.theme.text};
+  }
+`;
+
+const DesignArtifactsDisplay = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 8em;
+  margin-bottom: 2em;
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
   }
@@ -121,9 +130,9 @@ const DesignArtifacts = () => {
   };
 
   return (
-    <div id="design-artifacts">
-      <h1>Boosting Efficiency and Design Consistency<br />The Power of UX Design Libraries</h1>
-      <DesignArtifactsContainer>
+    <DesignArtifactsContainer id="design-artifacts">
+      <h1>Leveraging Design Libraries</h1>
+      <DesignArtifactsDisplay>
         <DesignArtifactsTextContainer>
           <AccordionContainer>
             <>
@@ -146,8 +155,8 @@ const DesignArtifacts = () => {
             <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/components.png" />
             <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/icons.png" />
         </DesignArtifactsGraphicContainer>
-      </DesignArtifactsContainer>
-    </div>
+      </DesignArtifactsDisplay>
+    </DesignArtifactsContainer>
   );
 };
 

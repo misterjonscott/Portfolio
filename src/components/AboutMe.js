@@ -3,38 +3,57 @@ import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
 import { TdButton } from './Elements';
 import ReactGA from "react-ga4";
+import Recommendations from './Recommendations';
+
+const Headline = styled.h1`
+  font-size: 4em;
+  margin: 0;
+  color: ${props => props.theme.text};
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 2em;
+    margin: 0 0.5em;
+  }
+`;
+
+const ContentContainer = styled.div`
+  max-width: ${props => props.theme.pageWidth};
+  background-color: #fff;
+  border-radius: ${props => props.theme.smallBorderRadius};
+  margin-bottom: 2em;
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 1em;
+  }
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    color: ${props => props.theme.alternateText};
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 2em;
+    }
+  }
+  h2 {
+    color: ${props => props.theme.alternateText};
+    text-align: left;
+  }
+`;
 
 const AboutMeContainer = styled.div`
-  margin-top: 50px;
-  margin-bottom: 200px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
-  @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-  }
+  padding: 1em;
 `;
 
-const TextBubble = styled.div`
-  width: calc(100% - 2em);
-  flex: 1;
-  @media (max-width: ${breakpoints.mobile}) {
-    width: 100%;
-  }
+const MoreAboutMeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Text = styled.div`
-  border-radius: ${props => props.theme.smallBorderRadius};
-  background-color: #fff;
-  color: #666;
-  padding: 0.5em 1em;
-  position: relative;
-  h1 {
-    color: #666;
-    margin: 0;
-  }
-
+const AboutMeDescription = styled.div`
   // Design text
   .design-container {
     position: relative;
@@ -90,33 +109,15 @@ const Text = styled.div`
     50% { opacity: 0; }
     100% { opacity: 1; }
   }
-
-  &:after {
-    content: '';
-    top: 10em;
-    right: -35px;
-    position: absolute;
-    border: 0px solid;
-    display: block;
-    width: 38px;
-     height: 26px;
-    background-color: transparent;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    box-shadow: -21px 9px 0px 8px #fff;
-    z-index: -1;
-    @media (max-width: ${breakpoints.mobile}) {
-      bottom: -13px;
-      top: unset;
-      transform: scaleX(-1);
-      right: 55px;
-    }
-}
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+  }
 `;
 
 const AboutMeText = styled.div`
   border: 1px solid #eee;
   padding: 0 1em;
+  margin-top: 1em;
   &::before {
     content: "Thank you!";
     position: absolute;
@@ -142,29 +143,14 @@ img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    outline: 8px solid ${props => props.theme.primaryColor};
+    outline-offset: -2px;
   }
 `;
 
 const LearnMoreAboutMe = styled(TdButton)`
   display: ${(props) => (props['data-islearnmorevisible'] ? 'none' : 'inline-block')};
 `;
-
-const Greeting = () => {
-  // Get current hour
-  const currentHour = new Date().getHours();
-  // Define greeting based on time of day
-  let greeting;
-  if (currentHour >= 5 && currentHour < 12) {
-    greeting = 'good morning';
-  } else if (currentHour >= 12 && currentHour < 18) {
-    greeting = 'good afternoon';
-  } else if (currentHour >= 18 || currentHour < 5) {
-    greeting = 'good evening';
-  } else {
-    greeting = 'good night';
-  }
-  return greeting;
-};
 
 const AboutMe = () => {
   const [isLearnMoreVisible, setLearnMoreVisible] = useState(false);
@@ -173,44 +159,46 @@ const AboutMe = () => {
   };
 
   return <div>
-    <AboutMeContainer>
-      <TextBubble>
-        <Text>
-          <h1>Hello and <Greeting />,</h1>
-          <p>I'm <strong>Jon Scott</strong>, a versatile UX designer with a background in both <span className='design-container'>
-            <span className="square top-left"></span>
-            <span className="square top-right"></span>
-            <span className="square bottom-left"></span>
-            <span className="square bottom-right"></span>design</span>
-             and
-             <span className='syntax-highlight'>development.</span>
-             I bring a unique perspective to every project, blending visual creativity with technical expertise to craft user-centric solutions.</p>
-          <p>This allows me to seamlessly bridge the gap between conceptualizing user experiences, implementing them in functional prototypes, and handing these finished designs off with full documentation to aid in the development process.</p>
-          <p>Whether it's wireframing intuitive concepts or prototyping innovative fully clickable interfaces, I thrive on turning ideas into engaging digital experiences.</p>
+    <Headline>Howdy!</Headline>
+    <ContentContainer>
+      <AboutMeContainer id='AboutMeContainer'>
+          <AboutMeDescription>
+            <p>I'm <strong>Jon Scott</strong>, a versatile UX Engineer with a background in <span className='design-container'>
+              <span className="square top-left"></span>
+              <span className="square top-right"></span>
+              <span className="square bottom-left"></span>
+              <span className="square bottom-right"></span>design</span>
+                and
+                <span className='syntax-highlight'>development.</span>
+            I bring a unique perspective to every project, blending visual creativity with technical expertise to craft user-centric solutions.</p>
+            <p>I'm your UX wingman, here to translate ideas into engaging digital adventures. Bonus points: I don't speak in confusing developer jargon. I can turn user journeys into awesome digital experiences. Plus, I write crystal-clear documentation, so no one gets lost along the way.</p>
+          </AboutMeDescription>
+          <Picture>
+            <img src="./img/JonScott-2.png" alt="A photograph of my face" />
+          </Picture>
+        </AboutMeContainer>
+        <MoreAboutMeContainer id='MoreAboutMeContainer'>
           <p style={{ textAlign: 'center' }}>
-          <LearnMoreAboutMe data-islearnmorevisible={isLearnMoreVisible} onClick={() => {
-            toggleLearnMore();
-            ReactGA.event({
-              category: 'Home',
-              action: 'About Me',
-              label: 'About Me Click'
-            });
-          }}>Want to learn more about me?</LearnMoreAboutMe>
-          </p>
-          {isLearnMoreVisible && (
-            <AboutMeText>
-              <p>I began my professional journey crafting elegant solutions in PHP, leveraging clean and minimalist code to develop intuitive ecommerce interfaces for retailers and bespoke WordPress plugins tailored for bloggers' unique needs.</p>
-              <p>I've dabbled in various multimedia arts, and designed artwork for everything from convention flyers to billboards.  I've steered code repositories, guided teams to success, and championed user-centric design principles at every turn. While I've had numerous enriching experiences in my career, I'm particularly thrilled by the prospect of new challenges and accomplishments on the horizon.</p>
-              <p>When I'm not at work on a design, I'm often at a workbench repairing electronic devices, or out in the garage working on our family's aging fleet of vehicles.  I have a lifelong love of drawing, sculpting and painting exceeded only by my passion to figure out how things work and how they could be improved.</p>
-              <p>Thank you for taking the time to discover more about me, and I hope I can return the favor.</p>
-            </AboutMeText>
-          )}
-        </Text>
-      </TextBubble>
-      <Picture>
-        <img src="./img/JonScott-2.png" alt="A photograph of my face" />
-      </Picture>
-    </AboutMeContainer>
+            <LearnMoreAboutMe onClick={() => {
+              toggleLearnMore();
+              ReactGA.event({
+                category: 'Home',
+                action: 'About Me',
+                label: 'About Me Click'
+              });
+            }}>{isLearnMoreVisible ? 'Hide Details' : 'Want to learn more about me?'}</LearnMoreAboutMe>
+            </p>
+            {isLearnMoreVisible && (
+              <AboutMeText>
+                <p>I began my professional journey crafting elegant solutions in PHP, leveraging clean and minimalist code to develop intuitive ecommerce interfaces for retailers and bespoke WordPress plugins tailored for bloggers' unique needs.</p>
+                <p>I've dabbled in various multimedia arts, and designed artwork for everything from convention flyers to billboards.  I've steered code repositories, guided teams to success, and championed user-centric design principles at every turn. While I've had numerous enriching experiences in my career, I'm particularly thrilled by the prospect of new challenges and accomplishments on the horizon.</p>
+                <p>When I'm not at work on a design, I'm often at a workbench repairing electronic devices, or out in the garage working on our family's aging fleet of vehicles.  I have a lifelong love of drawing, sculpting and painting exceeded only by my passion to figure out how things work and how they could be improved.</p>
+                <p>Thank you for taking the time to discover more about me, and I hope I can return the favor.</p>
+              </AboutMeText>
+            )}
+        </MoreAboutMeContainer>
+    </ContentContainer>
+    <Recommendations />
   </div>
 };
 

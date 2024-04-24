@@ -2,17 +2,30 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
+import { navigationItems } from './navigationDetails';
 import ReactGA from "react-ga4";
 
 const MobileMenuIcon = styled.div`
   cursor: pointer;
   display: none;
-  font-size: 1.5em;
-
-  @media (max-width: ${breakpoints.mobile}) {
+  fill: ${props => props.theme.text};
+  @media (max-width: ${breakpoints.tablet}) {
     display: block;
     margin: 1em;
   }
+`;
+
+const HeaderButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const MobileMenubuttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
 
 const MobileMenu = styled.div`
@@ -32,12 +45,9 @@ const MobileMenu = styled.div`
 `;
 
 const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  cursor: pointer;
   background-color: transparent;
   border: none;
-  cursor: pointer;
 `;
 
 const CloseIcon = styled.span`
@@ -74,6 +84,7 @@ const NavItem = styled(Link)`
   &.active {
     background-color: ${props => props.theme.primaryPurple};
     border-radius: ${props => props.theme.bigBorderRadius};
+    color: ${props => props.theme.white};
   }
 `;
 
@@ -98,7 +109,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   padding: 0 1em;
-  color: #fff;
+  color: ${props => props.theme.white};;
   position: fixed;
   transition: top 0.5s ease, background-color 0.5s ease; /* Added background-color transition */
   top: 0;
@@ -110,12 +121,15 @@ const HeaderContainer = styled.div`
     top: -90px;
     transition: top 0.5s ease, background-color 0.5s ease; /* Added background-color transition */
     background-color: rgba(0, 0, 0, 0.75);
+    a {
+      color: ${props => props.theme.white};
+    }
   }
   &.show-header {
     top: 0;
     transition: top 0.5s ease;
   }
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.tablet}) {
     left: 0;
     transform: unset;
     padding: 0;
@@ -129,33 +143,21 @@ const Logo = styled.div`
   font-size: 24px;
   font-weight: bold;
   margin: 0 0 0 1em;
+  img {
+    width: 150px;
+  }
 `;
 
 const ThemeButton = styled.button`
-  background-color: ${props => props.theme.body};
-  color: ${props => props.theme.text};
+  background-color: transparent;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 0;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.3s, color 0.3s;
+  margin-right: 1em;
 `;
 
-const Header = ({ toggleTheme }) => {
-
-  const navigationItems = [
-    { label: 'Home', path: '/', eventLabel: 'Home' },
-    { label: 'Design Process', path: '/design-process', eventLabel: 'Design Process' },
-    { label: 'Case Studies', path: '/case-study', eventLabel: 'Case Studies' },
-    { label: 'Project Highlights', path: '/gallery', eventLabel: 'Project Highlights' },
-    { label: 'Design Systems', path: '/design-artifacts', eventLabel: 'Design Systems' },
-    { label: 'UI Development', path: '/code', eventLabel: 'UI Development' },
-    { label: 'Recommendations', path: '/recommendations', eventLabel: 'Recommendations' },
-    { label: 'Contact', path: 'mailto:jon@workwithjonscott.com', eventLabel: 'Email' },
-  ];
-  
-
+const Header = ({ toggleTheme, theme }) => {
   const [additionalClass, setAdditionalClass] = useState(false);
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -200,20 +202,25 @@ const Header = ({ toggleTheme }) => {
   const location = useLocation();
 
   return (
-    <HeaderContainer className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
+    <HeaderContainer id='HeaderContainer' className={`${scrolled ? 'scrolled' : ''} ${additionalClass ? 'show-header' : ''}`}>
       <Logo>
-        <img id="Logo" src="./img/JonathonScottLogo.svg" alt="Jonathon Scott" />
+        <img id="Logo" src={theme === 'dark' ? "./img/JonathonScottLogo-dk.png" : "./img/JonathonScottLogo-lt.png"} alt="Jonathon Scott Logo" />
       </Logo>
-      <MobileMenuIcon onClick={toggleMobileMenu}>&#9776;</MobileMenuIcon>
       {isMobileMenuOpen && (
         <MobileMenu>
-          <CloseButton onClick={toggleMobileMenu}>
-            <CloseIcon />
-          </CloseButton>
+          <MobileMenubuttons>
+            <ThemeButton onClick={toggleTheme}>
+              <img id="Dark Mode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
+            </ThemeButton>
+            <CloseButton onClick={toggleMobileMenu}>
+              <CloseIcon />
+            </CloseButton>
+          </MobileMenubuttons>
           {navigationItems.map(item => (
             <MobileMenuItem
               key={item.label}
               to={item.path}
+              target={item.target}
               onClick={() => {
                 toggleMobileMenu();
                 ReactGA.event({
@@ -226,9 +233,6 @@ const Header = ({ toggleTheme }) => {
               {item.label}
             </MobileMenuItem>
           ))}
-          <ThemeButton onClick={toggleTheme}>
-            Toggle Dark Mode
-          </ThemeButton>
         </MobileMenu>
       )}
       <NavList>
@@ -237,6 +241,7 @@ const Header = ({ toggleTheme }) => {
             key={item.label}
             to={item.path}
             className={location.pathname === item.path ? 'active' : ''}
+            target={item.target}
             onClick={() => {
               ReactGA.event({
                 category: 'Desktop Navigation',
@@ -248,10 +253,19 @@ const Header = ({ toggleTheme }) => {
             {item.label}
           </NavItem>
         ))}
-        <ThemeButton onClick={toggleTheme}>
-          Toggle Dark Mode
-        </ThemeButton>
       </NavList>
+      <HeaderButtons>
+        <MobileMenuIcon onClick={toggleMobileMenu}>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 2C0 0.895431 0.895431 0 2 0H38C39.1046 0 40 0.895431 40 2V6C40 7.10457 39.1046 8 38 8H2C0.895431 8 0 7.10457 0 6V2Z" />
+          <path d="M0 34C0 32.8954 0.895431 32 2 32H38C39.1046 32 40 32.8954 40 34V38C40 39.1046 39.1046 40 38 40H2C0.895431 40 0 39.1046 0 38V34Z" />
+          <path d="M0 18C0 16.8954 0.895431 16 2 16H38C39.1046 16 40 16.8954 40 18V22C40 23.1046 39.1046 24 38 24H2C0.895431 24 0 23.1046 0 22V18Z" />
+        </svg>
+        </MobileMenuIcon>
+        <ThemeButton onClick={toggleTheme}>
+          <img id="Dark Mode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
+        </ThemeButton>
+      </HeaderButtons>
     </HeaderContainer>
   );
 };

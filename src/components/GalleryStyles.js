@@ -4,7 +4,7 @@ import { breakpoints } from '../breakpoints';
 const ArrowIcon = styled.svg`
   width: 21px;
   height: 36px;
-  fill: #333;
+  fill: ${props => props.theme.text};;
   cursor: pointer;
   opacity: 0.6;
   // margin-top: 20vh; /* This sets the margin-top to 20% of the viewport height */
@@ -14,15 +14,24 @@ const ArrowIcon = styled.svg`
 `;
 
 const arrowPath = (
-  <svg width="21" height="36" viewBox="0 0 21 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.2644 1.42418C18.5788 0.14045 20.8262 1.04964 20.8262 2.86511V33.7814C20.8262 35.5968 18.5788 36.506 17.2644 35.2223L1.43727 19.7642C0.622471 18.9684 0.622473 17.6781 1.43727 16.8823L17.2644 1.42418Z" fill="white"/>
+  <svg width="21" height="36" viewBox="0 0 21 36" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.2644 1.42418C18.5788 0.14045 20.8262 1.04964 20.8262 2.86511V33.7814C20.8262 35.5968 18.5788 36.506 17.2644 35.2223L1.43727 19.7642C0.622471 18.9684 0.622473 17.6781 1.43727 16.8823L17.2644 1.42418Z" />
   </svg>
 );
 
 const GalleryContainer = styled.div`
-  margin-bottom: 8em;
+  margin-bottom: 2em;
+  max-width: ${props => props.theme.pageWidth};
   @media (max-width: ${breakpoints.mobile}) {
     // padding-top: 8em;
+  }
+  h1 {
+    color: ${props => props.theme.text};
+    font-size: 4em;
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 2em;
+      margin-left: 1em;
+    }
   }
 `;
 
@@ -49,6 +58,7 @@ const GallerySection = styled.div`
     color: #333;
     font-size: 2em;
     align-self: flex-start;
+    margin: 0;
   }
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;

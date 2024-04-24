@@ -3,11 +3,41 @@ import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
 import ReactGA from "react-ga4";
 
-const CodeSection = styled.div`
+const ContentContainer = styled.div`
+  max-width: ${props => props.theme.pageWidth};
   background-color: #fff;
-  padding: 20px;
   border-radius: ${props => props.theme.smallBorderRadius};
-  margin-bottom: 8em;
+  margin-bottom: 2em;
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    color: ${props => props.theme.alternateText};
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 2em;
+    }
+  }
+  h2 {
+    color: ${props => props.theme.alternateText};
+    text-align: left;
+  }
+`;
+
+const CodePageContainer = styled.div`
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 1em;
+  }
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    color: ${props => props.theme.text};
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 2em;
+    }
+  }
+`;  
+
+const CodeSection = styled.div`
+  padding: 20px;
 `;
 
 const IdiomGen = styled.span`
@@ -64,10 +94,6 @@ const CodeBlockIcon = styled.img`
 
 const GitHubSection = styled.div`
   text-align: center;
-  h2 {
-    color: #333;
-    text-align: left;
-  }
 `;
 
 const GithubReview = styled.a`
@@ -110,72 +136,75 @@ const Code = () => {
     setCurrentTitle(newTitle);
   };
 
-  return <div id="code">
-    <h1>UI Development</h1>
-    <CodeSection>
-      <p>I've always been curious.  When I was <IdiomGen onClick={() => {
-            handleTitleClick();
-            ReactGA.event({
-              category: 'Code',
-              action: 'Idiomgen',
-              label: 'Idiomgen'
-            });
-          }}>{currentTitle}</IdiomGen> and very comfortable
-        with computers I discovered Q-Basic and gorilla.bas.  I couldn't tell what all those lines of code meant, but if I changed just the
-        right values, I could make a single banana crater the entire cityscape. </p>
-      <p>Some of the tools in my arsenal:</p>
-      <CodeBlocks>
-        <CodeBlock>
-          <CodeSpan>React.js</CodeSpan>
-          <CodeBlockIcon src="./img/react.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>Responsive Web Design</CodeSpan>
-          <CodeBlockIcon src="./img/responsive.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>HTML5 Semantic Markup</CodeSpan>
-          <CodeBlockIcon src="./img/html5.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>CSS Flexbox and Grid Layouts</CodeSpan>
-          <CodeBlockIcon src="./img/grid.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>Web Accessibility (A11y)</CodeSpan>
-          <CodeBlockIcon src="./img/accessibility.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>Git Version Control</CodeSpan>
-          <CodeBlockIcon src="./img/git.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>Webpack and Build Tools</CodeSpan>
-          <CodeBlockIcon src="./img/webpack.svg" />
-        </CodeBlock>
-        <CodeBlock>
-          <CodeSpan>Debugging and DevTools Proficiency</CodeSpan>
-          <CodeBlockIcon src="./img/debug.svg" />
-        </CodeBlock>
-      </CodeBlocks>
-      <GitHubSection>
-        <GithubReview href="https://github.com/misterjonscott/Portfolio/" onClick={() => {
-            ReactGA.event({
-              category: 'Code',
-              action: 'Github Link',
-              label: 'Github Link'
-            });
-          }}>
-            <img src="img/github.svg" alt="Github Octocat" />
-            <span>Wanna see the source of this site?</span>
-        </GithubReview>
-        <GitFlowProcess>
-          <h2>My Ideal Git Workflow</h2>
-          <img src='./img/GitBranching.png' alt='git flow or something' />
-        </GitFlowProcess>
-      </GitHubSection>
-    </CodeSection>
-    </div>;
+  return <CodePageContainer id='CodePageContainer'>
+    <h1>Code (I love to write it)</h1>
+    <ContentContainer id='ContentContainer'>
+      <CodeSection id='CodeSection'>
+        <h2 style={{ color: '#333' }}>What's This Code Business?</h2>
+        <p>I've always been curious.  When I was <IdiomGen onClick={() => {
+              handleTitleClick();
+              ReactGA.event({
+                category: 'Code',
+                action: 'Idiomgen',
+                label: 'Idiomgen'
+              });
+            }}>{currentTitle}</IdiomGen> and very comfortable
+          with computers I discovered Q-Basic and gorilla.bas.  I couldn't tell what all those lines of code meant, but if I changed just the
+          right values, I could make a single banana crater the entire cityscape. </p>
+        <p>Some of the tools in my arsenal:</p>
+        <CodeBlocks>
+          <CodeBlock>
+            <CodeSpan>React.js</CodeSpan>
+            <CodeBlockIcon src="./img/react.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>Responsive Web Design</CodeSpan>
+            <CodeBlockIcon src="./img/responsive.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>HTML5 Semantic Markup</CodeSpan>
+            <CodeBlockIcon src="./img/html5.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>CSS Flexbox and Grid Layouts</CodeSpan>
+            <CodeBlockIcon src="./img/grid.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>Web Accessibility (A11y)</CodeSpan>
+            <CodeBlockIcon src="./img/accessibility.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>Git Version Control</CodeSpan>
+            <CodeBlockIcon src="./img/git.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>Webpack and Build Tools</CodeSpan>
+            <CodeBlockIcon src="./img/webpack.svg" />
+          </CodeBlock>
+          <CodeBlock>
+            <CodeSpan>Debugging and DevTools Proficiency</CodeSpan>
+            <CodeBlockIcon src="./img/debug.svg" />
+          </CodeBlock>
+        </CodeBlocks>
+        <GitHubSection>
+          <GithubReview href="https://github.com/misterjonscott/Portfolio/" target="_blank" onClick={() => {
+              ReactGA.event({
+                category: 'Code',
+                action: 'Github Link',
+                label: 'Github Link'
+              });
+            }}>
+              <img src="img/github.svg" alt="Github Octocat" />
+              <span>Wanna see the source of this site?</span>
+          </GithubReview>
+          <GitFlowProcess>
+            <h2 style={{ color: '#333' }}>My Ideal Git Workflow</h2>
+            <img src='./img/GitBranching.png' alt='git flow or something' />
+          </GitFlowProcess>
+        </GitHubSection>
+      </CodeSection>
+      </ContentContainer>
+    </CodePageContainer>;
 };
 
 export default Code;

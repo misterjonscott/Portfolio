@@ -1,74 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoints } from '../breakpoints';
-import { Link } from 'react-router-dom';
-
-const CaseStudyHeader = styled.div`
-  display: flex;
-  margin-bottom: 2em;
-  @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-  }
-  #brand {
-    width: 315px;
-    @media (max-width: ${breakpoints.mobile}) {
-      margin: 0 auto;
-    }
-  }
-  #title {
-    flex-grow: 1;
-    padding-left: 1em;
-    @media (max-width: ${breakpoints.mobile}) {
-      padding-left: 0;
-    }
-    h1 {
-      font-size: 2em;
-      margin: 0;
-    }
-  }
-`;
-
-const BackLink = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-  svg {
-    padding-right: 0.25em;
-  }
-`;
-
-const Tags = styled.div`
-  margin-top: 0.5em;
-`;
-
-
-const Tag = styled.span`
-  background-color: ${props => props.theme.primaryPurple};
-  color: #fff;
-  border-radius: ${props => props.theme.smallBorderRadius};
-  padding: 0.5em;
-  margin-right: 0.25em;
-`;
-
-const CaseStudyContainer = styled.div`
-  background-color: #fff;
-  padding: 20px;
-  border-radius: ${props => props.theme.bigBorderRadius};
-  h2, h3, p {
-    color: #333;
-    margin: 0 0 0.5em;
-  }
-  section {
-    margin-bottom: 3em;
-  }
-  img {
-    @media (max-width: ${breakpoints.mobile}) {
-      width: 100%;
-    }
-  }
-  div.center {
-    text-align: center;
-  }
-`;
+import { breakpoints, linebreak } from '../breakpoints';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import * as CaseStudyStyle from './CaseStudyStyles';
 
 const TwoColumn = styled.div`
   display: flex;
@@ -137,25 +72,41 @@ const ThreeColumnBlocks = styled.div`
 `;
 
 const CaseStudyIndigo = () => {
+
+  const [refRemodel, RemodelisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.2,
+  });
+
+  const [refConclusion, ConclusionisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.2,
+  });
+
   return <div>
-    <CaseStudyHeader>
-      <div id="brand">
-        <img src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" />
-      </div>
+    <CaseStudyStyle.CaseStudyHeader>
       <div id="title">
-        <h1>Bioscience UX Case Study</h1>
-        <BackLink to='/case-study'>
-          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" fill="white"/>
+        <h1>Bioscience w/Ease</h1>
+        <CaseStudyStyle.BackLink to='/case-study'>
+          <svg width="6" height="10" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" />
           </svg>
           Back to Case Studies
-        </BackLink>
-        <Tags>
-          <Tag>UX Designer</Tag><Tag>Print Designer</Tag>
-        </Tags>
+        </CaseStudyStyle.BackLink>
+        <CaseStudyStyle.Tags>
+          <CaseStudyStyle.Tag>UX Designer</CaseStudyStyle.Tag> <CaseStudyStyle.Tag>Print Designer</CaseStudyStyle.Tag>
+        </CaseStudyStyle.Tags>
       </div>
-    </CaseStudyHeader>
-    <CaseStudyContainer>
+      <motion.div
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        id='brand'
+      >
+        <img src="./img/casestudies/CaseStudyIndigoActive.png" alt="Indigo Case Study Active" />
+      </motion.div>
+    </CaseStudyStyle.CaseStudyHeader>
+    <CaseStudyStyle.CaseStudyContainer>
       <section>
         <h2>Introduction</h2>
         <p>Indigo's primary product reads the output from Mass Spectrometry machines, and delivers human-readable results without the training required to read and analyze the test results without years of medical training.  Unfortunately, while the software's capability was amazing, accurate and much faster than human review, it was also difficult to use and properly configure.</p>
@@ -176,7 +127,12 @@ const CaseStudyIndigo = () => {
       <section>
         <h2>My Process</h2>
         <ThreeColumnBlocks>
-          <div className='block'>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            className='block'
+          >
             <div className='title'>
               <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.9853 10.1542C11.8589 10.0699 11.7114 10.091 11.6061 10.1753C10.5529 10.9546 9.26804 11.3969 7.85677 11.3969C6.4455 11.3969 5.16061 10.9335 4.10743 10.1753C4.00211 10.091 3.8336 10.091 3.72828 10.1542C1.24276 11.755 0 14.8935 0 18.4954C0 20.9809 15.7135 20.9809 15.7135 18.4954C15.7135 14.8935 14.4708 11.755 11.9853 10.1542Z" fill="black"/>
@@ -187,20 +143,30 @@ const CaseStudyIndigo = () => {
             <p>I met with all internal stakeholders possible, many of whom had worked in the field and had a deep understanding of the process such that they could explain it to me.  </p>
 
             <p>I was also able to interview current users of the system to learn what they wanted, what they expected, and best of all what they thought they'd like to see.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
+                <path d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
+                <path d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
+                <path d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
+                <path d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
               </svg>
               <h4>Information Architecture</h4>
             </div>
             <p>Because this process was somewhat complex to configure, we'll break it into simpler steps.  We can't simply make a step-by-step list, though, so we need to group or eliminate steps wherever possible.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.4 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.4531 12.1602L5.48508 13.1922C5.69569 13.4028 5.69569 13.7609 5.48508 13.9715C5.37978 14.0768 5.25341 14.1189 5.10599 14.1189C4.95856 14.1189 4.81114 14.0768 4.72689 13.9715L3.69491 12.9395L2.41019 14.2242L3.44218 15.2562C3.65279 15.4668 3.65279 15.8248 3.44218 16.0354C3.33687 16.1408 3.21051 16.1829 3.06308 16.1829C2.91566 16.1829 2.78929 16.1197 2.68399 16.0354L1.63094 14.9824L0.598958 16.0144C0.240923 16.3724 0.240923 16.9621 0.620019 17.3202L3.37899 20.0791C3.56854 20.2476 3.80021 20.3529 4.03188 20.3529C4.26355 20.3529 4.49522 20.2687 4.68477 20.0791L10.0132 14.7507L5.92736 10.686L4.4531 12.1602Z" fill="black"/>
@@ -214,14 +180,20 @@ const CaseStudyIndigo = () => {
             <p>While there were few restrictions on the visual styling of this interface, it must look approachable to people without specialized medical training. </p>
 
             <p>Ideally we want this to look simple, while being deeply complex behind the scenes.</p>
-          </div>
+          </motion.div>
         </ThreeColumnBlocks>
       </section>
       <section>
         <h2>Remodeling the Dashboard</h2>
-        <div className='center'>
-              <img src="./img/casestudies/indigo/dashboardBeforeAndAfter.png" alt="Dashboard before and after" />
-        </div>
+        <motion.div
+            ref={refRemodel}
+            initial={{ y: '100%', opacity: 0 }}
+            animate={RemodelisInView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            className='center'
+        >
+          <img src="./img/casestudies/indigo/dashboardBeforeAndAfter.png" alt="Dashboard before and after" />
+        </motion.div>
       </section>
       <section>
         <h2>Reduce Clutter, Direct Attention</h2>
@@ -257,9 +229,15 @@ const CaseStudyIndigo = () => {
       <section>
         <h2>Dashboard Conclusion</h2>
         <p>Overall the dashboard appears much more professional and polished, making it easier to get work done.  Filtering is simplified, unnecessary results are hidden, and color coding is used to highlight the batches that require immediate attention.  This redesigned dashboard contains all of the same information, but in a much more approachable and finished format that users absolutely loved. </p>
-        <div className='center'>
-              <img src="./img/casestudies/indigo/dashboardConclusion.png" alt="Dashboard before and after" />
-        </div>
+        <motion.div
+            ref={refConclusion}
+            initial={{ y: '100%', opacity: 0 }}
+            animate={ConclusionisInView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            className='center'
+        >
+          <img src="./img/casestudies/indigo/dashboardConclusion.png" alt="Dashboard before and after" />
+        </motion.div>
       </section>
       <section>
         <h2>Controlling the Flow</h2>
@@ -284,8 +262,10 @@ const CaseStudyIndigo = () => {
               <img src="./img/casestudies/indigo/indigoBranding.png" alt="Indigo Branding" />
               <linebreak />
               <p>I created these and other video assets, for various uses as well.  I'm sharing them because I loved animating these isometric designs.</p>
-              <img src="./img/casestudies/indigo/IndigoComputer.gif" alt="Indigo Computer Animation" />
-              <img src="./img/casestudies/indigo/IndigoServer.gif" alt="Indigo Server Animation" />
+              <div className='center'>
+                <img src="./img/casestudies/indigo/IndigoComputer.gif" alt="Indigo Computer Animation" />
+                <img src="./img/casestudies/indigo/IndigoServer.gif" alt="Indigo Server Animation" />
+              </div>
         </div>
       </section>
       <section>
@@ -326,7 +306,7 @@ const CaseStudyIndigo = () => {
         <h2>Conclusion</h2>
         <p>Decoding the results of a complex medical testing process is no easy task, even when you've created software that can decode those results very quickly.  My changes resulted in a much easier, and more approachable, system that no longer required the valuable time of trained medical staff for initial review, allowing doctors to focus on other tasks, only addressing the most confusing of results.</p>
       </section>
-    </CaseStudyContainer>
+    </CaseStudyStyle.CaseStudyContainer>
   </div>
 };
 

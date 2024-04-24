@@ -1,9 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
+import { motion } from 'framer-motion';
 
 const RecommendationContainer = styled.div`
-  margin-bottom: 8em;
+  margin-bottom: 2em;
+  max-width: ${props => props.theme.pageWidth};
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    color: ${props => props.theme.text};
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 2em;
+      margin-top: 2em;
+    }
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 1em;
+  }
 `;
 
 const RecommendationBoxContainer = styled.div`
@@ -87,17 +101,23 @@ const recommendations = [
 
 const Recommendations = () => {
   return <div id="recommendations">
-    <h1>Recommendations</h1>
     <RecommendationContainer>
+      <h1>Recommendations</h1>
       {recommendations.map((recommendation, index) => (
-        <RecommendationBoxContainer key={index}>
-          <RecommendationBox>
-            <RecommendationBy>{recommendation.name}</RecommendationBy>
-            <RecommendationTitle>{recommendation.title}</RecommendationTitle>
-            <RecommendationQuote>{recommendation.quote}</RecommendationQuote>
-          </RecommendationBox>
-          <RecommendationPhoto src={recommendation.photo} alt="" />
-        </RecommendationBoxContainer>
+        <motion.div
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <RecommendationBoxContainer key={index}>
+            <RecommendationBox>
+              <RecommendationBy>{recommendation.name}</RecommendationBy>
+              <RecommendationTitle>{recommendation.title}</RecommendationTitle>
+              <RecommendationQuote>{recommendation.quote}</RecommendationQuote>
+            </RecommendationBox>
+            <RecommendationPhoto src={recommendation.photo} alt="" />
+          </RecommendationBoxContainer>
+        </motion.div>
       ))}
     </RecommendationContainer>
     </div>;

@@ -1,45 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { breakpoints, linebreak } from '../breakpoints';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import * as CaseStudyStyle from './CaseStudyStyles';
 
 const BreakMobile = styled.br`
   /* Apply line break styles for mobile */
   ${linebreak.mobile}
 `;
 
-const CaseStudyHeader = styled.div`
-  display: flex;
-  margin-bottom: 2em;
-  @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-  }
-  #brand {
-    width: 315px;
-    @media (max-width: ${breakpoints.mobile}) {
-      margin: 0 auto;
-    }
-  }
-  #title {
-    flex-grow: 1;
-    padding-left: 1em;
-    @media (max-width: ${breakpoints.mobile}) {
-      padding-left: 0;
-    }
-    h1 {
-      font-size: 2em;
-      margin: 0;
-    }
-  }
-`;
-
-const BackLink = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-  svg {
-    padding-right: 0.25em;
-  }
-`;
 
 const CircleContainer = styled.div`
   display: inline-block;
@@ -51,36 +21,6 @@ const CircleContainer = styled.div`
   font-size: 20px;
   line-height: 30px;
   margin-right: 0.5em;
-`;
-
-const Tags = styled.div`
-  margin-top: 0.5em;
-`;
-
-
-const Tag = styled.span`
-  background-color: ${props => props.theme.primaryPurple};
-  color: #fff;
-  border-radius: ${props => props.theme.smallBorderRadius};
-  padding: 0.5em;
-`;
-
-const CaseStudyContainer = styled.div`
-  background-color: #fff;
-  padding: 20px;
-  border-radius: ${props => props.theme.bigBorderRadius};
-  h2, h3, p {
-    color: #333;
-    margin: 0 0 0.5em;
-  }
-  section {
-    margin-bottom: 3em;
-  }
-  img {
-    @media (max-width: ${breakpoints.mobile}) {
-      width: 100%;
-    }
-  }
 `;
 
 const TwoColumn = styled.div`
@@ -186,30 +126,45 @@ const PurpleBorder = styled.div`
 `;
 
 const CaseStudySharpen = () => {
+  const [refFlow, FlowisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+  });
+  const [refReporting, ReportingisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.2,
+  });
+  const [refFiltering, FilteringisInView] = useInView({
+      triggerOnce: true,
+      threshold: 0.2,
+  });
   return <div>
-    <CaseStudyHeader>
-      <div id="brand">
-        <img src="./img/casestudies/CaseStudySharpenActive.png" alt="Sharpen Case Study Active" />
-      </div>
+    <CaseStudyStyle.CaseStudyHeader id='CaseStudyHeader'>
       <div id="title">
-        <h1>Call Center Analytics Case Study</h1>
-        <BackLink to='/case-study'>
-          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" fill="white"/>
+        <h1>VoIP Analytics</h1>
+        <CaseStudyStyle.BackLink to='/case-study'>
+          <svg width="6" height="10" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.333008 5L5.33301 0V10L0.333008 5Z" />
           </svg>
           Back to Case Studies
-        </BackLink>
-        <Tags>
-          <Tag>UX Designer</Tag>
-        </Tags>
+        </CaseStudyStyle.BackLink>
+        <CaseStudyStyle.Tags>
+          <CaseStudyStyle.Tag>UX Designer</CaseStudyStyle.Tag>
+        </CaseStudyStyle.Tags>
       </div>
-    </CaseStudyHeader>
-    <CaseStudyContainer>
+      <motion.div
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        id='brand'
+      >
+        <img src="./img/casestudies/CaseStudySharpenActive.png" alt="Sharpen Case Study Active" />
+      </motion.div>
+    </CaseStudyStyle.CaseStudyHeader>
+    <CaseStudyStyle.CaseStudyContainer>
       <section>
         <h2>Introduction</h2>
-        <p>In the competitive landscape of customer service solutions, Sharpen's CCaaS (Contact Center as a Service) software stands out by embracing innovation and user-centric design. Sharpen's CCaaS software was created such that users could enjoy enhanced communication channels and productivity tools designed to streamline operations and elevate customer interactions.</p>
-
-        <p>By prioritizing user feedback, Sharpen's CCaaS software sets a new standard for contact center excellence with features that set them apart from other CC platforms.</p>
+        <p>Sharpen's CCaaS software cuts through the noise with user-centric design and innovative features.  Enhanced communication channels and productivity tools streamline operations, elevate customer interactions, and boost agent performance – all driven by prioritizing user feedback. This sets a new standard for contact center excellence.</p>
       </section>
       <section>
         <h2>Project Overview</h2>
@@ -227,7 +182,12 @@ const CaseStudySharpen = () => {
       <section>
         <h2>My Process</h2>
         <ThreeColumnBlocks>
-          <div className='block'>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            className='block'
+          >
             <div className='title'>
               <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.9853 10.1542C11.8589 10.0699 11.7114 10.091 11.6061 10.1753C10.5529 10.9546 9.26804 11.3969 7.85677 11.3969C6.4455 11.3969 5.16061 10.9335 4.10743 10.1753C4.00211 10.091 3.8336 10.091 3.72828 10.1542C1.24276 11.755 0 14.8935 0 18.4954C0 20.9809 15.7135 20.9809 15.7135 18.4954C15.7135 14.8935 14.4708 11.755 11.9853 10.1542Z" fill="black"/>
@@ -236,20 +196,30 @@ const CaseStudySharpen = () => {
               <h4>User-Centric Approach</h4>
             </div>
             <p>I empathize with the user, understanding what they need in order to call a job “well done”, and in this case that's easy access to quality assurance tools, without being overwhelmed by options.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
+                <path d="M2.66699 0.359558C1.56242 0.359558 0.666992 1.25499 0.666992 2.35956V9.69289C0.666992 10.7975 1.56242 11.6929 2.66699 11.6929H8.00033C9.10489 11.6929 10.0003 10.7975 10.0003 9.69289V2.35956C10.0003 1.25499 9.10489 0.359558 8.00033 0.359558H2.66699Z" fill="black"/>
+                <path d="M13.3337 20.3596C12.2291 20.3596 11.3337 19.4641 11.3337 18.3596V11.0262C11.3337 9.92166 12.2291 9.02623 13.3337 9.02623H18.667C19.7716 9.02623 20.667 9.92166 20.667 11.0262V18.3596C20.667 19.4641 19.7716 20.3596 18.667 20.3596H13.3337Z" fill="black"/>
+                <path d="M0.666992 15.0262C0.666992 13.9217 1.56242 13.0262 2.66699 13.0262H8.00033C9.10489 13.0262 10.0003 13.9217 10.0003 15.0262V18.3596C10.0003 19.4641 9.10489 20.3596 8.00033 20.3596H2.66699C1.56242 20.3596 0.666992 19.4641 0.666992 18.3596V15.0262Z" fill="black"/>
+                <path d="M13.3337 7.69289C12.2291 7.69289 11.3337 6.79746 11.3337 5.69289V2.35956C11.3337 1.25499 12.2291 0.359558 13.3337 0.359558H18.667C19.7716 0.359558 20.667 1.25499 20.667 2.35956V5.69289C20.667 6.79746 19.7716 7.69289 18.667 7.69289H13.3337Z" fill="black"/>
               </svg>
               <h4>Information Architecture</h4>
             </div>
             <p>I determine the MVP as an interface with the ability to capture the most critical details, realizing user feedback will inform our next features.  I'll create a checklist of the required features and critical “nice to haves” and ensure that we have all of them, but also design in such a way as to allow growth.</p>
-          </div>
-          <div className='block'>
+          </motion.div>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.4 }}
+            className='block'
+          >
             <div className='title'>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.4531 12.1602L5.48508 13.1922C5.69569 13.4028 5.69569 13.7609 5.48508 13.9715C5.37978 14.0768 5.25341 14.1189 5.10599 14.1189C4.95856 14.1189 4.81114 14.0768 4.72689 13.9715L3.69491 12.9395L2.41019 14.2242L3.44218 15.2562C3.65279 15.4668 3.65279 15.8248 3.44218 16.0354C3.33687 16.1408 3.21051 16.1829 3.06308 16.1829C2.91566 16.1829 2.78929 16.1197 2.68399 16.0354L1.63094 14.9824L0.598958 16.0144C0.240923 16.3724 0.240923 16.9621 0.620019 17.3202L3.37899 20.0791C3.56854 20.2476 3.80021 20.3529 4.03188 20.3529C4.26355 20.3529 4.49522 20.2687 4.68477 20.0791L10.0132 14.7507L5.92736 10.686L4.4531 12.1602Z" fill="black"/>
@@ -261,7 +231,7 @@ const CaseStudySharpen = () => {
               <h4>Visual Design</h4>
             </div>
             <p>The design of this system has to be completely cohesive with the existing call management system, and fit all MVP requirements while maintaining room for growth as feature requests emerge.</p>
-          </div>
+          </motion.div>
         </ThreeColumnBlocks>
       </section>
       <section>
@@ -280,31 +250,45 @@ const CaseStudySharpen = () => {
         </TwoColumn>
       </section>
       <section>
-        <h2>Defining the Flow</h2>
-        <TwoColumn>
-          <div>
-            <p>Aiming for simplicity, we place the start of our flow in the top center of the screen.  When visiting the Report Builder, report creation will automatically be the default state.</p>
-            <p><CircleContainer>1</CircleContainer>Select the group to report on</p>
-            <p><CircleContainer>2</CircleContainer>Select the members you want included in your report</p>
-            <p><CircleContainer>3</CircleContainer>Select a single date range of data to build the report</p>
-            <p><CircleContainer>4</CircleContainer>Select the report details, or in this case functions</p>
-            <p><CircleContainer>5</CircleContainer>Preview your report, and save</p>
-          </div>
-          <div>
-            <img src="./img/casestudies/sharpen/DefiningTheFlow.png" alt="Defining the Flow" />
-          </div>
-        </TwoColumn>
+          <h2>Defining the Flow</h2>
+          <TwoColumn>
+              <div>
+                  <p>Aiming for simplicity, we place the start of our flow in the top center of the screen. When visiting the Report Builder, report creation will automatically be the default state.</p>
+                  <div>
+                      <div><CircleContainer>1</CircleContainer>Select the group to report on</div>
+                      <div><CircleContainer>2</CircleContainer>Select the members you want included</div>
+                      <div><CircleContainer>3</CircleContainer>Select a single date range of data</div>
+                      <div><CircleContainer>4</CircleContainer>Select the report details (functions)</div>
+                      <div><CircleContainer>5</CircleContainer>Preview your report, and save</div>
+                  </div>
+              </div>
+              <motion.div
+                  ref={refFlow}
+                  initial={{ x: '-100%', opacity: 0 }}
+                  animate={FlowisInView ? { x: 0, opacity: 1 } : {}}
+                  transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                  className='center'
+              >
+                  <img src="./img/casestudies/sharpen/DefiningTheFlow.png" alt="Defining the Flow" />
+              </motion.div>
+          </TwoColumn>
       </section>
       <section>
         <h2>Reporting Made Simple</h2>
         <TwoColumn>
           <div>
-            <p>With only 5 clicks, a new report can be generated and exported in a variety of formats, previewed on the screen, or used as a basis for a new report, reducing the clicks even further for commonly created reports.</p>
+            <div>With only 5 clicks, a new report can be generated and exported in a variety of formats, previewed on the screen, or used as a basis for a new report, reducing the clicks even further for commonly created reports.</div>
             <p>While the Report Builder displays recently created reports on the left side of the screen, the report viewer follows suit with the same placement, but adding sort functionality to help find the report you need.</p>
           </div>
-          <div>
+          <motion.div
+              ref={refReporting}
+              initial={{ x: '100%', opacity: 0 }}
+              animate={ReportingisInView ? { x: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              className='center'
+          >
             <img src="./img/casestudies/sharpen/ReportingMadeSimple.png" alt="Reporting Made Simple" />
-          </div>
+          </motion.div>
         </TwoColumn>
       </section>
       <section>
@@ -331,9 +315,15 @@ const CaseStudySharpen = () => {
               </CircleNumber>
               <h4>Activate Filter Options</h4>
             </CircleNumberContainer>
-            <div className='center'>
+            <motion.div
+                ref={refFiltering}
+                initial={{ x: '-100%', opacity: 0 }}
+                animate={FilteringisInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                className='center'
+            >
               <img src="./img/casestudies/sharpen/Filtering01.png" alt="Activate Filter Options" />
-            </div>
+            </motion.div>
             <PurpleBorder>
               <ul>
                 <li>User chooses a filter type from a dropdown list of selections.</li>
@@ -347,9 +337,15 @@ const CaseStudySharpen = () => {
               </CircleNumber>
               <h4>Choose a Category</h4>
             </CircleNumberContainer>
-            <div className='center'>
+            <motion.div
+                ref={refFiltering}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={FilteringisInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                className='center'
+            >
               <img src="./img/casestudies/sharpen/Filtering02.png" alt="Choose a filter category" />
-            </div>
+            </motion.div>
             <PurpleBorder>
               <ul>
                 <li>The user may make more than one selection, and can then click Apply, or click outside of the filtering element. </li>
@@ -424,7 +420,7 @@ const CaseStudySharpen = () => {
           </div>
         </TwoColumn>
       </section>
-    </CaseStudyContainer>
+    </CaseStudyStyle.CaseStudyContainer>
   </div>
 };
 
