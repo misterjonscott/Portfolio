@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 import { navigationItems } from './navigationDetails';
 import ReactGA from "react-ga4";
+import HelperModal from './FTUXModal';
 
 const MobileMenuIcon = styled.div`
   cursor: pointer;
@@ -210,7 +211,7 @@ const Header = ({ toggleTheme, theme }) => {
         <MobileMenu>
           <MobileMenubuttons>
             <ThemeButton onClick={toggleTheme}>
-              <img id="Dark Mode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
+              <img id="MobileDarkMode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
             </ThemeButton>
             <CloseButton onClick={toggleMobileMenu}>
               <CloseIcon />
@@ -263,9 +264,10 @@ const Header = ({ toggleTheme, theme }) => {
         </svg>
         </MobileMenuIcon>
         <ThemeButton onClick={toggleTheme}>
-          <img id="Dark Mode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
+          <img id="DarkMode" src={theme === 'dark' ? "./img/theme-light.svg" : "./img/theme-dark.svg"} alt="Dark mode Selection" />
         </ThemeButton>
       </HeaderButtons>
+      <HelperModal referenceElementId="DarkMode" modalWidth="350" position="bottomLeft" />
     </HeaderContainer>
   );
 };

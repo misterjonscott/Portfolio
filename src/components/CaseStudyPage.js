@@ -44,7 +44,9 @@ const CaseStudyGraphic = styled.div`
   img {
     max-width: 100%;
     height: auto;
-    
+    @media (min-width: ${breakpoints.desktop}) {
+      max-width: 450px;
+    }
   }
 `;
 const PageWithCaseStudy = () => {

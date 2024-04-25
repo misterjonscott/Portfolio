@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { breakpoints } from '../breakpoints';
 import { v4 as uuidv4 } from 'uuid';
+import { useTheme } from 'styled-components';
 
 const CaseStudyContainer = styled.div`
   display: flex;
@@ -83,8 +84,7 @@ const CaseStudyTitle = styled.span`
 
 const HighlightedWords = styled(motion.li)`
   font-size: 0.9em;
-  // font-weight: ${({ highlighted }) => (highlighted ? 'bold' : 'normal')};
-  // color: ${({ highlighted }) => (highlighted ? 'rgb(0, 213, 255)' : '#ffffff')};
+  ${props => props.theme.text};
 `;
 
 const caseStudies = [
@@ -158,6 +158,8 @@ const caseStudies = [
 
 
 const CaseStudy = ({ numToShow }) => {
+  const theme = useTheme();
+
   const [highlightedId, setHighlightedId] = useState(null);
   
   useEffect(() => {
@@ -204,9 +206,13 @@ const CaseStudy = ({ numToShow }) => {
                     animate={{
                       opacity: 1,
                       fontWeight: highlightedId === item.id ? 'bold' : 'normal',
-                      color: highlightedId === item.id ? 'rgb(0, 213, 255)' : '#ffffff',
+                      color: highlightedId === item.id ? '#27AE60' : theme.text,
                     }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    style={{
+                      fontWeight: 'normal',
+                      cursor: 'pointer',
+                    }}
+                    transition={{ duration: 0.8, ease: 'easeInOut' }}
                   >
                     {item.text}
                   </HighlightedWords>
