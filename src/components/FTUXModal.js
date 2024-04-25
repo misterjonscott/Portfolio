@@ -12,6 +12,7 @@ const ModalContainer = styled(motion.div)`
   width: 350px;
   border-radius: ${props => props.theme.smallBorderRadius};
   box-sizing: border-box;
+  border: ${props => props.theme.text};
   h3 {
     color: ${props => props.theme.black};
   }

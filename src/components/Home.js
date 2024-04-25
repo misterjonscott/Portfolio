@@ -26,6 +26,7 @@ const Headline = styled.div`
   position: relative;
   display: inline-block;
   line-height: 0.75em;
+  z-index: 4; /* Higher than the Messages component */
 `;
 
 const EvevatorPitch = styled.p`
@@ -37,6 +38,7 @@ const EvevatorPitch = styled.p`
   // border: 1px solid black;
   text-align: left;
   padding: 0.5em;
+  z-index: 4; /* Higher than the Messages component */
   #CallToAction {
     background-color: ${props => props.theme.primaryPurple};
     border-radius: ${props => props.theme.bigBorderRadius};

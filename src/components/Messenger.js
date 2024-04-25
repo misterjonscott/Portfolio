@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 const AppContainer = styled.div`
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 20px;
+  left: calc(50% + 270px); /* Adjust the left position as needed */
+  transform: translateX(-50%); /* Center the text horizontally */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,11 +17,8 @@ const AppContainer = styled.div`
     width: 100%;
     height: 100%;
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 1) 100%);
+    z-index: 3;
   }
-`;
-
-const StyledButton = styled.button`
-  // margin-bottom: 20px;
 `;
 
 const MessageContainer = styled.div`
@@ -29,7 +26,7 @@ const MessageContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  width: 300px;
+  width: 450px;
 `;
 
 const Message = styled(motion.div)`
@@ -37,8 +34,27 @@ const Message = styled(motion.div)`
   border-radius: 10px;
   color: white;
   max-width: 80%;
+  text-align: left;
   align-self: ${({ isEven }) => (isEven ? "flex-start" : "flex-end")};
   background-color: ${({ isEven }) => (isEven ? "#00C853" : "#2196f3")};
+  position: relative;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+  &:before {
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: ${({ isEven }) => (isEven ? 0 : '100%')};
+    // transform: ${({ isEven }) => (isEven ? 'translateX(10px)' : 'translateX(-30px)')};
+    transform: ${({ isEven }) => (isEven ? 'translateX(10px)' : 'translateX(-30px) scaleX(-1)')};
+    border-top: 6px solid ${({ isEven }) => (isEven ? "#00C853" : "#2196f3")};
+    border-left: 6px solid ${({ isEven }) => (isEven ? "#00C853" : "#2196f3")};
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid transparent;
+    width: 0;
+    height: 0;
+    border-radius: 0 0 0 5px;
+  }
 `;
 
 const Messenger = () => {
@@ -46,49 +62,73 @@ const Messenger = () => {
   const [visibleMessages, setVisibleMessages] = useState([]);
   let requestIndex = 0;
 
+  const MAX_MESSAGES = 20; // adjust this limit as needed
+
   const uxDesignRequests = [
-    { request: "Make it pop" },
-    { request: "Simplify the user interface" },
-    { request: "Improve the user flow" },
-    { request: "Enhance the overall user experience" },
-    { request: "Optimize for mobile devices" },
-    { request: "Improve accessibility" },
-    { request: "Increase conversions" },
-    { request: "Personalize the experience" },
-    { request: "Improve performance and speed" },
-    { request: "Ensure consistency and branding" }
+    { request: "make it pop" },
+    { request: "simplify the user interface" },
+    { request: "improve the user flow" },
+    { request: "enhance the overall user experience" },
+    { request: "optimize for mobile devices" },
+    { request: "improve accessibility" },
+    { request: "increase conversions" },
+    { request: "personalize the experience" },
+    { request: "improve performance and speed" },
+    { request: "ensure consistency and branding" }
   ];
 
   const handleReceiveMessage = () => {
     const newMessageA = `Can you ${uxDesignRequests[requestIndex].request}`;
     const newMessageB = "Absolutely!";
-    setMessages([...messages, newMessageA, newMessageB]);
+    setMessages((prevMessages) => {
+      if (prevMessages.length >= MAX_MESSAGES) {
+        return [...prevMessages.slice(1), newMessageA, newMessageB];
+      } else {
+        return [...prevMessages, newMessageA, newMessageB];
+      }
+    });
     requestIndex = (requestIndex + 1) % uxDesignRequests.length;
   };
 
   useEffect(() => {
-    const intervalId = setInterval(handleReceiveMessage, 5000); // 5000ms = 5 seconds
-    return () => clearInterval(intervalId); // clean up the interval on component unmount
+    const intervalId = setInterval(handleReceiveMessage, 5000);
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
     if (messages.length > 0) {
       const newVisibleMessages = messages.slice(-2);
       const timer = setTimeout(() => {
-        setVisibleMessages((prevMessages) => [...prevMessages, newVisibleMessages[0]]);
+        setVisibleMessages((prevMessages) => {
+          if (prevMessages.length >= 8) {
+            return [...prevMessages.slice(2), newVisibleMessages[0]];
+          } else {
+            return [...prevMessages, newVisibleMessages[0]];
+          }
+        });
         setTimeout(() => {
-          setVisibleMessages((prevMessages) => [...prevMessages, newVisibleMessages[1]]);
+          setVisibleMessages((prevMessages) => {
+            if (prevMessages.length >= 8) {
+              return [...prevMessages.slice(2), newVisibleMessages[1]];
+            } else {
+              return [...prevMessages, newVisibleMessages[1]];
+            }
+          });
         }, 1000);
         setTimeout(() => setMessages(messages.slice(2)), 3500);
       }, 1000);
-  
       return () => clearTimeout(timer);
     }
   }, [messages]);
 
+  useEffect(() => {
+    console.log('Messages length:', messages.length);
+    console.log('Visible messages length:', visibleMessages.length);
+  }, [messages, visibleMessages]);
+
   return (
     <AppContainer>
-      {/* <div className='overlay' /> */}
+      <div className='overlay' />
       <MessageContainer>
         <AnimatePresence>
           {visibleMessages.map((message, index) => (
@@ -101,7 +141,6 @@ const Messenger = () => {
           ))}
         </AnimatePresence>
       </MessageContainer>
-      <StyledButton onClick={handleReceiveMessage}>Receive Message</StyledButton>
     </AppContainer>
   );
 };
