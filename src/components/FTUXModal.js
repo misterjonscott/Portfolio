@@ -6,13 +6,12 @@ import { motion } from 'framer-motion';
 const ModalContainer = styled(motion.div)`
   position: absolute;
   background: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme.text};
+  border: 1px solid ${props => props.theme.black};
   color: black;
   padding: 1em 3em 1em 1em;
   width: 350px;
   border-radius: ${props => props.theme.smallBorderRadius};
   box-sizing: border-box;
-  border: ${props => props.theme.text};
   h3 {
     color: ${props => props.theme.black};
   }
@@ -75,14 +74,16 @@ const HelperModal = ({ referenceElementId, modalWidth, position }) => {
       } else {
         console.log('reference element not found');
         setIsVisible(false); // Hide modal if reference element does not exist
+        modalRef.current.parentNode.removeChild(modalRef.current);
       }
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   }, [referenceElementId, modalWidth, position]);
 
   const handleClose = () => {
     setIsVisible(false);
+    modalRef.current.parentNode.removeChild(modalRef.current);
   };
 
   return (

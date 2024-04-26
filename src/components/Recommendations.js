@@ -4,8 +4,10 @@ import { breakpoints } from '../breakpoints';
 import { motion } from 'framer-motion';
 
 const RecommendationContainer = styled.div`
+  background-color: ${props => props.theme.background.alternateColor};
   margin-bottom: 2em;
   max-width: ${props => props.theme.pageWidth};
+  margin: 0 auto;
   h1 {
     font-size: 4em;
     margin: 0;

@@ -9,6 +9,9 @@ const Headline = styled.h1`
   font-size: 4em;
   margin: 0;
   color: ${props => props.theme.text};
+  max-width: ${props => props.theme.pageWidth};
+  text-align: left;
+  width: 100%;
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 2em;
     margin: 0 0.5em;
@@ -41,7 +44,7 @@ const AboutMeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1em;
 `;
 
@@ -109,7 +112,7 @@ const AboutMeDescription = styled.div`
     50% { opacity: 0; }
     100% { opacity: 1; }
   }
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
   }
 `;
@@ -132,20 +135,27 @@ const AboutMeText = styled.div`
   }
 `;
 
-const Picture = styled.div`
-flex: 0;
-margin-left: 1em;
-@media (max-width: ${breakpoints.mobile}) {
-  align-self: center;
-  margin-top: 1em;
-}
-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    outline: 8px solid ${props => props.theme.primaryColor};
-    outline-offset: -2px;
+const PhotoGridContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column; /* Set grid items to flow horizontally */
+  grid-auto-columns: 1fr; /* Make grid items take up equal width */
+  grid-column-gap: 0.25em; /* Adjust the spacing between elements */
+  justify-content: center; /* Center the grid items horizontally */
+  align-items: center; /* Center the content vertically within each column */
+  width: 100%; /* Set the grid container to full width */
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-auto-flow: row; 
+    grid-template-columns: repeat(2, 1fr);
   }
+`;
+
+const RecommendationsBackground = styled.div`
+  background-color: ${props => props.theme.background.alternateColor};
+  width: 100%;
+`;
+
+const Picture = styled.div`
+  text-align: center;
 `;
 
 const LearnMoreAboutMe = styled(TdButton)`
@@ -158,9 +168,9 @@ const AboutMe = () => {
     setLearnMoreVisible(prevState => !prevState);
   };
 
-  return <div>
+  return <>
     <Headline>Howdy!</Headline>
-    <ContentContainer>
+    <ContentContainer id='ContentContainer'>
       <AboutMeContainer id='AboutMeContainer'>
           <AboutMeDescription>
             <p>I'm <strong>Jon Scott</strong>, a versatile UX Engineer with a background in <span className='design-container'>
@@ -173,9 +183,23 @@ const AboutMe = () => {
             I bring a unique perspective to every project, blending visual creativity with technical expertise to craft user-centric solutions.</p>
             <p>I'm your UX wingman, here to translate ideas into engaging digital adventures. Bonus points: I don't speak in confusing developer jargon. I can turn user journeys into awesome digital experiences. Plus, I write crystal-clear documentation, so no one gets lost along the way.</p>
           </AboutMeDescription>
-          <Picture>
-            <img src="./img/JonScott-2.png" alt="A photograph of my face" />
-          </Picture>
+          <PhotoGridContainer>
+            <Picture>
+            <img src="./img/Photo1.png" alt="A photograph" />
+            </Picture>
+            <Picture>
+            <img src="./img/Photo2.png" alt="A photograph" />
+            </Picture>
+            <Picture>
+            <img src="./img/Photo3.png" alt="A photograph" />
+            </Picture>
+            <Picture>
+            <img src="./img/Photo4.png" alt="A photograph" />
+            </Picture>
+            <Picture>
+            <img src="./img/Photo5.png" alt="A photograph" />
+            </Picture>            
+          </PhotoGridContainer>
         </AboutMeContainer>
         <MoreAboutMeContainer id='MoreAboutMeContainer'>
           <p style={{ textAlign: 'center' }}>
@@ -198,8 +222,10 @@ const AboutMe = () => {
             )}
         </MoreAboutMeContainer>
     </ContentContainer>
-    <Recommendations />
-  </div>
+    <RecommendationsBackground id='RecommendationsBackground'>
+      <Recommendations />
+    </RecommendationsBackground>
+  </>
 };
 
 export default AboutMe;

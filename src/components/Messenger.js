@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { breakpoints } from '../breakpoints';
 import styled from "styled-components";
 
 const AppContainer = styled.div`
@@ -9,7 +10,9 @@ const AppContainer = styled.div`
   transform: translateX(-50%); /* Center the text horizontally */
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  height: 450px;
   .overlay {
     position: absolute;
     top: 0;
@@ -18,6 +21,9 @@ const AppContainer = styled.div`
     height: 100%;
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 1) 100%);
     z-index: 3;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
   }
 `;
 
@@ -45,7 +51,6 @@ const Message = styled(motion.div)`
     position: absolute;
     top: 100%;
     left: ${({ isEven }) => (isEven ? 0 : '100%')};
-    // transform: ${({ isEven }) => (isEven ? 'translateX(10px)' : 'translateX(-30px)')};
     transform: ${({ isEven }) => (isEven ? 'translateX(10px)' : 'translateX(-30px) scaleX(-1)')};
     border-top: 6px solid ${({ isEven }) => (isEven ? "#00C853" : "#2196f3")};
     border-left: 6px solid ${({ isEven }) => (isEven ? "#00C853" : "#2196f3")};
@@ -91,7 +96,7 @@ const Messenger = () => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(handleReceiveMessage, 5000);
+    const intervalId = setInterval(handleReceiveMessage, 2000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -120,11 +125,6 @@ const Messenger = () => {
       return () => clearTimeout(timer);
     }
   }, [messages]);
-
-  useEffect(() => {
-    console.log('Messages length:', messages.length);
-    console.log('Visible messages length:', visibleMessages.length);
-  }, [messages, visibleMessages]);
 
   return (
     <AppContainer>
