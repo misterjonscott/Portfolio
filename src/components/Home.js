@@ -46,13 +46,22 @@ const Headline = styled.div`
 const EvevatorPitch = styled.p`
   position: absolute;
   top: 7em;
-  left: calc(50% + 4em); /* Adjust the left position as needed */
-  transform: translateX(-50%); /* Center the text horizontally */
-  width: 40em;
-  // border: 1px solid black;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30em;
+  background: white;
+  background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.6)
+  );
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  border-radius: ${props => props.theme.smallBorderRadius};
+  backdrop-filter: blur(4px);
   text-align: left;
   padding: 0.5em;
   z-index: 4; /* Higher than the Messages component */
+  font-size: 1.2em;
   @media (max-width: ${breakpoints.tablet}) {
     position: relative;
     top: 0;
@@ -73,7 +82,7 @@ const CTAButton = styled(Link)`
   padding: 0.5em 1em;
   border: none;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: bold;
   transition: background-color 0.3s ease;
   margin-top: 0.5em;
@@ -141,13 +150,13 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }} // Animation duration
+            transition={{ duration: 0.25 }} // Animation duration
           >
             UX Design and w{displayText}y more! {/* Wrap displayText with motion.div */}
           </motion.div>
         </Headline>
         <EvevatorPitch>
-          Designers speak a beautiful language, but developers need a different dialect. I'm your UX engineer, fluent in both! I create stunning mobile and web experiences with the power of design systems to break down communication barriers and build something truly special.
+        Bringing user research and design expertise to life for over 15 years. I bridge the design & development gap, creating solutions users love.
           <CTAButton to='mailto:jon@workwithjonscott.com' target='_blank'  onClick={() => {
             ReactGA.event({
               category: 'Home',

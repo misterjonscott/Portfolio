@@ -89,7 +89,7 @@ const HighlightedWords = styled(motion.li)`
 
 const caseStudies = [
   {
-    title: 'Skillable Case Study',
+    title: 'Skillable\'s Course Library',
     link: '/skillable-case-study',
     image: './img/casestudies/CaseStudySkillable.png',
     hoverImage: './img/casestudies/CaseStudySkillableActive.png',
@@ -100,7 +100,7 @@ const caseStudies = [
     ],
   },
   {
-    title: 'Sharpen Case Study',
+    title: 'Sharpen\'s CCaaS',
     link: '/sharpen-case-study',
     image: './img/casestudies/CaseStudySharpen.png',
     hoverImage: './img/casestudies/CaseStudySharpenActive.png',
@@ -111,7 +111,7 @@ const caseStudies = [
     ],
   },
   {
-    title: 'Indigo Case Study',
+    title: 'Indigo\'s Dashboard',
     link: '/indigo-case-study',
     image: './img/casestudies/CaseStudyIndigo.png',
     hoverImage: './img/casestudies/CaseStudyIndigoActive.png',
@@ -122,7 +122,7 @@ const caseStudies = [
     ],
   },
   {
-    title: 'Geofeedia Case Study',
+    title: 'Geofeedia\'s Data Manager',
     link: '/geofeedia-case-study',
     image: './img/casestudies/CaseStudyGeofeedia.png',
     hoverImage: './img/casestudies/CaseStudyGeofeediaActive.png',
@@ -133,7 +133,7 @@ const caseStudies = [
     ],
   },
   {
-    title: 'Lids Case Study',
+    title: 'Lids\'s Team Shops',
     link: '/lids-case-study',
     image: './img/casestudies/CaseStudyLids.png',
     hoverImage: './img/casestudies/CaseStudyLidsActive.png',
@@ -144,7 +144,7 @@ const caseStudies = [
     ],
   },
   {
-    title: 'LevelUp Case Study',
+    title: 'Financial Training App',
     link: '/levelup-case-study',
     image: './img/casestudies/CaseStudyLevelUp.png',
     hoverImage: './img/casestudies/CaseStudyLevelUpActive.png',
