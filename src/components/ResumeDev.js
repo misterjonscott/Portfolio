@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 1000px;
   margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
+  // font-family: Arial, Helvetica, sans-serif;
   font-size: 10pt;
   h1 {
     text-align: center;
@@ -20,6 +20,7 @@ const Name = styled.div`
   font-size: 3em;
   display: block;
   margin-bottom: 1em;
+  margin-top: 0.5em;
 `;
 
 const Header = styled.div`
@@ -81,7 +82,7 @@ const PositionDescription = styled.ul`
     list-style-type: none;
     padding-left: 15px;
     &::before {
-      content: url("data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.06876 4.72794C7.22659 4.1554 5.76748 2.73957 5.13937 0.916353L4.88626 0.181375C4.84971 0.0730914 4.74819 0 4.63314 0C4.51945 0 4.41657 0.0730914 4.38003 0.181375L4.12692 0.916353C3.50022 2.73957 2.04246 4.15405 0.201678 4.72794C0.0812108 4.76448 0 4.87412 0 5C0 5.12588 0.0812142 5.23552 0.201678 5.27206C2.0425 5.8446 3.49891 7.26043 4.12414 9.08365L4.37996 9.81863C4.41651 9.92691 4.51938 10 4.63308 10C4.74813 10 4.84964 9.92691 4.88619 9.81863L5.1393 9.08365C5.766 7.25908 7.22646 5.84325 9.0687 5.27206C9.18917 5.23552 9.27038 5.12588 9.27038 5C9.27038 4.87412 9.18923 4.76448 9.06876 4.72794Z' fill='black'/></svg>");
+      content: url("data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.06876 4.72794C7.22659 4.1554 5.76748 2.73957 5.13937 0.916353L4.88626 0.181375C4.84971 0.0730914 4.74819 0 4.63314 0C4.51945 0 4.41657 0.0730914 4.38003 0.181375L4.12692 0.916353C3.50022 2.73957 2.04246 4.15405 0.201678 4.72794C0.0812108 4.76448 0 4.87412 0 5C0 5.12588 0.0812142 5.23552 0.201678 5.27206C2.0425 5.8446 3.49891 7.26043 4.12414 9.08365L4.37996 9.81863C4.41651 9.92691 4.51938 10 4.63308 10C4.74813 10 4.84964 9.92691 4.88619 9.81863L5.1393 9.08365C5.766 7.25908 7.22646 5.84325 9.0687 5.27206C9.18917 5.23552 9.27038 5.12588 9.27038 5C9.27038 4.87412 9.18923 4.76448 9.06876 4.72794Z' fill='black'/> </svg>");
       position: absolute;
       top: -4px;
       left: 0;
@@ -95,20 +96,32 @@ const PositionDescriptionItem = styled.li`
 `;
 
 const SkillContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+  strong {
+    display: inline;
+  }
 `;
 
 const Skill = styled.span`
+  // display: inline-block;
+  // margin-right: 0.0125em; /* Adjust margin as needed */
 
+  // &:not(:last-child)::after {
+  //   /* Add comma and space after all elements except the last */
+  //   content: ', '; /* Add comma and space */
+  //   padding-right: 0.5rem; /* Adjust padding if needed */
+  // }
 `;
+
 
 const Experience = styled.div`
   
 `;
 
-const summaryText = "UX Designer with 15+ years of experience crafting user-centric solutions, leveraging a strong development background to bridge the gap between design and engineering. Expertise in user research, UI/UX best practices, and prototyping tools to translate user needs into impactful digital experiences. Proven ability to lead the design process from ideation to implementation, collaborating effectively with cross-functional teams.";
+const summaryText = "Innovative problem-solving meets user-centered design. UX Engineer with 15+ years of experience delivering user-centric solutions that boost engagement by up to 300%. Strong development background bridges the design & engineering gap, with expertise in user research, UI/UX best practices, and prototyping (Sketch, Figma). Proven empathetic leader guiding cross-functional teams to drive innovative solutions.";
 
 const jobsData = [
   {
@@ -135,7 +148,7 @@ const jobsData = [
         ]
   },
   {
-    positionTitle: "Front-End Engineer",
+    positionTitle: "Senior Front-End Engineer",
     companyInfo: {
       companyName: "Finish Line",
       dateRange: "January 2019 - August 2021, (Indianapolis, IN)"
@@ -176,7 +189,7 @@ const jobsData = [
     ]
   },
   {
-    positionTitle: "UX Designer",
+    positionTitle: "Senior UX Designer",
     companyInfo: {
       companyName: "LevelUp Development",
       dateRange: "July 2016 - October 2016, (Indianapolis, IN)"
@@ -186,7 +199,7 @@ const jobsData = [
     ]
   },
   {
-    positionTitle: "UX Engineer",
+    positionTitle: "Senior UX Engineer",
     companyInfo: {
       companyName: "DirectEmployers",
       dateRange: "December 2015 - July 2016, (Indianapolis, IN)"
@@ -242,24 +255,67 @@ const jobsData = [
   }
 ];
 
-const skillsData = [
+const designSkillsData = [
+  "Figma",
+  "Sketch",
+  "Invision",
   "UI Development",
   "UX Design",
   "Rapid-Prototyping",
   "Information Architecture",
   "Usability Testing & Research",
-  "Agile Product Development",
-  "Design Systems",
   "User-Centered Design",
   "Icon Design",
-  "Figma & Adobe XD",
   "Responsive & Mobile Design",
-  "Accessibility",
-  "User Journey Mapping"
+  "User Journey Mapping",
 ];
 
+const techSkillsData = [
+  "Front-End Development (HTML5, CSS3, JavaScript)",
+  "JavaScript Frameworks (React)",
+  "Design System Experience",
+  "Version Control (Git)",
+  "Agile Development",
+  "Bootstrap",
+  "Foundation",
+  "jQuery",
+  "node.js",
+  "Gulp",
+  "material.io",
+];
 
 const Resume = () => {
+  const SkillList = ({ skills }) => {
+    return (
+      <SkillContainer>
+        {skills.map((skill, index) => (
+          <React.Fragment key={index}>
+            <Skill>{skill}</Skill>
+            {index !== skills.length - 1 && ', '}
+          </React.Fragment>
+        ))}
+      </SkillContainer>
+    );
+  };
+  
+  const DesignSkills = () => {
+    return (
+      <SkillContainer>
+        <strong>Design: </strong>
+        <SkillList skills={designSkillsData} />
+      </SkillContainer>
+    );
+  };
+  
+  const TechnicalSkills = () => {
+    return (
+      <SkillContainer>
+        <strong>Technical: </strong>
+        <SkillList skills={techSkillsData} />
+      </SkillContainer>
+    );
+  };
+
   return (
     <Container>
       {/* Header */}
@@ -336,9 +392,9 @@ const Resume = () => {
       </Experience>
       <h2>Skills</h2>
       <SkillContainer>
-        {skillsData.map((skill, index) => (
-            <Skill key={index}>{skill}</Skill>
-          ))}
+        <DesignSkills />
+        <hr />
+        <TechnicalSkills />
       </SkillContainer>
     </Container>
   );

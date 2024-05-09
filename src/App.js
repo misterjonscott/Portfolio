@@ -72,6 +72,7 @@ const CaseStudyGeofeedia = React.lazy(() => import('./components/CaseStudyGeofee
 const CaseStudyLids = React.lazy(() => import('./components/CaseStudyLids'));
 const CaseStudyLevelUp = React.lazy(() => import('./components/CaseStudyLevelUp'));
 const Resume = React.lazy(() => import('./components/Resume'));
+const ResumeDev = React.lazy(() => import('./components/ResumeDev'));
 
 
 const App = () => {
@@ -79,7 +80,7 @@ const App = () => {
 
   // Get the current URL path
   const currentPath = window.location.pathname;
-  const isresumepage = currentPath === '/resume';
+  const isresumepage = (currentPath === '/resume' || currentPath === '/resumedev');
 
   const [theme, setTheme] = useState('dark');
 
@@ -94,7 +95,7 @@ const App = () => {
           <GlobalStyle theme={theme === 'dark' ? darkTheme : lightTheme} $isresumepage={isresumepage} />
           {!isresumepage && <Header toggleTheme={toggleTheme} theme={theme} />}
           <PageContainer $isresumepage={isresumepage}>
-            <Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about-me" element={<AboutMe />} />
@@ -109,6 +110,7 @@ const App = () => {
                 <Route path="/lids-case-study" element={<CaseStudyLids />} />
                 <Route path="/levelup-case-study" element={<CaseStudyLevelUp />} />
                 <Route path="/resume" element={<Resume />} />
+                <Route path="/resumedev" element={<ResumeDev />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
