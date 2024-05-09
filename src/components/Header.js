@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { breakpoints } from '../breakpoints';
 import { navigationItems } from './navigationDetails';
@@ -82,9 +82,16 @@ const NavItem = styled(Link)`
   font-size: 16px;
   position: relative;
   padding: 1em;
+  border-radius: ${props => props.theme.bigBorderRadius};
+  // transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.1), color 0.3s ease-in-out;
+  
+  &:hover {
+    background-color: ${props => props.theme.secondaryPurple};
+    color: ${props => props.theme.white};
+  }
   &.active {
     background-color: ${props => props.theme.primaryPurple};
-    border-radius: ${props => props.theme.bigBorderRadius};
     color: ${props => props.theme.white};
   }
 `;
