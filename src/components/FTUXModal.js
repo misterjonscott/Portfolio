@@ -2,16 +2,16 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-
 const ModalContainer = styled(motion.div)`
   position: absolute;
   background: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme.black};
   color: black;
   padding: 1em 3em 1em 1em;
   width: 350px;
   border-radius: ${props => props.theme.smallBorderRadius};
   box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+
   h3 {
     color: ${props => props.theme.black};
   }
