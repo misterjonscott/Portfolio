@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import DesignProcess from './DesignProcess';
 import DesignArtifacts from './DesignArtifacts';
+import DesignProgress from './DesignProgress';
 import { breakpoints } from '../breakpoints';
 
 const Container = styled.div`
@@ -16,8 +17,9 @@ const Container = styled.div`
 const Design = () => {
   return (
     <Container>
-      <DesignProcess />
-      <DesignArtifacts />
+      <DesignProgress />
+      {/* <DesignProcess />
+      <DesignArtifacts /> */}
     </Container>
   );
 };
