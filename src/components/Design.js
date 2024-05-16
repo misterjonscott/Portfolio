@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import DesignProcess from './DesignProcess';
 import DesignArtifacts from './DesignArtifacts';
 import DesignProgress from './DesignProgress';
 import { breakpoints } from '../breakpoints';
@@ -18,8 +17,7 @@ const Design = () => {
   return (
     <Container>
       <DesignProgress />
-      {/* <DesignProcess />
-      <DesignArtifacts /> */}
+      <DesignArtifacts />
     </Container>
   );
 };

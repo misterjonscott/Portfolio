@@ -1,6 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { breakpoints } from '../breakpoints';
+
+const ContentContainer = styled.div`
+  max-width: ${props => props.theme.pageWidth};
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  background-color: #fff;
+  border-radius: ${props => props.theme.smallBorderRadius};
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 1em;
+  }
+`;
+
+const Headline = styled.h1`
+  font-size: 4em;
+  margin: 0.5em;
+  color: ${props => props.theme.alternateText};
+  max-width: ${props => props.theme.pageWidth};
+  text-align: left;
+  width: 100%;
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 2em;
+    margin: 0 0.5em;
+  }
+`;
 
 const DesignArtifactsContainer = styled.div`
   max-width: ${props => props.theme.pageWidth};
@@ -18,50 +42,6 @@ const DesignArtifactsDisplay = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
   }
-`;
-
-const AccordionContainer = styled.div`
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    li {
-      background-color: rgba(242,239,234, 1);
-      padding: .5em;
-      margin: .5em 0;
-      cursor: pointer;
-      border-radius: ${props => props.theme.smallBorderRadius};
-      color: #333;
-      font-weight: 400;
-      position: relative;
-      &:hover {
-        background-color: rgba(242,239,234, 0.75);
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        top: 1.2em;
-        right: 10px; /* Adjust as needed */
-        transform: translateY(-50%) rotate(45deg);
-        width: 10px;
-        height: 10px;
-        border-style: solid;
-        border-width: 0 2px 2px 0;
-        border-color: #333;
-      }
-      &.open::after {
-        transform: translateY(-50%) rotate(-135deg);
-      }
-      p {
-        border-top: 1px solid #333;
-        padding-top: 1em;
-      }
-    }
-  }
-`;
-
-const AccTitle = styled.span`
-  cursor: 'pointer';
 `;
 
 const DesignArtifactsGraphicContainer = styled.div`
@@ -92,71 +72,137 @@ const DesignArtifactsTextContainer = styled.div`
   p {
     margin-top: 0;
   }
+  ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    li {
+    margin-bottom: 10px;
+    position: relative;
+    strong {
+      color: ${props => props.theme.primaryPurple};
+      font-size: 1.1em;
+    }
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 11px;
+        background-image: url('../img/BulletStar.svg');
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 5px;
+        left: -20px;
+      }
+      ul {
+        li {
+          strong {
+            color: #777;
+            font-size: 1em;
+          }
+        }
+        li:before {
+          background-image: url('../img/BulletArrow.svg');
+          left: -10px;
+          top: 7px;
+        }
+      } 
+    }
+  }
 `;
 
 const DesignArtifacts = () => {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const accordionItems = [
-    {
-      title: 'Streamline Workflows with a Centralized Design Library',
-      content: 'Imagine never having to recreate common UI elements like icons or components. A design library centralizes these assets, saving you and your team significant time. But it goes beyond efficiency - a library ensures consistent visual identity across all projects, strengthening your brand and user experience.',
-    },
-    {
-      title: 'Boost Collaboration and Facilitate Iteration',
-      content: 'A design library is more than a storage locker; it\'s a dynamic hub for collaboration. Need a variation on an existing element, or a brand new addition? Update the library, and your entire team has instant access to the latest assets. This fosters a collaborative environment that streamlines iteration and keeps everyone on the same page.',
-    },
-    {
-      title: 'Accelerate Prototyping for a Flawless User Experience',
-      content: 'With a well-stocked design library at your disposal, prototyping becomes a breeze. Drag and drop pre-built components to rapidly assemble screens and interfaces. This lets you focus on refining the user experience itself, rather than wasting time building elements from scratch. Faster prototyping translates to quicker validation and iteration cycles, ultimately leading to a more polished user experience.',
-    },
-    {
-      title: 'Bridge the Gap Between Design and Development',
-      content: 'A seamless user journey relies on consistency between design and code. A design library acts as a single source of truth for your design language. Developers can efficiently translate these assets into code, minimizing discrepancies and ensuring a smooth development process. This translates to faster development cycles and a more cohesive user experience.',
-    },
-    {
-      title: 'Conclusion: Invest in Efficiency, Reap Long-Term Rewards',
-      content: 'The time invested in building a comprehensive design library pays off significantly in the long run. It\'s not just about creating assets - it\'s about empowering your team to work smarter. The library fosters collaboration, streamlines workflows, and ultimately allows your team to deliver exceptional results with greater ease.',
-    },
-  ];
-  
-
-  const toggleItem = (index) => {
-    if (openIndex === index) {
-      setOpenIndex(null);
-    } else {
-      setOpenIndex(index);
-    }
-  };
-
   return (
-    <DesignArtifactsContainer id="design-artifacts">
-      <h1>Leveraging Design Libraries</h1>
-      <DesignArtifactsDisplay>
-        <DesignArtifactsTextContainer>
-          <AccordionContainer>
-            <>
-              <p>In today's competitive design landscape, maximizing efficiency and maintaining brand consistency are crucial. That's where UX design libraries come in - powerful tools that empower designers to streamline workflows, ensure visual and interactional coherence across projects, and elevate the overall user experience.</p>
-              <ul>
-                {accordionItems.map((item, index) => (
-                  <li key={index} onClick={() => toggleItem(index)} className={openIndex === index ? 'open' : ''}>
-                    <AccTitle>
-                      {item.title}
-                    </AccTitle>
-                    {openIndex === index && <p>{item.content}</p>}
+    <ContentContainer id="contentContainer">
+      <Headline id="headline">Design Systems</Headline>
+      <DesignArtifactsContainer id="design-artifacts">
+        <DesignArtifactsDisplay>
+          <DesignArtifactsGraphicContainer>
+              <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/DesignSystemsComponents.png" />
+          </DesignArtifactsGraphicContainer>
+          <DesignArtifactsTextContainer>
+              <>
+              <h2>What is a design system?</h2>
+                <p>Unleash the power of modularity. A design system is a centralized library of reusable UI components, akin to a Lego set for the digital world. These components, accompanied by clear guidelines, empower you to build consistent and exceptional user experiences (UX) across all your digital products.</p>
+                <ul>
+                  <li>
+                    <span className='bullet-icon' />
+                    <strong>Pre-Built Efficiency</strong>
+                    <p>Ensure a uniform look and feel across all your digital products, just like a cohesive Lego city.</p>
                   </li>
-                ))}
-              </ul>
-            </>
-          </AccordionContainer>
-        </DesignArtifactsTextContainer>
-        <DesignArtifactsGraphicContainer>
-            {/* <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/buttons.png" /> */}
-            <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/components.png" />
-            <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/icons.png" />
-        </DesignArtifactsGraphicContainer>
-      </DesignArtifactsDisplay>
-    </DesignArtifactsContainer>
+                  <li>
+                    <strong>Snap-Together Consistency</strong>
+                    <p>Ditch the repetitive tasks and focus on innovation. Pre-built components are your secret weapon for saving time.</p>
+                  </li>
+                  <li>
+                    <strong>Scalable Creativity</strong>
+                    <p>Your design system grows with you, just like adding new Lego sets to your collection.  Endless possibilities await!</p>
+                  </li>
+                  <li>
+                    <strong>Collaboration Cornerstone</strong>
+                    <p>Design systems bridge the gap between designers, developers, and product managers, fostering a smooth workflow.</p>
+                  </li>
+                </ul>
+              </>
+          </DesignArtifactsTextContainer>
+        </DesignArtifactsDisplay>
+        <DesignArtifactsDisplay>
+          <DesignArtifactsTextContainer>
+              <>
+              <h2>What needs a design system?</h2>
+                <p>Imagine a bustling Lego city, where every building complements the next, with streets and parks connecting them seamlessly. That's the power of a design system – it benefits everyone involved in building exceptional digital experiences</p>
+                <ul>
+                  <li>
+                    <strong>Designers</strong>
+                    <ul>
+                      <li>
+                        <strong>Become Master Builders:</strong> <span> Focus on creative problem-solving and innovative design solutions. Pre-built UI components are your foundation, freeing you to build exceptional user experiences.</span>
+                      </li>
+                      <li>
+                        <strong>Boost Efficiency:</strong> <span>No more reinventing the wheel (or Lego brick)!  Save valuable time with a library of reusable components and clear guidelines.</span>
+                      </li>
+                      <li>
+                        <strong>Maintain Consistency:</strong> <span>Ensure a uniform look and feel across all digital products, just like a cohesive Lego city.</span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Developers:</strong>
+                    <ul>
+                      <li>
+                        <strong>Speak the Same Language:</strong> <span>Design systems act as a shared blueprint, fostering smooth collaboration between designers and developers.</span>
+                      </li>
+                      <li>
+                        <strong>Faster Development:</strong> <span>Pre-built, well-documented components are like pre-coded Lego sets, allowing for quicker and more efficient development.</span>
+                      </li>
+                      <li>
+                        <strong>Reduced Errors:</strong> <span>Clear guidelines and consistent code ensure a bug-free digital experience.</span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Product Managers</strong>
+                    <ul>
+                      <li>
+                        <strong>Scalability for the Future:</strong> <span>Design systems can evolve alongside your digital products, just like adding new Lego sets to your collection.</span>
+                      </li>
+                      <li>
+                        <strong>Maintain Braind Identity:</strong> <span>Ensure a consistent brand experience across all platforms.</span>
+                      </li>
+                      <li>
+                        <strong>Streamlined Workflow:</strong> <span>A design system empowers all teams to work more efficiently, allowing product managers to focus on strategic initiatives.</span>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </>
+          </DesignArtifactsTextContainer>
+          <DesignArtifactsGraphicContainer>
+              <DesignArtifactsGraphic alt="Design Process Graphic" src="./img/DesignSystemsUsers.png" />
+          </DesignArtifactsGraphicContainer>
+        </DesignArtifactsDisplay>
+      </DesignArtifactsContainer>
+    </ContentContainer>
   );
 };
 
