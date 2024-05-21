@@ -16,7 +16,7 @@ const ContentContainer = styled.div`
 const Headline = styled.h1`
   font-size: 4em;
   margin: 0.5em;
-  color: ${props => props.theme.alternateText};
+  color: ${props => props.theme.black};
   max-width: ${props => props.theme.pageWidth};
   text-align: left;
   width: 100%;

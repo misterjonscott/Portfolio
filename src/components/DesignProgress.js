@@ -17,7 +17,7 @@ const ContentContainer = styled.div`
 const Headline = styled.h1`
   font-size: 4em;
   margin: 0.5em;
-  color: ${props => props.theme.alternateText};
+  color: ${props => props.theme.black};
   max-width: ${props => props.theme.pageWidth};
   text-align: left;
   width: 100%;
@@ -157,7 +157,7 @@ const SectionContent = styled.div`
   flex: 1;
   display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
   padding: 10px;
-  color: ${props => props.theme.alternateText};
+  color: ${props => props.theme.black};
   height: 5em;
   strong {
     color: ${props => props.theme.primaryPurple};

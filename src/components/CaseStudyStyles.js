@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CaseStudyHeader = styled.div`
   max-width: ${props => props.theme.pageWidth};
   display: flex;
-  margin-bottom: 2em;
+  margin: 0 auto 2em;
   align-items: flex-end; 
   @media (max-width: ${breakpoints.tablet}) {
     margin-left: 1em;
@@ -60,8 +60,8 @@ const CaseStudyContainer = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: ${props => props.theme.bigBorderRadius};
-  margin-bottom: 2em;
-  @media (max-width: ${breakpoints.mobile}) {
+  margin: 0 auto 2em;
+  @media (max-width: ${breakpoints.tablet}) {
     margin: 0 1em;
   }
   h2, h3, p {
@@ -72,7 +72,7 @@ const CaseStudyContainer = styled.div`
     margin-bottom: 3em;
   }
   img {
-    @media (max-width: ${breakpoints.mobile}) {
+    @media (max-width: ${breakpoints.tablet}) {
       width: 100%;
     }
   }
