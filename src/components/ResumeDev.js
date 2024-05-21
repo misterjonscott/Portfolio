@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Copy from './Copy';
 
 // Styled Components
 const Container = styled.div`
@@ -121,16 +122,16 @@ const Experience = styled.div`
   
 `;
 
-const summaryText = "Innovative problem-solving meets user-centered design. UX Engineer with 15+ years of experience delivering user-centric solutions that boost engagement by up to 300%. Strong development background bridges the design & engineering gap, with expertise in user research, UI/UX best practices, and prototyping (Sketch, Figma). Proven empathetic leader guiding cross-functional teams to drive innovative solutions.";
+const summaryText = "Innovative problem-solving meets user-centered design. UX Engineer with 15+ years of experience delivering user-centric solutions that boost engagement by up to 300%. Strong development background bridges the design & engineering gap, with expertise in user research, UI/UX best practices, and prototyping high and low fidelity interactive wireframes (Sketch, Figma). Proven empathetic leader guiding cross-functional teams to drive innovative solutions.";
 
 const positionDescriptions = [
   [
     "I led a user-centered redesign of the document hub interface, streamlining document access for users.",
-    "By <strong>collaborating with cross-functional teams</strong>, I created high-fidelity, accessible Figma prototypes featuring intuitive search, favoriting, categorization, and document preview functionalities. This <strong>openness to broad design responsibilities</strong> ensured a holistic approach, resulting in an interface that empowers users to locate and pre-fill documents effortlessly.",
+    "By <strong>collaborating with cross-functional teams</strong>, I created high-fidelity, accessible Figma high and low fidelity interactive wireframes featuring intuitive search, favoriting, categorization, and document preview functionalities. This <strong>openness to broad design responsibilities</strong> ensured a holistic approach, resulting in an interface that empowers users to locate and pre-fill documents effortlessly.",
     "This project not only enhanced overall workflow but also showcased my <strong>continuous improvement mindset</strong> and ability to deliver impactful solutions."
   ],
   [
-    "Harnessing my <strong>strong design skills and B2B SaaS product expertise</strong>, I crafted <strong>fully interactive prototypes</strong> for Skillable's TMS platform, including student and instructor dashboards, and a course listing page. These prototypes streamlined user workflows and improved usability, leading to increased user satisfaction and engagement.",
+    "Harnessing my <strong>strong design skills and B2B SaaS product expertise</strong>, I crafted <strong>fully interactive high and low fidelity interactive wireframes</strong> for Skillable's TMS platform, including student and instructor dashboards, and a course listing page. These prototypes streamlined user workflows and improved usability, leading to increased user satisfaction and engagement.",
     "I championed <strong>user-centered design</strong> by establishing and managing <strong>design systems</strong> with <strong>reusable components</strong>. This approach ensured consistency across projects and fostered efficient collaboration within cross-functional teams. My <strong>continuous improvement mindset</strong> fueled my exploration of new design possibilities, including <strong>motion design and A/B testing & data analysis</strong> to further enhance user experience.  Additionally, I <strong>developed a new set of product logos</strong>, contributing to a cohesive brand identity."
   ],
   [
@@ -138,7 +139,7 @@ const positionDescriptions = [
     "I championed  <strong>user-centered design principles</strong> by guiding the transformation of Java Server Pages (JSP) into a React-based system. This migration ensured a modernized user interface while maintaining meticulous code quality through adherence to <strong>widely accepted code linting rules</strong>."
   ],
   [
-    "Capitalizing on my <strong>strong design skills and product expertise</strong>, I supported Ascension Health in gaining valuable insights into project scope and potential by developing <strong>prototypes</strong>.  This <strong>collaborative effort</strong> not only facilitated a <strong>clearer understanding</strong> of project objectives within the team, but also fostered my own knowledge of <strong>development phases</strong>."
+    "Capitalizing on my <strong>strong design skills and product expertise</strong>, I supported Ascension Health in gaining valuable insights into project scope and potential by developing <strong>high and low fidelity interactive wireframes</strong>.  This <strong>collaborative effort</strong> not only facilitated a <strong>clearer understanding</strong> of project objectives within the team, but also fostered my own knowledge of <strong>development phases</strong>."
   ],
   [
     "<strong>Led a team of 6 UI developers</strong>, to design and develop a new web product, ensuring adherence to widely accepted code linting rules.  I <strong>managed UI development and design</strong> for a new web product, ensuring <strong>high code quality</strong> by utilizing tools like <strong>Node, Gulp, Sass, and Browsersync</strong>.  Furthermore, I  played a pivotal role in <strong>fostering a comprehensive understanding</strong> of the project's potential among collaborating teams."
@@ -147,7 +148,7 @@ const positionDescriptions = [
     "I contributed to the incubation of this fintech startup by crafting a <strong>cutting-edge UI</strong> for their robo-investing product.  This project involved modern technologies such as <strong>Node.js, React, Bootstrap 4, Docker, and Redux</strong>.  My involvement in this early-stage venture demonstrates my ability to adapt to <strong>fast-paced environments</strong> and contribute to the development of innovative products."
   ],
   [
-    "Leveraging my <strong>user-centered design approach</strong>, I  <strong>implemented rapid prototyping</strong> for clients, allowing them to experience the product concept before development began.  This approach facilitated effective <strong>stakeholder meetings</strong> to gather requirements and build accurate <strong>user personas</strong>.  In another project, I <strong>designed a mobile-first</strong> finance guidance app.  Through user research methods like user personas and <strong>user journeys</strong>, I created detailed <strong>diagrams</strong> that ultimately resulted in a fully interactive prototype."
+    "Leveraging my <strong>user-centered design approach</strong>, I  <strong>implemented rapid prototyping of high and low fidelity interactive wireframes</strong> for clients, allowing them to experience the product concept before development began.  This approach facilitated effective <strong>stakeholder meetings</strong> to gather requirements and build accurate <strong>user personas</strong>.  In another project, I <strong>designed a mobile-first</strong> finance guidance app.  Through user research methods like user personas and <strong>user journeys</strong>, I created detailed <strong>diagrams</strong> that ultimately resulted in a fully interactive prototype."
   ],
   [
     "<strong>Championed efficient development workflows</strong> by introducing <strong>prototype-driven development</strong>.  This approach provided a clear roadmap for projects, <strong>ensuring development resources were used wisely</strong> and deadlines were met.",
@@ -296,6 +297,7 @@ const designSkillsData = [
   "Responsive & Mobile Design",
   "User Journey Mapping",
   "Agile/SCRUM",
+  "High/Low fidelity wireframes"
 ];
 
 const techSkillsData = [
@@ -315,6 +317,10 @@ const techSkillsData = [
 ];
 
 const Resume = () => {
+  const handleCopied = (text) => {
+    console.log(text);
+  };
+
   const SkillList = ({ skills }) => {
     return (
       <SkillContainer>
@@ -398,33 +404,41 @@ const Resume = () => {
       <h2>Summary</h2>
       <Summary>
         <p>
-          {summaryText}
+          <Copy onCopy={handleCopied}>{summaryText}</Copy>
         </p>
       </Summary>
       <h2>Experience</h2>
       <Experience>
         {jobsData.map((job, index) => (
         <Position key={index}>
-          <PositionTitle>{job.positionTitle}</PositionTitle>
+          <PositionTitle><Copy onCopy={handleCopied}>{job.positionTitle}</Copy></PositionTitle>
           <CompanyInfo>
-            <span className="company-name">{job.companyInfo.companyName}</span>
-            <span className="date-range">{job.companyInfo.dateRange}</span>
+            <span className="company-name"><Copy onCopy={handleCopied}>{job.companyInfo.companyName}</Copy></span>
+            <span className="date-range"><Copy onCopy={handleCopied}>{job.companyInfo.dateRange}</Copy></span>
           </CompanyInfo>
           <PositionDescription>
-            {job.positionDescription.map((description, idx) => (
-              <PositionDescriptionItem key={idx}>
-                <span dangerouslySetInnerHTML={{ __html: description }} />
-              </PositionDescriptionItem>
-            ))}
+            <Copy description={job.positionDescription} onCopy={handleCopied} className="description-list"> {/* Update className */}
+              {/* Your list items here */}
+              {job.positionDescription.map((description, idx) => (
+                <PositionDescriptionItem key={idx}>
+                  {description}  {/* Content displayed here */}
+                </PositionDescriptionItem>
+              ))}
+            </Copy>
           </PositionDescription>
+
         </Position>
       ))}
       </Experience>
       <h2>Skills</h2>
       <SkillContainer>
-        <DesignSkills />
+        <Copy onCopy={handleCopied}>
+          <DesignSkills />
+        </Copy>
         <hr />
-        <TechnicalSkills />
+        <Copy onCopy={handleCopied}>
+          <TechnicalSkills />
+        </Copy>
       </SkillContainer>
     </Container>
   );
