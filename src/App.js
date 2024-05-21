@@ -94,7 +94,7 @@ const App = () => {
         <ErrorBoundary>
           <GlobalStyle theme={theme === 'dark' ? darkTheme : lightTheme} $isresumepage={isresumepage} />
           {!isresumepage && <Header toggleTheme={toggleTheme} theme={theme} />}
-          <PageContainer $isresumepage={isresumepage}>
+          <PageContainer $isresumepage={isresumepage} className="page-container">
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 <Route path="/" element={<Home />} />
