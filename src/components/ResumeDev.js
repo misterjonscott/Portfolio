@@ -141,7 +141,7 @@ const positionDescriptions = [
     "Capitalizing on my <strong>strong design skills and product expertise</strong>, I supported Ascension Health in gaining valuable insights into project scope and potential by developing <strong>prototypes</strong>.  This <strong>collaborative effort</strong> not only facilitated a <strong>clearer understanding</strong> of project objectives within the team, but also fostered my own knowledge of <strong>development phases</strong>."
   ],
   [
-    "<strong>Led a team of 6 UI developers</strong>, providing design expertise and guidance to both internal and external teams.  I <strong>managed UI development and design</strong> for a new web product, ensuring <strong>high code quality</strong> by utilizing tools like <strong>Node, Gulp, Sass, and Browsersync</strong>.  Furthermore, I  played a pivotal role in <strong>fostering a comprehensive understanding</strong> of the project's potential among collaborating teams."
+    "<strong>Led a team of 6 UI developers</strong>, to design and develop a new web product, ensuring adherence to widely accepted code linting rules.  I <strong>managed UI development and design</strong> for a new web product, ensuring <strong>high code quality</strong> by utilizing tools like <strong>Node, Gulp, Sass, and Browsersync</strong>.  Furthermore, I  played a pivotal role in <strong>fostering a comprehensive understanding</strong> of the project's potential among collaborating teams."
   ],
   [
     "I contributed to the incubation of this fintech startup by crafting a <strong>cutting-edge UI</strong> for their robo-investing product.  This project involved modern technologies such as <strong>Node.js, React, Bootstrap 4, Docker, and Redux</strong>.  My involvement in this early-stage venture demonstrates my ability to adapt to <strong>fast-paced environments</strong> and contribute to the development of innovative products."
@@ -256,7 +256,7 @@ const jobsData = [
   {
     positionTitle: "UX Engineer",
     companyInfo: {
-      companyName: "Fathom Voice (Sharpen CX)",
+      companyName: "Sharpen",
       dateRange: "October 2014 - March 2015, (Indianapolis, IN)"
     },
     positionDescription:
@@ -295,6 +295,7 @@ const designSkillsData = [
   "Icon Design",
   "Responsive & Mobile Design",
   "User Journey Mapping",
+  "Agile/SCRUM",
 ];
 
 const techSkillsData = [
@@ -310,6 +311,7 @@ const techSkillsData = [
   "Gulp",
   "material.io",
   "D3js",
+  "HTML/CSS Mastery"
 ];
 
 const Resume = () => {
