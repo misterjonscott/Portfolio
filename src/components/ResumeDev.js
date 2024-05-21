@@ -117,6 +117,15 @@ const Skill = styled.span`
   // }
 `;
 
+const CopyArea = styled(Copy)`
+  background-color: inherit; /* Inherit background color */
+  transition: background-color 0.2s ease-in-out; /* Add transition */
+  &.highlighted {
+    background-color: yellow;
+    display: block;
+    border-radius: ${props => props.theme.smallBorderRadius};
+  }
+`;
 
 const Experience = styled.div`
   
@@ -404,27 +413,27 @@ const Resume = () => {
       <h2>Summary</h2>
       <Summary>
         <p>
-          <Copy onCopy={handleCopied}>{summaryText}</Copy>
+          <CopyArea onCopy={handleCopied}>{summaryText}</CopyArea>
         </p>
       </Summary>
       <h2>Experience</h2>
       <Experience>
         {jobsData.map((job, index) => (
         <Position key={index}>
-          <PositionTitle><Copy onCopy={handleCopied}>{job.positionTitle}</Copy></PositionTitle>
+          <PositionTitle><CopyArea onCopy={handleCopied}>{job.positionTitle}</CopyArea></PositionTitle>
           <CompanyInfo>
-            <span className="company-name"><Copy onCopy={handleCopied}>{job.companyInfo.companyName}</Copy></span>
-            <span className="date-range"><Copy onCopy={handleCopied}>{job.companyInfo.dateRange}</Copy></span>
+            <span className="company-name"><CopyArea onCopy={handleCopied}>{job.companyInfo.companyName}</CopyArea></span>
+            <span className="date-range"><CopyArea onCopy={handleCopied}>{job.companyInfo.dateRange}</CopyArea></span>
           </CompanyInfo>
           <PositionDescription>
-            <Copy description={job.positionDescription} onCopy={handleCopied} className="description-list"> {/* Update className */}
+            <CopyArea description={job.positionDescription} onCopy={handleCopied} className="description-list"> {/* Update className */}
               {/* Your list items here */}
               {job.positionDescription.map((description, idx) => (
                 <PositionDescriptionItem key={idx}>
                   {description}  {/* Content displayed here */}
                 </PositionDescriptionItem>
               ))}
-            </Copy>
+            </CopyArea>
           </PositionDescription>
 
         </Position>
@@ -432,13 +441,13 @@ const Resume = () => {
       </Experience>
       <h2>Skills</h2>
       <SkillContainer>
-        <Copy onCopy={handleCopied}>
+        <CopyArea onCopy={handleCopied}>
           <DesignSkills />
-        </Copy>
+        </CopyArea>
         <hr />
-        <Copy onCopy={handleCopied}>
+        <CopyArea onCopy={handleCopied}>
           <TechnicalSkills />
-        </Copy>
+        </CopyArea>
       </SkillContainer>
     </Container>
   );
