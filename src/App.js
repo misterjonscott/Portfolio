@@ -27,6 +27,43 @@ const GlobalStyle = createGlobalStyle`
         background-color: #fff;
         background-image: none;
     `}
+    .loaderContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      .loader {
+        width: 200px;
+        aspect-ratio: 1;
+        animation: l5-0 1s infinite steps(1);
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        position: absolute;
+        inset:0 50% 50% 0;
+        transform-origin: bottom right; 
+        animation: 
+          l5-1 0.5s infinite linear alternate,
+          l5-2 0.5s infinite steps(1) alternate;
+      }
+      .loader::after {
+        --s:-1,-1;
+      }
+      @keyframes l5-0 {
+        0%  {transform:scale(1, 1) rotate(0deg)}
+        50% {transform:scale(1,-1) rotate(90deg)}
+      }
+  
+      @keyframes l5-1 {
+        0%   {transform:scale(var(--s,1)) perspective(150px) rotateX(  0deg)}
+        100% {transform:scale(var(--s,1)) perspective(150px) rotateX(180deg)}
+      }
+      @keyframes l5-2 {
+        0% {background: ${props => props.theme.primaryCyan}}
+        50%{background: ${props => props.theme.primaryPurple}}
+      }
+    }
   }
 
   h1, h2, h3 {
@@ -95,7 +132,7 @@ const App = () => {
           <GlobalStyle theme={theme === 'dark' ? darkTheme : lightTheme} $isresumepage={isresumepage} />
           {!isresumepage && <Header toggleTheme={toggleTheme} theme={theme} />}
           <PageContainer $isresumepage={isresumepage} className="page-container">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div className='loaderContainer'><div className='loader' /></div>}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about-me" element={<AboutMe />} />
