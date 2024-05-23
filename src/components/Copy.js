@@ -6,10 +6,8 @@ const Copy = ({ text, children, className, onCopy, description }) => {
 
   const handleCopy = () => {
     let textToCopy = description || children;
-
-    // If description is an array, join elements with a new line character
-    if (Array.isArray(textToCopy)) {
-      textToCopy = textToCopy.join("\n"); // Join elements with newline
+    if (Array.isArray(description)) {
+      textToCopy = description.join("\n"); // Join elements with newline
     }
 
     // Remove HTML tags (if needed)
@@ -35,11 +33,24 @@ const Copy = ({ text, children, className, onCopy, description }) => {
 
   return (
     <CopyToClipboard text={textForClipboard} onCopy={onCopy}>
-      <span
-        className={`${className} ${isHighlighted ? 'highlighted' : ''}`}
-        dangerouslySetInnerHTML={{ __html: description || children }}
-        onClick={handleClick} // Attach onClick handler to the span
-      />
+      {description && ( // Check if description exists before rendering
+        <span
+          className={`${className} ${isHighlighted ? 'highlighted' : ''}`}
+          dangerouslySetInnerHTML={{ __html: description }}
+          onClick={handleClick} // Attach onClick handler to the span
+        >
+          {Array.isArray(description) ? (
+            <ul className="description-list">
+              {description.map((desc, idx) => (
+                <li key={idx}>{desc}</li>
+              ))}
+            </ul>
+          ) : (
+            <span>{description}</span>
+          )}
+        </span>
+      )}
+      {/* Render children if description is not provided */}
     </CopyToClipboard>
   );
 };
