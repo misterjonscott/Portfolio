@@ -125,7 +125,7 @@ const summaryText = "Innovative problem-solving meets user-centered design. UX E
 
 const positionDescriptions = [
   [
-    "I led a user-centered redesign of the document hub interface, streamlining document access for users.",
+    "Led a user-centered redesign of the document hub interface, streamlining document access for users.",
     "By <strong>collaborating with cross-functional teams</strong>, I created high-fidelity, accessible Figma prototypes featuring intuitive search, favoriting, categorization, and document preview functionalities. This <strong>openness to broad design responsibilities</strong> ensured a holistic approach, resulting in an interface that empowers users to locate and pre-fill documents effortlessly.",
     "This project not only enhanced overall workflow but also showcased my <strong>continuous improvement mindset</strong> and ability to deliver impactful solutions."
   ],
