@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 1000px;
   margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
+  // font-family: Arial, Helvetica, sans-serif;
   font-size: 10pt;
   h1 {
     text-align: center;
@@ -20,6 +20,10 @@ const Name = styled.div`
   font-size: 3em;
   display: block;
   margin-bottom: 1em;
+  margin-top: 0.5em;
+  .title {
+    color: #999;
+  }
 `;
 
 const Header = styled.div`
@@ -85,210 +89,308 @@ const PositionDescription = styled.ul`
       text-decoration: underline;
     }
     &::before {
-      content: url("data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.06876 4.72794C7.22659 4.1554 5.76748 2.73957 5.13937 0.916353L4.88626 0.181375C4.84971 0.0730914 4.74819 0 4.63314 0C4.51945 0 4.41657 0.0730914 4.38003 0.181375L4.12692 0.916353C3.50022 2.73957 2.04246 4.15405 0.201678 4.72794C0.0812108 4.76448 0 4.87412 0 5C0 5.12588 0.0812142 5.23552 0.201678 5.27206C2.0425 5.8446 3.49891 7.26043 4.12414 9.08365L4.37996 9.81863C4.41651 9.92691 4.51938 10 4.63308 10C4.74813 10 4.84964 9.92691 4.88619 9.81863L5.1393 9.08365C5.766 7.25908 7.22646 5.84325 9.0687 5.27206C9.18917 5.23552 9.27038 5.12588 9.27038 5C9.27038 4.87412 9.18923 4.76448 9.06876 4.72794Z' fill='black'/></svg>");
+      content: url("data:image/svg+xml;utf8,<svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.06876 4.72794C7.22659 4.1554 5.76748 2.73957 5.13937 0.916353L4.88626 0.181375C4.84971 0.0730914 4.74819 0 4.63314 0C4.51945 0 4.41657 0.0730914 4.38003 0.181375L4.12692 0.916353C3.50022 2.73957 2.04246 4.15405 0.201678 4.72794C0.0812108 4.76448 0 4.87412 0 5C0 5.12588 0.0812142 5.23552 0.201678 5.27206C2.0425 5.8446 3.49891 7.26043 4.12414 9.08365L4.37996 9.81863C4.41651 9.92691 4.51938 10 4.63308 10C4.74813 10 4.84964 9.92691 4.88619 9.81863L5.1393 9.08365C5.766 7.25908 7.22646 5.84325 9.0687 5.27206C9.18917 5.23552 9.27038 5.12588 9.27038 5C9.27038 4.87412 9.18923 4.76448 9.06876 4.72794Z' fill='black'/> </svg>");
       position: absolute;
-      top: -4px;
+      top: 0;
       left: 0;
     }
   }
 `;
 
 const PositionDescriptionItem = styled.li`
-  display: inline;
-  margin-right: 1em;
 `;
 
 const SkillContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+  strong {
+    display: inline;
+  }
 `;
 
 const Skill = styled.span`
-
+  
 `;
+
 
 const Experience = styled.div`
   
 `;
 
-const summaryText = "Design Engineer with 15+ years of UX design experience and a passion for pixel-perfect React applications.  Proven ability to translate user research into beautiful, performant interfaces using my strong skills in React and CSS. Highly collaborative and detail-oriented, I lead the design process from concept to implementation, ensuring seamless integration with cross-functional teams. Proud dog owner, bringing a user-centric perspective to the veterinary space.";
+const summaryText = "Results-driven UX Engineer with 20+ years of experience crafting responsive, user-centered interfaces and intuitive designs that drive business results. Skilled in JavaScript, HTML5, CSS3, and modern front-end tools. Expert in UX research, wireframing, prototyping, and design systems thinking. Achieved 55% faster load times and 75% higher user engagement. Passionate about inclusive product design and engineering.";
 
 const jobsData = [
   {
-    positionTitle: "UX Designer",
+    positionTitle: "Senior Product Designer",
     companyInfo: {
       companyName: "TEKSystems @ Edward Jones",
       dateRange: "July 2023 - January 2024, (Fully Remote)"
     },
-    positionDescription: [
-      "Conducted user research to identify pain points and led a <strong>user-centered redesign</strong> of their complex document hub interface, resulting in a 30% reduction in document access time.",
-      
-      "Implemented intuitive search, favoriting, categorization, and document preview functionalities, <strong>empowering users</strong> to locate and pre-fill documents effortlessly, leading to improved overall workflow efficiency in a B2B enterprise environment."
+    positionDescription: 
+    [
+      "Redesigned document hub interface using user research, reducing document access time by 50% and improving workflow efficiency",
+      "Collaborated with cross-functional teams to prioritize user needs and achieve business goals, demonstrating effective communication and project management skills",
+      "Applied user research to drive technical design decisions, reducing document access time by 50%",
+      "Collaborated with engineering teams to implement intuitive search and feature enhancements"
     ]
   },
   {
-    positionTitle: "UX Engineer",
+    positionTitle: "Senior Product Designer",
     companyInfo: {
       companyName: "Skillable",
       dateRange: "August 2021 - May 2023, (Indianapolis, IN)"
     },
-    positionDescription: [
-      "Developed <strong>fully interactive Figma prototypes</strong> for Skillable's TMS platform (student & instructor dashboards, course listing page), streamlining user workflows and boosting user satisfaction & engagement.",
-  
-      "Established and managed a <strong>scalable design system</strong> with over 40 reusable components, ensuring user-centered design principles and consistent brand identity across projects.",
-  
-      "Designed a new set of product logos that elevated <strong>brand recognition</strong> and facilitated user growth, contributing to a cohesive brand identity.",
-
-      "Built a modular <strong>React framework</strong> for the administrative portal, enabling rapid development and seamless integration with existing UI components."
-        ]
-  },
-  {
-    positionTitle: "Front-End Engineer",
-    companyInfo: {
-      companyName: "Finish Line",
-      dateRange: "January 2019 - August 2021, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "Modernized the user interface and improved user experience by migrating the retail portal from Java Server Pages (JSP) to a React-based system, adhering to best practices for <strong>code quality</strong>.",
-
-      "Developed key functionalities like product favoriting mechanisms and optimized responsive views, resulting in an <strong>enhanced user experience</strong> and overall platform performance.",
-
-      "Championed <strong>user-centered design principles</strong> throughout the development process."
+    positionDescription:
+    [
+      "Developed interactive Figma prototypes for various interfaces, enhancing user experience and engagement",
+      "Established and managed scalable design systems, ensuring consistent brand identity across projects and demonstrating expertise in design systems and visual design",
+      "Developed interactive Figma prototypes and built a React framework for the administrative portal",
+      "Designed and built API-driven interfaces and established a scalable design system"
     ]
   },
   {
-    positionTitle: "UX Designer",
+    positionTitle: "Senior Front-End Engineer",
+    companyInfo: {
+      companyName: "Finish Line",
+      dateRange: "January 2019 - August 2021, (Indianapolis, IN)"
+      },
+    positionDescription: 
+    [
+      "Engineered product favoriting mechanisms, optimized views (improving responsiveness by 40%), and integrated robust analytics, significantly enhancing user engagement and experience.",
+      "Spearheaded the migration from Java Server Pages (JSP) to a React-based system, championing user-centered design principles, maintaining code quality through linting, and ensuring a seamless transition."
+    ]
+  },
+  {
+    positionTitle: "Senior Product Designer",
     companyInfo: {
       companyName: "TEKSystems @ Ascension Health",
       dateRange: "November 2018 - January 2019, (Indianapolis, IN)"
     },
-    positionDescription: [
-      "<strong>Proactively identified</strong> workflow inefficiencies and proposed a new internal application to address them. Conducted user research interviews to gather feedback and inform the design process. Developed an interactive prototype to showcase the application's potential and garner team buy-in."
-    ]
+    positionDescription:
+    // [
+    //   "<strong>Proactively identified</strong> workflow inefficiencies and proposed a new internal application to address them. Conducted user research interviews to gather feedback and inform the design process. Developed an interactive prototype to showcase the application's potential and garner team buy-in."
+    // ],
+    [""]
   },
   {
-    positionTitle: "UX Engineer",
+    positionTitle: "Senior Product Designer",
     companyInfo: {
       companyName: "BC Forward @ Navient",
       dateRange: "February 2017 - November 2018, (Indianapolis, IN)"
     },
-    positionDescription: [
-      "Spearheaded the UX design for a new web product, <strong>collaborating closely with 6 UI developers</strong> to translate user research into a user-friendly and visually captivating interface.",
-
-      "Owned the design process from conception to launch, <strong>ensuring alignment</strong> with project objectives and user insights.",
-
-      "Championed <strong>industry best practices for UI design</strong>, fostering a seamless and consistent user experience."
+    positionDescription:
+    [
+      "Led 6 developers in modern UI development, promoting scalable design patterns with React component libraries, and architected Git migration, improving code quality by 30% through technical training and workflow implementation",
+      "Built a functional React prototype and designed/implemented responsive, ADA-compliant interfaces using Bootstrap, demonstrating technical expertise and design vision execution"
     ]
   },
   {
-    positionTitle: "Front-End Engineer",
+    positionTitle: "Previous Roles (2012-2017)",
     companyInfo: {
-      companyName: "Robovise",
-      dateRange: "October 2016 - February 2017, (Indianapolis, IN)"
+      companyName: "(Fintech, Software, Social Media Search, VOIP, Biotech, E-Commerce)",
+      dateRange: "2012 - 2017"
     },
-    positionDescription: [
-      "Developed a cutting-edge UI for a fintech startup's robo-investing product using modern technologies like Node.js, React, Bootstrap 4, Docker, and Redux."
-    ]
-  },
-  {
-    positionTitle: "UX Designer",
-    companyInfo: {
-      companyName: "LevelUp Development",
-      dateRange: "July 2016 - October 2016, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "<strong>Empowered clients through rapid prototyping</strong>, enabling them to provide early feedback on product concepts before development, facilitating productive stakeholder meetings for gathering requirements and building accurate user personas.",
-
-      "Designed a mobile-first finance guidance app using user research methods like <strong>user personas and user journeys</strong>. This resulted in detailed diagrams that ultimately led to a fully interactive high fidelity wireframe prototype in Figma."
-    ]
-  },
-  {
-    positionTitle: "UX Engineer",
-    companyInfo: {
-      companyName: "DirectEmployers",
-      dateRange: "December 2015 - July 2016, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "<strong>Championed prototype-driven development</strong>, delivering a clear roadmap for projects that optimized resource allocation and ensured timely completion.",
-
-      "Spearheaded a UI redesign, achieving a <strong>cohesive visual style</strong> and seamless responsiveness across all devices. This modernized the product, transforming it into a user-friendly experience."
-    ]
-  },
-  {
-    positionTitle: "UX Engineer",
-    companyInfo: {
-      companyName: "Geofeedia",
-      dateRange: "March 2015 - December 2015, (Indianapolis, IN)"
-    },
-    positionDescription: [
-        "Developed UI features for a social media search tool, leveraging strong design skills and product expertise. These features utilized embedded maps and dynamic placement, enhancing user experience and functionality.",
-
-      "<strong>Established a unified design system</strong> by leveraging existing UI elements, promoting design consistency and efficiency across projects.",
-
-      "Designed a user-friendly interface for <strong>efficient user management</strong>, empowering administrators with granular control over user creation, permission assignment, and account administration.",
-      
-      "Implemented SVG sprite sheets to optimize asset reusability."
-    ]
-  },
-  {
-    positionTitle: "UX Engineer",
-    companyInfo: {
-      companyName: "Fathom Voice (Sharpen CX)",
-      dateRange: "October 2014 - March 2015, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "Streamlined complex VOIP call center workflows by simplifying processes and <strong>integrating user-centric features</strong> like waveform visualization and report building. This resulted in a more intuitive user experience and increased user satisfaction.",
-    ]
-  },
-  {
-    positionTitle: "UX Engineer",
-    companyInfo: {
-      companyName: "Indigo Bioautomation",
-      dateRange: "October 2012 - October 2014, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "Led the user-centered revitalization of a cutting-edge biotech software product, collaborating closely with users and stakeholders. This approach ensured the product retained its innovative capabilities while delivering a more <strong>intuitive user experience</strong>, broadening its reach to a wider audience by eliminating the need for extensive prior knowledge.",
-
-      "<strong>Championed brand identity</strong> by leading the refresh of branding materials and creating a cohesive marketing toolkit. This included a new company website, compelling graphic design materials, and engaging conference videos - all designed to dynamically showcase the company's offerings."
-    ]
-  },
-  {
-    positionTitle: "Front-End Engineer",
-    companyInfo: {
-      companyName: "Lids Sports Group",
-      dateRange: "October 2009 - October 2012, (Indianapolis, IN)"
-    },
-    positionDescription: [
-      "<strong>Streamlined the checkout process</strong> by implementing a single-page design with a sidebar and accordions featuring real-time error checking. This user-centric approach improved user experience and boosted conversion rates.",
-      "Advocated for <strong>data-driven decision-making</strong> by implementing A/B testing and heatmap analysis for continuous user experience optimization.",
-      "Designed interfaces for team-specific fan shops, creating over 20 custom visual styles in Adobe Photoshop.  To ensure efficient site launches, I used <strong>shared foundational code components</strong>.",
+    positionDescription:
+    [
+      "Designed and developed responsive, accessible, and user-centered UIs using <strong>React, Node.js, and Bootstrap</strong>",
+      "Conducted <strong>user research and rapid prototyping</strong> with Figma to inform design decisions",
+      "Established and implemented <strong>design systems and style guides</strong> for brand consistency",
+      "Utilized data analytics and A/B testing to drive <strong>data-driven decision-making</strong>",
+      "Spearheaded UI redesigns and front-end development for <strong>multiple projects simultaneously</strong>",
+      "<strong>Streamlined user workflows</strong> and interaction design for improved usability",
     ]
   }
+  // {
+  //   positionTitle: "Front-End Engineer",
+  //   companyInfo: {
+  //     companyName: "Robovise",
+  //     dateRange: "October 2016 - February 2017, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   // [
+  //   //   "I contributed to the incubation of this fintech startup by crafting a <strong>cutting-edge UI</strong> for their robo-investing product.  This project involved modern technologies such as <strong>Node.js, React, Bootstrap 4, Docker, and Redux</strong>.  My involvement in this early-stage venture demonstrates my ability to adapt to <strong>fast-paced environments</strong> and contribute to the development of innovative products."
+  //   // ]
+  //   [""]
+  // },
+  // {
+  //   positionTitle: "Senior Product Designer",
+  //   companyInfo: {
+  //     companyName: "LevelUp Development",
+  //     dateRange: "July 2016 - October 2016, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+  //     "<strong>Empowered clients through rapid prototyping</strong>, enabling them to provide early feedback on product concepts before development, facilitating productive stakeholder meetings for gathering requirements and building accurate user personas.",
+
+  //     "Designed a mobile-first finance guidance app using user research methods like <strong>user personas and user journeys</strong>. This resulted in detailed diagrams that ultimately led to a fully interactive high fidelity wireframe prototype in Figma."
+  //   ]
+  // },
+  // {
+  //   positionTitle: "Senior UX Engineer",
+  //   companyInfo: {
+  //     companyName: "DirectEmployers",
+  //     dateRange: "December 2015 - July 2016, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+  //     "<strong>Championed prototype-driven development</strong>, delivering a clear roadmap for projects that optimized resource allocation and ensured timely completion.",
+
+  //     "Spearheaded a UI redesign, achieving a <strong>cohesive visual style</strong> and seamless responsiveness across all devices. This modernized the product, transforming it into a user-friendly experience."
+  //   ]
+  // },
+  // {
+  //   positionTitle: "UX Engineer",
+  //   companyInfo: {
+  //     companyName: "Geofeedia",
+  //     dateRange: "March 2015 - December 2015, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+  //   //   "Developed UI features for a social media search tool, leveraging strong design skills and product expertise. These features utilized embedded maps and dynamic placement, enhancing user experience and functionality.",
+
+  //   "<strong>Established a unified design system</strong> by leveraging existing UI elements, promoting design consistency and efficiency across projects.",
+
+  //     "Designed a user-friendly interface for <strong>efficient user management</strong>, empowering administrators with granular control over user creation, permission assignment, and account administration."
+      
+  //   //   "Implemented SVG sprite sheets to optimize asset reusability."
+  //   ]
+  // },
+  // {
+  //   positionTitle: "Senior Product Designer",
+  //   companyInfo: {
+  //     companyName: "Sharpen",
+  //     dateRange: "October 2014 - March 2015, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+  //     "Streamlined complex VOIP call center workflows by simplifying processes and <strong>integrating user-centric features</strong> like waveform visualization and report building. This resulted in a more intuitive user experience and increased user satisfaction.",
+  //   ]
+  // },
+  // {
+  //   positionTitle: "Senior Product Designer",
+  //   companyInfo: {
+  //     companyName: "Indigo Bioautomation",
+  //     dateRange: "October 2012 - October 2014, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+  //     "Led the user-centered revitalization of a cutting-edge biotech software product, collaborating closely with users and stakeholders. This approach ensured the product retained its innovative capabilities while delivering a more <strong>intuitive user experience</strong>, broadening its reach to a wider audience by eliminating the need for extensive prior knowledge.",
+
+  //     "<strong>Championed brand identity</strong> by leading the refresh of branding materials and creating a cohesive marketing toolkit. This included a new company website, compelling graphic design materials, and engaging conference videos - all designed to dynamically showcase the company's offerings."
+  //   ]
+  // },
+  // {
+  //   positionTitle: "Front-End Engineer",
+  //   companyInfo: {
+  //     companyName: "Lids Sports Group",
+  //     dateRange: "October 2009 - October 2012, (Indianapolis, IN)"
+  //   },
+  //   positionDescription:
+  //   [
+    // "Designed interfaces for team-specific fan shops, creating over 20 custom visual styles in Adobe Photoshop.  To ensure efficient site launches, I used <strong>shared foundational code components</strong>.",
+    // "<strong>Streamlined the checkout process</strong> by implementing a single-page design with a sidebar and accordions featuring real-time error checking. This user-centric approach improved user experience and boosted conversion rates.",
+    // "Advocated for <strong>data-driven decision-making</strong> by implementing A/B testing and heatmap analysis for continuous user experience optimization."
+  //   ]
+  // }
 ];
 
-const skillsData = [
+const designSkillsData = [
+  "Figma",
+  "Sketch",
+  "Invision",
   "UI Development",
   "UX Design",
   "Rapid-Prototyping",
   "Information Architecture",
   "Usability Testing & Research",
-  "Agile Product Development",
-  "Design Systems",
   "User-Centered Design",
   "Icon Design",
-  "Figma & Adobe XD",
   "Responsive & Mobile Design",
-  "Accessibility",
-  "User Journey Mapping"
+  "User Journey Mapping",
+  "Agile/SCRUM",
+  "High/Low fidelity wireframes",
 ];
 
+const techSkillsData = [
+  "Front-End Development (HTML5, CSS3, JavaScript)",
+  "JavaScript Frameworks (React)",
+  "Design System Experience",
+  "Version Control (Git)",
+  "Agile Development",
+  "Bootstrap",
+  "Foundation",
+  "jQuery",
+  "node.js",
+  "Gulp",
+  "material.io",
+  "D3js",
+  "HTML/CSS Mastery",
+  "Project Management"
+];
+
+const customSkills = [
+  "Figma",
+  "Sketch",
+  "UX Design",
+  "Rapid-Prototyping",
+  "Information Architecture",
+  "Usability Testing & Research",
+  "User-Centered Design",
+  "User Journey Mapping",
+  "Agile Development",
+  "Version Control (Git)",
+  "HTML5, CSS3",
+  "High/Low fidelity wireframes",
+]
 
 const Resume = () => {
+  const SkillList = ({ skills }) => {
+    return (
+      <SkillContainer>
+        {skills.map((skill, index) => (
+          <React.Fragment key={index}>
+            <Skill>{skill}</Skill>
+            {index !== skills.length - 1 && ', '}
+          </React.Fragment>
+        ))}
+      </SkillContainer>
+    );
+  };
+  
+  const DesignSkills = () => {
+    return (
+      <SkillContainer>
+        <strong>Design: </strong>
+        <SkillList skills={designSkillsData} />
+      </SkillContainer>
+    );
+  };
+  
+  const TechnicalSkills = () => {
+    return (
+      <SkillContainer>
+        <strong>Technical: </strong>
+        <SkillList skills={techSkillsData} />
+      </SkillContainer>
+    );
+  };
+
+  const AllSkills = () => {
+    const allSkills = [...designSkillsData, ...techSkillsData];
+    // const allSkills = [...customSkills];
+    return (
+      <SkillContainer>
+        <SkillList skills={allSkills} />
+      </SkillContainer>
+    );
+  };
+
   return (
     <Container>
       {/* Header */}
-      <Name>Jonathon Scott</Name>
+      <Name>Jonathon Scott <span className="title">| Sr. UX Engineer</span></Name>
       <Header>
         <HeaderColumn>
           <HeaderIcon>
@@ -343,27 +445,27 @@ const Resume = () => {
       <h2>Experience</h2>
       <Experience>
         {jobsData.map((job, index) => (
-        <Position key={index}>
-          <PositionTitle>{job.positionTitle}</PositionTitle>
-          <CompanyInfo>
-            <span className="company-name">{job.companyInfo.companyName}</span>
-            <span className="date-range">{job.companyInfo.dateRange}</span>
-          </CompanyInfo>
-          <PositionDescription>
-            {job.positionDescription.map((description, idx) => (
-              <PositionDescriptionItem key={idx}>
-                <span dangerouslySetInnerHTML={{ __html: description }} />
-              </PositionDescriptionItem>
-            ))}
-          </PositionDescription>
-        </Position>
-      ))}
+          <Position key={index}>
+            <PositionTitle>{job.positionTitle}</PositionTitle>
+            <CompanyInfo>
+              <span className="company-name">{job.companyInfo.companyName}</span>
+              <span className="date-range">{job.companyInfo.dateRange}</span>
+            </CompanyInfo>
+            <PositionDescription>
+              {job.positionDescription.filter(description => description).map(
+                (description, idx) => (
+                  <PositionDescriptionItem key={idx}>
+                    <span dangerouslySetInnerHTML={{ __html: description }} />
+                  </PositionDescriptionItem>
+                )
+              )}
+            </PositionDescription>
+          </Position>
+        ))}
       </Experience>
       <h2>Skills</h2>
       <SkillContainer>
-        {skillsData.map((skill, index) => (
-            <Skill key={index}>{skill}</Skill>
-          ))}
+        <AllSkills />
       </SkillContainer>
     </Container>
   );

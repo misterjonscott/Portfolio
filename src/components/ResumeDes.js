@@ -119,11 +119,11 @@ const Experience = styled.div`
   
 `;
 
-const summaryText = "UX Designer with 15+ years of experience driving user-centered design in biotech and healthcare industries. Proven ability to leverage user research, UI/UX best practices, and collaborative prototyping to drive up to 300% engagement increase. Skilled in Figma and Framer, with expertise in user interviews and Agile methodologies. Empathetic leader, championing user-centered solutions through collaborative teams.";
+const summaryText = "Empathetic UX/Interaction Designer driven by user advocacy, with 15 years of experience crafting intuitive, accessible designs that drive business results. Boosted user engagement by 52% through data-driven design decisions. Skilled in UX research, wireframing, prototyping, usability testing, and design systems thinking, with expertise in Figma & Sketch. Passionate about designing inclusive products that delight users and drive business growth.";
 
 const jobsData = [
   {
-    positionTitle: "Senior Product Designer",
+    positionTitle: "Senior UX/UI Designer",
     companyInfo: {
       companyName: "TEKSystems @ Edward Jones",
       dateRange: "July 2023 - January 2024, (Fully Remote)"
@@ -133,12 +133,12 @@ const jobsData = [
     //   "Through user research, I identified pain points and led a <strong>user-centered redesign</strong> of the document hub interface, resulting in a 30% reduction in document access time. Implemented intuitive search, favoriting, categorization, and document preview functionalities, empowering users to locate and pre-fill documents effortlessly, leading to improved overall workflow efficiency."
     // ],
     [
-      "User research-driven redesign of document hub interface (50% reduction in document access time). Implemented intuitive search & features, boosting workflow efficiency.",
-      "Collaborated with cross-functional teams to prioritize user needs and achieve business goals."
+      "Redesigned document hub interface using user research, reducing document access time by 50% and improving workflow efficiency",
+      "Collaborated with cross-functional teams to prioritize user needs and achieve business goals, demonstrating effective communication and project management skills"
     ]
   },
   {
-    positionTitle: "Senior Product Designer",
+    positionTitle: "Senior UX/UI Designer",
     companyInfo: {
       companyName: "Skillable",
       dateRange: "August 2021 - May 2023, (Indianapolis, IN)"
@@ -153,9 +153,8 @@ const jobsData = [
 
     // ],
     [
-      "Developed interactive Figma prototypes for dashboards, product listing pages, administration, and reporting interfaces, enhancing user experience and engagement.",
-      "Established & managed scalable design systems for consistent brand identity across projects.",
-      "Designed over 15 new product logos that elevated brand recognition and facilitated user growth."
+      "Developed interactive Figma prototypes for various interfaces, enhancing user experience and engagement",
+      "Established and managed scalable design systems, ensuring consistent brand identity across projects and demonstrating expertise in design systems and visual design"
     ]
   },
   {
@@ -177,7 +176,7 @@ const jobsData = [
    [""]
   },
   {
-    positionTitle: "Senior Product Designer",
+    positionTitle: "Senior UX/UI Designer",
     companyInfo: {
       companyName: "TEKSystems @ Ascension Health",
       dateRange: "November 2018 - January 2019, (Indianapolis, IN)"
@@ -187,11 +186,11 @@ const jobsData = [
     //   "<strong>Proactively identified</strong> workflow inefficiencies and proposed a new internal application to address them. Conducted user research interviews to gather feedback and inform the design process. Developed an interactive prototype to showcase the application's potential and garner team buy-in."
     // ],
     [
-      "Identified workflow inefficiencies & proposed new internal application. Conducted user research & developed an interactive prototype to secure team buy-in."
+      "Conducted user research and developed an interactive prototype to secure team buy-in for a new internal application, demonstrating user-centered design skills and effective communication"
     ]
   },
   {
-    positionTitle: "Senior Product Designer",
+    positionTitle: "Senior UX/UI Designer",
     companyInfo: {
       companyName: "BC Forward @ Navient",
       dateRange: "February 2017 - November 2018, (Indianapolis, IN)"
@@ -205,8 +204,7 @@ const jobsData = [
     //   "Championed <strong>industry best practices for UI design</strong>, fostering a seamless and consistent user experience."
     // ],
     [
-      "Led UX design for a new web product, collaborating with UI developers for a user-friendly & visually captivating interface.",
-      "Led design process, ensuring alignment with project objectives and user insights."
+      "Led UX design for a new web product, collaborating with UI developers to create a user-friendly and visually captivating interface, demonstrating leadership and design skills"
     ]
   },
   {
@@ -238,7 +236,7 @@ const jobsData = [
   //   [""]
   // },
   // {
-  //   positionTitle: "Senior Product Designer",
+  //   positionTitle: "Senior UX/UI Designer",
   //   companyInfo: {
   //     companyName: "LevelUp Development",
   //     dateRange: "July 2016 - October 2016, (Indianapolis, IN)"
@@ -281,7 +279,7 @@ const jobsData = [
   //   ]
   // },
   // {
-  //   positionTitle: "Senior Product Designer",
+  //   positionTitle: "Senior UX/UI Designer",
   //   companyInfo: {
   //     companyName: "Sharpen",
   //     dateRange: "October 2014 - March 2015, (Indianapolis, IN)"
@@ -292,7 +290,7 @@ const jobsData = [
   //   ]
   // },
   // {
-  //   positionTitle: "Senior Product Designer",
+  //   positionTitle: "Senior UX/UI Designer",
   //   companyInfo: {
   //     companyName: "Indigo Bioautomation",
   //     dateRange: "October 2012 - October 2014, (Indianapolis, IN)"
@@ -353,6 +351,21 @@ const techSkillsData = [
   "Project Management"
 ];
 
+const customSkills = [
+  "Figma",
+  "Sketch",
+  "UX Design",
+  "Rapid-Prototyping",
+  "Information Architecture",
+  "Usability Testing & Research",
+  "User-Centered Design",
+  "User Journey Mapping",
+  "Agile Development",
+  "Version Control (Git)",
+  "HTML5, CSS3",
+  "High/Low fidelity wireframes",
+]
+
 const Resume = () => {
   const SkillList = ({ skills }) => {
     return (
@@ -385,10 +398,20 @@ const Resume = () => {
     );
   };
 
+  const AllSkills = () => {
+    const allSkills = [...designSkillsData, ...techSkillsData];
+    // const allSkills = [...customSkills];
+    return (
+      <SkillContainer>
+        <SkillList skills={allSkills} />
+      </SkillContainer>
+    );
+  };
+
   return (
     <Container>
       {/* Header */}
-      <Name>Jonathon Scott <span className="title">| Sr. Visual Designer</span></Name>
+      <Name>Jonathon Scott <span className="title">| Sr. UX/UI Designer</span></Name>
       <Header>
         <HeaderColumn>
           <HeaderIcon>
@@ -440,12 +463,6 @@ const Resume = () => {
           {summaryText}
         </p>
       </Summary>
-      <h2>Skills</h2>
-      <SkillContainer>
-        <DesignSkills />
-        <hr />
-        <TechnicalSkills />
-      </SkillContainer>
       <h2>Experience</h2>
       <Experience>
         {jobsData.map((job, index) => (
@@ -467,6 +484,10 @@ const Resume = () => {
           </Position>
         ))}
       </Experience>
+      <h2>Skills</h2>
+      <SkillContainer>
+        <AllSkills />
+      </SkillContainer>
     </Container>
   );
 }
