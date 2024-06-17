@@ -142,7 +142,7 @@ const jobsData = [
     },
     positionDescription:
     [
-      "Developed interactive Figma prototypes for various interfaces, enhancing user experience and engagement",
+      "Developed interactive Figma prototypes for Product Listing Pages, Dashboards & Admin interfaces, enhancing user experience and engagement",
       "Established and managed scalable design systems, ensuring consistent brand identity across projects and demonstrating expertise in design systems and visual design"
     ]
   },
