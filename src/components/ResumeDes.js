@@ -129,9 +129,6 @@ const jobsData = [
       dateRange: "July 2023 - January 2024, (Fully Remote)"
     },
     positionDescription: 
-    // [
-    //   "Through user research, I identified pain points and led a <strong>user-centered redesign</strong> of the document hub interface, resulting in a 30% reduction in document access time. Implemented intuitive search, favoriting, categorization, and document preview functionalities, empowering users to locate and pre-fill documents effortlessly, leading to improved overall workflow efficiency."
-    // ],
     [
       "Redesigned document hub interface using user research, reducing document access time by 50% and improving workflow efficiency",
       "Collaborated with cross-functional teams to prioritize user needs and achieve business goals, demonstrating effective communication and project management skills"
@@ -144,14 +141,6 @@ const jobsData = [
       dateRange: "August 2021 - May 2023, (Indianapolis, IN)"
     },
     positionDescription:
-    // [
-    //   "Developed <strong>fully interactive Figma prototypes</strong> for Skillable's TMS platform (student & instructor dashboards, course listing page), streamlining user workflows and boosting user satisfaction & engagement.",
-  
-    //   "Established and managed <strong>scalable design systems</strong> with reusable components, ensuring user-centered design principles and consistent brand identity across projects.",
-  
-    //   "Designed a new set of product logos that elevated <strong>brand recognition</strong> and facilitated user growth, contributing to a cohesive brand identity."
-
-    // ],
     [
       "Developed interactive Figma prototypes for various interfaces, enhancing user experience and engagement",
       "Established and managed scalable design systems, ensuring consistent brand identity across projects and demonstrating expertise in design systems and visual design"
@@ -164,15 +153,6 @@ const jobsData = [
       dateRange: "January 2019 - August 2021, (Indianapolis, IN)"
       },
     positionDescription: 
-    /*
-    [
-      "Engineered product favoriting mechanisms, resulting in increased user engagement with the retail portal.",
-      "Optimized responsive views, improving responsiveness across devices by over 40%",
-      "Integrated robust analytics, enabling enhanced data-driven decision making.",
-      "Spearheaded the migration of Java Server Pages (JSP) to a React-based system, championing user-centered design principles for a modernized user interface.",
-      "Ensured meticulous code quality throughout the migration by adhering to widely accepted code linting rules.",
-    ]
-    */
    [""]
   },
   {
@@ -182,9 +162,6 @@ const jobsData = [
       dateRange: "November 2018 - January 2019, (Indianapolis, IN)"
     },
     positionDescription:
-    // [
-    //   "<strong>Proactively identified</strong> workflow inefficiencies and proposed a new internal application to address them. Conducted user research interviews to gather feedback and inform the design process. Developed an interactive prototype to showcase the application's potential and garner team buy-in."
-    // ],
     [
       "Conducted user research and developed an interactive prototype to secure team buy-in for a new internal application, demonstrating user-centered design skills and effective communication"
     ]
@@ -196,13 +173,6 @@ const jobsData = [
       dateRange: "February 2017 - November 2018, (Indianapolis, IN)"
     },
     positionDescription:
-    // [
-    //   "Spearheaded the UX design for a new web product, <strong>collaborating closely with 6 UI developers</strong> to translate user research into a user-friendly and visually captivating interface.",
-
-    //   "Owned the design process from conception to launch, <strong>ensuring alignment</strong> with project objectives and user insights.",
-
-    //   "Championed <strong>industry best practices for UI design</strong>, fostering a seamless and consistent user experience."
-    // ],
     [
       "Led UX design for a new web product, collaborating with UI developers to create a user-friendly and visually captivating interface, demonstrating leadership and design skills"
     ]
@@ -223,132 +193,6 @@ const jobsData = [
       "Developed UI features and <strong>over 20 full websites</strong> for various industries"
     ]
   }
-  // {
-  //   positionTitle: "Front-End Engineer",
-  //   companyInfo: {
-  //     companyName: "Robovise",
-  //     dateRange: "October 2016 - February 2017, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   // [
-  //   //   "I contributed to the incubation of this fintech startup by crafting a <strong>cutting-edge UI</strong> for their robo-investing product.  This project involved modern technologies such as <strong>Node.js, React, Bootstrap 4, Docker, and Redux</strong>.  My involvement in this early-stage venture demonstrates my ability to adapt to <strong>fast-paced environments</strong> and contribute to the development of innovative products."
-  //   // ]
-  //   [""]
-  // },
-  // {
-  //   positionTitle: "Senior UX/UI Designer",
-  //   companyInfo: {
-  //     companyName: "LevelUp Development",
-  //     dateRange: "July 2016 - October 2016, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-  //     "<strong>Empowered clients through rapid prototyping</strong>, enabling them to provide early feedback on product concepts before development, facilitating productive stakeholder meetings for gathering requirements and building accurate user personas.",
-
-  //     "Designed a mobile-first finance guidance app using user research methods like <strong>user personas and user journeys</strong>. This resulted in detailed diagrams that ultimately led to a fully interactive high fidelity wireframe prototype in Figma."
-  //   ]
-  // },
-  // {
-  //   positionTitle: "Senior UX Engineer",
-  //   companyInfo: {
-  //     companyName: "DirectEmployers",
-  //     dateRange: "December 2015 - July 2016, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-  //     "<strong>Championed prototype-driven development</strong>, delivering a clear roadmap for projects that optimized resource allocation and ensured timely completion.",
-
-  //     "Spearheaded a UI redesign, achieving a <strong>cohesive visual style</strong> and seamless responsiveness across all devices. This modernized the product, transforming it into a user-friendly experience."
-  //   ]
-  // },
-  // {
-  //   positionTitle: "UX Engineer",
-  //   companyInfo: {
-  //     companyName: "Geofeedia",
-  //     dateRange: "March 2015 - December 2015, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-  //   //   "Developed UI features for a social media search tool, leveraging strong design skills and product expertise. These features utilized embedded maps and dynamic placement, enhancing user experience and functionality.",
-
-  //   "<strong>Established a unified design system</strong> by leveraging existing UI elements, promoting design consistency and efficiency across projects.",
-
-  //     "Designed a user-friendly interface for <strong>efficient user management</strong>, empowering administrators with granular control over user creation, permission assignment, and account administration."
-      
-  //   //   "Implemented SVG sprite sheets to optimize asset reusability."
-  //   ]
-  // },
-  // {
-  //   positionTitle: "Senior UX/UI Designer",
-  //   companyInfo: {
-  //     companyName: "Sharpen",
-  //     dateRange: "October 2014 - March 2015, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-  //     "Streamlined complex VOIP call center workflows by simplifying processes and <strong>integrating user-centric features</strong> like waveform visualization and report building. This resulted in a more intuitive user experience and increased user satisfaction.",
-  //   ]
-  // },
-  // {
-  //   positionTitle: "Senior UX/UI Designer",
-  //   companyInfo: {
-  //     companyName: "Indigo Bioautomation",
-  //     dateRange: "October 2012 - October 2014, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-  //     "Led the user-centered revitalization of a cutting-edge biotech software product, collaborating closely with users and stakeholders. This approach ensured the product retained its innovative capabilities while delivering a more <strong>intuitive user experience</strong>, broadening its reach to a wider audience by eliminating the need for extensive prior knowledge.",
-
-  //     "<strong>Championed brand identity</strong> by leading the refresh of branding materials and creating a cohesive marketing toolkit. This included a new company website, compelling graphic design materials, and engaging conference videos - all designed to dynamically showcase the company's offerings."
-  //   ]
-  // },
-  // {
-  //   positionTitle: "Front-End Engineer",
-  //   companyInfo: {
-  //     companyName: "Lids Sports Group",
-  //     dateRange: "October 2009 - October 2012, (Indianapolis, IN)"
-  //   },
-  //   positionDescription:
-  //   [
-    // "Designed interfaces for team-specific fan shops, creating over 20 custom visual styles in Adobe Photoshop.  To ensure efficient site launches, I used <strong>shared foundational code components</strong>.",
-    // "<strong>Streamlined the checkout process</strong> by implementing a single-page design with a sidebar and accordions featuring real-time error checking. This user-centric approach improved user experience and boosted conversion rates.",
-    // "Advocated for <strong>data-driven decision-making</strong> by implementing A/B testing and heatmap analysis for continuous user experience optimization."
-  //   ]
-  // }
-];
-
-const designSkillsData = [
-  "Figma",
-  "Sketch",
-  "Invision",
-  "UI Development",
-  "UX Design",
-  "Rapid-Prototyping",
-  "Information Architecture",
-  "Usability Testing & Research",
-  "User-Centered Design",
-  "Icon Design",
-  "Responsive & Mobile Design",
-  "User Journey Mapping",
-  "Agile/SCRUM",
-  "High/Low fidelity wireframes",
-];
-
-const techSkillsData = [
-  "Front-End Development (HTML5, CSS3, JavaScript)",
-  "JavaScript Frameworks (React)",
-  "Design System Experience",
-  "Version Control (Git)",
-  "Agile Development",
-  "Bootstrap",
-  "Foundation",
-  "jQuery",
-  "node.js",
-  "Gulp",
-  "material.io",
-  "D3js",
-  "HTML/CSS Mastery",
-  "Project Management"
 ];
 
 const customSkills = [
@@ -379,28 +223,9 @@ const Resume = () => {
       </SkillContainer>
     );
   };
-  
-  const DesignSkills = () => {
-    return (
-      <SkillContainer>
-        <strong>Design: </strong>
-        <SkillList skills={designSkillsData} />
-      </SkillContainer>
-    );
-  };
-  
-  const TechnicalSkills = () => {
-    return (
-      <SkillContainer>
-        <strong>Technical: </strong>
-        <SkillList skills={techSkillsData} />
-      </SkillContainer>
-    );
-  };
 
   const AllSkills = () => {
-    const allSkills = [...designSkillsData, ...techSkillsData];
-    // const allSkills = [...customSkills];
+    const allSkills = [...customSkills];
     return (
       <SkillContainer>
         <SkillList skills={allSkills} />
