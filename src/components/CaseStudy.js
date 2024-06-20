@@ -79,12 +79,16 @@ const CaseStudyCard = styled(Link)`
 
 const CaseStudyTitle = styled.span`
   font-size: 1.1em;
+  border-bottom: 1px solid ${props => props.theme.text};
+  margin-bottom: 0.5em;
+  width: 100%;
+  display: inline-block;
   font-weight: 600;
 `;
 
 const HighlightedWords = styled(motion.li)`
   font-size: 0.9em;
-  ${props => props.theme.text};
+  font-weight: bold;
 `;
 
 const caseStudies = [
@@ -192,12 +196,12 @@ const CaseStudy = ({ numToShow }) => {
             });
           }}>
             <Block className='Block'>
-              <Image src={caseStudy.image} alt={caseStudy.alt} />
-              <HoverImage src={caseStudy.hoverImage} alt={caseStudy.hoverAlt} />
+              <Image src={caseStudy.image} alt={caseStudy.title} />
+              <HoverImage src={caseStudy.hoverImage} alt={caseStudy.title} />
             </Block>
             <div className="text">
+              <CaseStudyTitle>{caseStudy.title}</CaseStudyTitle>
               <ul>
-                <CaseStudyTitle>{caseStudy.title}</CaseStudyTitle>
                 {caseStudy.listItems.map((item) => (
                   <HighlightedWords
                     key={item.id}
@@ -205,11 +209,9 @@ const CaseStudy = ({ numToShow }) => {
                     initial={{ opacity: 0 }}
                     animate={{
                       opacity: 1,
-                      fontWeight: highlightedId === item.id ? 'bold' : 'normal',
                       color: highlightedId === item.id ? '#27AE60' : theme.text,
                     }}
                     style={{
-                      fontWeight: 'normal',
                       cursor: 'pointer',
                     }}
                     transition={{ duration: 0.8, ease: 'easeInOut' }}

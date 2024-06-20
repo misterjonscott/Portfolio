@@ -245,21 +245,23 @@ const Header = ({ toggleTheme, theme }) => {
       )}
       <NavList>
         {navigationItems.map(item => (
-          <NavItem
-            key={item.label}
-            to={item.path}
-            className={location.pathname === item.path ? 'active' : ''}
-            target={item.target}
-            onClick={() => {
-              ReactGA.event({
-                category: 'Desktop Navigation',
-                action: `Desktop ${item.eventLabel}`,
-                label: item.eventLabel,
-              });
-            }}
-          >
-            {item.label}
-          </NavItem>
+          <li>
+            <NavItem
+              key={item.label}
+              to={item.path}
+              className={location.pathname === item.path ? 'active' : ''}
+              target={item.target}
+              onClick={() => {
+                ReactGA.event({
+                  category: 'Desktop Navigation',
+                  action: `Desktop ${item.eventLabel}`,
+                  label: item.eventLabel,
+                });
+              }}
+            >
+              {item.label}
+            </NavItem>
+          </li>
         ))}
       </NavList>
       <HeaderButtons>
